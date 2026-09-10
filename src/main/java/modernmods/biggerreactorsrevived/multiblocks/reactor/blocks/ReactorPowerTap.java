@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.Level;
@@ -22,7 +21,6 @@ import java.util.Locale;
 import static modernmods.biggerreactorsrevived.multiblocks.reactor.blocks.ReactorPowerTap.ConnectionState.CONNECTION_STATE_ENUM_PROPERTY;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ReactorPowerTap extends ReactorBaseBlock implements IAssemblyStateBlock, IFaceDirectionBlock {
     
     @RegisterBlock(name = "reactor_power_tap", tileEntityClass = ReactorPowerTapTile.class)

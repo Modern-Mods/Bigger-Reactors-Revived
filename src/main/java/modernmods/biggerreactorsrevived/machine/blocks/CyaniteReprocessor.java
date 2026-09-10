@@ -16,7 +16,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.ItemAbility;
 import modernmods.biggerreactorsrevived.machine.tiles.CyaniteReprocessorTile;
@@ -32,7 +33,7 @@ public class CyaniteReprocessor extends BaseEntityBlock implements EntityBlock{
         return simpleCodec(properties -> INSTANCE);
     }
     
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
     
     @RegisterBlock(name = "cyanite_reprocessor", tileEntityClass = CyaniteReprocessorTile.class)
@@ -50,7 +51,7 @@ public class CyaniteReprocessor extends BaseEntityBlock implements EntityBlock{
     }
     
     public static Direction getFacingFromEntity(BlockPos clickedBlockPos, LivingEntity entity) {
-        return Direction.getNearest((float) (entity.getX() - clickedBlockPos.getX()), 0.0F, (float) (entity.getZ() - clickedBlockPos.getZ()));
+        return Direction.getApproximateNearest((float) (entity.getX() - clickedBlockPos.getX()), 0.0F, (float) (entity.getZ() - clickedBlockPos.getZ()));
     }
     
     @Nonnull
@@ -92,14 +93,12 @@ public class CyaniteReprocessor extends BaseEntityBlock implements EntityBlock{
     
     
     @Override
-    public void onRemove(BlockState blockState, Level world, BlockPos blockPos, BlockState newBlockState, boolean isMoving) {
-        if (blockState.getBlock() != newBlockState.getBlock()) {
-            BlockEntity tile = world.getBlockEntity(blockPos);
-            if (tile instanceof CyaniteReprocessorTile) {
-                ((CyaniteReprocessorTile) tile).onReplaced(blockState, world, blockPos, newBlockState, isMoving);
-            }
-            super.onRemove(blockState, world, blockPos, newBlockState, isMoving);
+    protected void affectNeighborsAfterRemoval(BlockState blockState, net.minecraft.server.level.ServerLevel world, BlockPos blockPos, boolean movedByPiston) {
+        BlockEntity tile = world.getBlockEntity(blockPos);
+        if (tile instanceof CyaniteReprocessorTile) {
+            ((CyaniteReprocessorTile) tile).onReplaced(blockState, world, blockPos, blockState, movedByPiston);
         }
+        super.affectNeighborsAfterRemoval(blockState, world, blockPos, movedByPiston);
     }
     
     @Override

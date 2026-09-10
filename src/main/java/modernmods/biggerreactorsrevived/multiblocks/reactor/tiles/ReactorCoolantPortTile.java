@@ -2,7 +2,6 @@ package modernmods.biggerreactorsrevived.multiblocks.reactor.tiles;
 
 import net.minecraft.core.component.DataComponentPatch;
 import mekanism.api.chemical.IChemicalHandler;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -26,7 +25,7 @@ import modernmods.biggerreactorsrevived.multiblocks.reactor.blocks.ReactorAccess
 import modernmods.biggerreactorsrevived.multiblocks.reactor.blocks.ReactorCoolantPort;
 import modernmods.biggerreactorsrevived.multiblocks.reactor.containers.ReactorCoolantPortContainer;
 import modernmods.biggerreactorsrevived.multiblocks.reactor.state.ReactorCoolantPortState;
-import modernmods.phosphophylliterevived.fluids.FluidHandlerWrapper;
+import modernmods.phosphophylliterevived.fluids.ResourceFluidHandlerWrapper;
 import modernmods.phosphophylliterevived.fluids.IPhosphophylliteFluidHandler;
 import modernmods.phosphophylliterevived.client.gui.api.IHasUpdatableState;
 import modernmods.phosphophylliterevived.fluids.MekanismGasWrappers;
@@ -40,7 +39,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import static modernmods.biggerreactorsrevived.multiblocks.reactor.blocks.ReactorAccessPort.PortDirection.*;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class ReactorCoolantPortTile extends ReactorBaseTile implements IPhosphophylliteFluidHandler, MenuProvider, IHasUpdatableState<ReactorCoolantPortState>, IEventMultiblock.AssemblyStateTransition {
     
@@ -55,11 +53,11 @@ public class ReactorCoolantPortTile extends ReactorBaseTile implements IPhosphop
     @Nullable
     @Override
     public <T> T capability(BlockCapability<T, Direction> cap, @Nullable Direction side) {
-        if (cap == Capabilities.FluidHandler.BLOCK) {
+        if (cap == Capabilities.Fluid.BLOCK) {
             //noinspection unchecked
-            return (T) this;
+            return (T) modernmods.phosphophylliterevived.transfer.FluidResourceHandler.of(this);
         }
-        if (cap == MekanismCapabilities.CHEMICAL_HANDLER) {
+        if (modernmods.phosphophylliterevived.capabilities.MekanismPresence.loaded() && cap == MekanismCapabilities.CHEMICAL_HANDLER) {
             //noinspection unchecked
             return (T) MekanismGasWrappers.wrap(this);
         }
@@ -172,11 +170,14 @@ public class ReactorCoolantPortTile extends ReactorBaseTile implements IPhosphop
             return;
         }
         connected = false;
-        final var fluidHandler = level.getCapability(Capabilities.FluidHandler.BLOCK, te.getBlockPos(), steamOutputDirection.getOpposite());
+        final var fluidHandler = level.getCapability(Capabilities.Fluid.BLOCK, te.getBlockPos(), steamOutputDirection.getOpposite());
         if (fluidHandler != null) {
             connected = true;
-            handler = FluidHandlerWrapper.wrap(fluidHandler);
+            handler = ResourceFluidHandlerWrapper.wrap(fluidHandler);
         } else {
+            if (!modernmods.phosphophylliterevived.capabilities.MekanismPresence.loaded()) {
+                return;
+            }
             final var chemicalHandler = level.getCapability(MekanismCapabilities.CHEMICAL_HANDLER, te.getBlockPos(), steamOutputDirection.getOpposite());
             if (chemicalHandler != null) {
                 connected = true;
@@ -193,7 +194,7 @@ public class ReactorCoolantPortTile extends ReactorBaseTile implements IPhosphop
     @Override
     protected void readNBT(CompoundTag compound) {
         if (compound.contains("direction")) {
-            direction = ReactorAccessPort.PortDirection.valueOf(compound.getString("direction"));
+            direction = ReactorAccessPort.PortDirection.valueOf(compound.getStringOr("direction", ""));
         }
     }
     

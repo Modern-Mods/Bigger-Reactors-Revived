@@ -6,7 +6,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -32,8 +32,8 @@ import java.util.stream.Collectors;
 public class BiggerReactorsJEIPlugin implements IModPlugin {
 
     @Nonnull
-    public ResourceLocation getPluginUid() {
-        return ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "jei_plugin");
+    public Identifier getPluginUid() {
+        return Identifier.fromNamespaceAndPath(BiggerReactors.modid, "jei_plugin");
     }
 
     @Override

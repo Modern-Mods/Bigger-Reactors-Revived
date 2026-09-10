@@ -219,7 +219,7 @@ public class ReactorMultiblockController extends MultiblockController<ReactorTil
     @Override
     public void read(CompoundTag nbt) {
         if (nbt.contains("testValue")) {
-            nbtTestValue = nbt.getString("testValue");
+            nbtTestValue = nbt.getStringOr("testValue", "");
         }
     }
     

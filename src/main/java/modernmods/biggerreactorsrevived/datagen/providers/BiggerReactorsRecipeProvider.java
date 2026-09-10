@@ -1,17 +1,22 @@
 package modernmods.biggerreactorsrevived.datagen.providers;
 
 import modernmods.biggerreactorsrevived.BiggerReactors;
+import net.minecraft.data.PackOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.BlastingRecipe;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -26,36 +31,39 @@ import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 public class BiggerReactorsRecipeProvider extends RecipeProvider {
 
-    public BiggerReactorsRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider);
+    private static final Recipe.CommonInfo COMMON = new Recipe.CommonInfo(true);
+    private static final CraftingRecipe.CraftingBookInfo CRAFTING_BOOK = new CraftingRecipe.CraftingBookInfo(CraftingBookCategory.MISC, "");
+    private static final AbstractCookingRecipe.CookingBookInfo COOKING_BOOK = new AbstractCookingRecipe.CookingBookInfo(CookingBookCategory.MISC, "");
+
+    public BiggerReactorsRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+        super(registries, output);
     }
 
-    private static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, path);
+    private static ResourceKey<Recipe<?>> id(String path) {
+        return ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(BiggerReactors.modid, path));
     }
 
     private static Item lookup(String id) {
-        return BuiltInRegistries.ITEM.get(ResourceLocation.parse(id));
+        return BuiltInRegistries.ITEM.getValue(Identifier.parse(id));
     }
 
     private static Ingredient item(String id) {
         return Ingredient.of(lookup(id));
     }
 
-    private static ItemStack result(String id, int count) {
-        return new ItemStack(lookup(id), count);
+    private static ItemStackTemplate result(String id, int count) {
+        return new ItemStackTemplate(lookup(id), count);
     }
 
     private static Ingredient items(String... ids) {
         return Ingredient.of(Arrays.stream(ids).map(BiggerReactorsRecipeProvider::lookup).toArray(net.minecraft.world.level.ItemLike[]::new));
     }
 
-    private static Ingredient tag(String id) {
-        return Ingredient.of(TagKey.create(Registries.ITEM, ResourceLocation.parse(id)));
+    private Ingredient tag(String id) {
+        return Ingredient.of(this.items.getOrThrow(TagKey.create(Registries.ITEM, Identifier.parse(id))));
     }
 
     private static ICondition modLoaded(String... modids) {
@@ -63,36 +71,36 @@ public class BiggerReactorsRecipeProvider extends RecipeProvider {
     }
 
     private static void shaped(RecipeOutput output, String path, int count, String result, List<String> pattern, Map<Character, Ingredient> key) {
-        output.accept(id(path), new ShapedRecipe("", CraftingBookCategory.MISC,
+        output.accept(id(path), new ShapedRecipe(COMMON, CRAFTING_BOOK,
                 ShapedRecipePattern.of(key, pattern), result(result, count)), null);
     }
 
     private static void shapeless(RecipeOutput output, String path, int count, String result, List<Ingredient> ingredients) {
-        output.accept(id(path), new ShapelessRecipe("", CraftingBookCategory.MISC,
-                result(result, count), net.minecraft.core.NonNullList.copyOf(ingredients)), null);
+        output.accept(id(path), new ShapelessRecipe(COMMON, CRAFTING_BOOK,
+                result(result, count), List.copyOf(ingredients)), null);
     }
 
     @SuppressWarnings("unchecked")
     private static void shapelessWithBook(RecipeOutput output, String path, int count, String result, String component, String value, List<Ingredient> ingredients) {
-        final var stack = result(result, count);
-        final var type = BuiltInRegistries.DATA_COMPONENT_TYPE.get(ResourceLocation.parse(component));
-        stack.set((DataComponentType<ResourceLocation>) type, ResourceLocation.parse(value));
-        output.accept(id(path), new ShapelessRecipe("", CraftingBookCategory.MISC,
-                stack, net.minecraft.core.NonNullList.copyOf(ingredients)), null);
+        final var type = (DataComponentType<Identifier>) BuiltInRegistries.DATA_COMPONENT_TYPE.getValue(Identifier.parse(component));
+        final var patch = DataComponentPatch.builder().set(type, Identifier.parse(value)).build();
+        output.accept(id(path), new ShapelessRecipe(COMMON, CRAFTING_BOOK,
+                new ItemStackTemplate(lookup(result), count, patch), List.copyOf(ingredients)), null);
     }
 
     private static void smelting(RecipeOutput output, String path, Ingredient input, int count, String result, float experience, int time) {
-        output.accept(id(path), new SmeltingRecipe("", CookingBookCategory.MISC, input,
+        output.accept(id(path), new SmeltingRecipe(COMMON, COOKING_BOOK, input,
                 result(result, count), experience, time), null);
     }
 
     private static void blasting(RecipeOutput output, String path, Ingredient input, int count, String result, float experience, int time) {
-        output.accept(id(path), new BlastingRecipe("", CookingBookCategory.MISC, input,
+        output.accept(id(path), new BlastingRecipe(COMMON, COOKING_BOOK, input,
                 result(result, count), experience, time), null);
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput output) {
+    protected void buildRecipes() {
+        final var output = this.output;
         blasting(output, "blasting/blutonium_ingot", item("biggerreactors:blutonium_dust"), 1, "biggerreactors:blutonium_ingot", 0F, 100);
         blasting(output, "blasting/cyanite_ingot", item("biggerreactors:cyanite_dust"), 1, "biggerreactors:cyanite_ingot", 0F, 100);
         blasting(output, "blasting/deepslate_uranium_ore", item("biggerreactors:deepslate_uranium_ore"), 1, "biggerreactors:uranium_ingot", 0.35F, 100);
@@ -192,7 +200,7 @@ public class BiggerReactorsRecipeProvider extends RecipeProvider {
                 'C', item("biggerreactors:reactor_casing"),
                 'G', item("minecraft:glass")));
         shaped(output, "crafting/reactor/reactor_manifold", 4, "biggerreactors:reactor_manifold", List.of("IGI", "G G", "IGI"), Map.of(
-                'G', tag("c:glass"),
+                'G', tag("c:glass_blocks"),
                 'I', item("minecraft:iron_ingot")));
         shaped(output, "crafting/reactor/reactor_power_tap", 1, "biggerreactors:reactor_power_tap", List.of("CRC", "R R", "CRC"), Map.of(
                 'C', item("biggerreactors:reactor_casing"),
@@ -258,5 +266,22 @@ public class BiggerReactorsRecipeProvider extends RecipeProvider {
         smelting(output, "smelting/uranium_chunk", item("biggerreactors:uranium_chunk"), 1, "biggerreactors:uranium_ingot", 0.35F, 200);
         smelting(output, "smelting/uranium_dust", item("biggerreactors:uranium_dust"), 1, "biggerreactors:uranium_ingot", 0F, 200);
         smelting(output, "smelting/uranium_ore", item("biggerreactors:uranium_ore"), 1, "biggerreactors:uranium_ingot", 0.35F, 200);
+    }
+
+    public static class Runner extends RecipeProvider.Runner {
+
+        public Runner(PackOutput packOutput, java.util.concurrent.CompletableFuture<HolderLookup.Provider> registries) {
+            super(packOutput, registries);
+        }
+
+        @Override
+        protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+            return new BiggerReactorsRecipeProvider(registries, output);
+        }
+
+        @Override
+        public String getName() {
+            return "BiggerReactors Recipes";
+        }
     }
 }

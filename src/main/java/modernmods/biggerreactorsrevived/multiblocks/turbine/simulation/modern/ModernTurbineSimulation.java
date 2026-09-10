@@ -317,12 +317,12 @@ public class ModernTurbineSimulation implements ITurbineSimulation {
     
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        fluidTank.deserializeNBT(nbt.getCompound("fluidTank"));
-        battery.deserializeNBT(nbt.getCompound("battery"));
-        ventState = VentState.fromInt(nbt.getInt("ventState"));
-        rotorEnergy = nbt.getDouble("rotorEnergy");
-        maxFlowRate = nbt.getLong("maxFlowRate");
-        coilEngaged = nbt.getBoolean("coilEngaged");
-        active = nbt.getBoolean("active");
+        fluidTank.deserializeNBT(nbt.getCompoundOrEmpty("fluidTank"));
+        battery.deserializeNBT(nbt.getCompoundOrEmpty("battery"));
+        ventState = VentState.fromInt(nbt.getIntOr("ventState", 0));
+        rotorEnergy = nbt.getDoubleOr("rotorEnergy", 0D);
+        maxFlowRate = nbt.getLongOr("maxFlowRate", 0L);
+        coilEngaged = nbt.getBooleanOr("coilEngaged", false);
+        active = nbt.getBooleanOr("active", false);
     }
 }

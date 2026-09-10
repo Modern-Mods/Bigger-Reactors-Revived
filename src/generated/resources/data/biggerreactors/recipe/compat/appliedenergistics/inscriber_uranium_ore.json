@@ -7,9 +7,7 @@
   ],
   "type": "ae2:inscriber",
   "ingredients": {
-    "middle": {
-      "item": "biggerreactors:uranium_ore"
-    }
+    "middle": "biggerreactors:uranium_ore"
   },
   "mode": "inscribe",
   "result": {

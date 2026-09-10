@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/reactor/power_tap/disconnected",
+    "east": "biggerreactors:block/reactor/power_tap/disconnected",
+    "north": "biggerreactors:block/reactor/power_tap/disconnected",
+    "particle": "biggerreactors:block/reactor/power_tap/disconnected",
+    "south": "biggerreactors:block/reactor/power_tap/disconnected",
+    "up": "biggerreactors:block/reactor/power_tap/disconnected",
+    "west": "biggerreactors:block/reactor/power_tap/disconnected"
+  }
+}

@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -13,7 +12,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbineComputerPort extends TurbineBaseBlock implements IAssemblyStateBlock, IFaceDirectionBlock {
     
     @RegisterBlock(name = "turbine_computer_port", tileEntityClass = TurbineComputerPortTile.class)

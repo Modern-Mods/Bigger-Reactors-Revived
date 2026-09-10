@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/turbine/fluid_port/inlet",
+    "east": "biggerreactors:block/turbine/fluid_port/inlet",
+    "north": "biggerreactors:block/turbine/fluid_port/inlet",
+    "particle": "biggerreactors:block/turbine/fluid_port/inlet",
+    "south": "biggerreactors:block/turbine/fluid_port/inlet",
+    "up": "biggerreactors:block/turbine/fluid_port/inlet",
+    "west": "biggerreactors:block/turbine/fluid_port/inlet"
+  }
+}

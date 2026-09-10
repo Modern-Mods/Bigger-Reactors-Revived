@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.tiles;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
@@ -20,7 +19,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class HeatExchangerTerminalTile extends HeatExchangerBaseTile implements MenuProvider, IHasUpdatableState<HeatExchangerState> {
     

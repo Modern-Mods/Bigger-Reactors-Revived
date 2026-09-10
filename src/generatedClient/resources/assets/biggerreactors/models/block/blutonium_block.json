@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/blutonium_block",
+    "east": "biggerreactors:block/blutonium_block",
+    "north": "biggerreactors:block/blutonium_block",
+    "particle": "biggerreactors:block/blutonium_block",
+    "south": "biggerreactors:block/blutonium_block",
+    "up": "biggerreactors:block/blutonium_block",
+    "west": "biggerreactors:block/blutonium_block"
+  }
+}

@@ -1,18 +1,15 @@
 package modernmods.biggerreactorsrevived.client;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.phosphophylliterevived.client.gui.screens.PhosphophylliteScreen;
 import modernmods.phosphophylliterevived.client.gui.RenderHelper;
@@ -22,7 +19,6 @@ import javax.annotation.Nonnull;
 
 import static org.lwjgl.glfw.GLFW.*;
 
-@OnlyIn(Dist.CLIENT)
 public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement<T> {
 
     /**
@@ -106,11 +102,11 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
      * @param mouseY The y position of the mouse.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY) {
+    public void render(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
         // Check conditions.
         if (this.renderEnable) {
             // Preserve the previously selected texture and bind the common texture.
-            ResourceLocation preservedResource = RenderHelper.getCurrentResource();
+            Identifier preservedResource = RenderHelper.getCurrentResource();
             RenderHelper.bindTexture(CommonRender.COMMON_RESOURCE_TEXTURE);
 
             // Draw the left side of the text box frame.
@@ -126,7 +122,7 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
 
             // Draw the text.
             // TODO: Allow for larger text entry by allowing text scrolling.
-            graphics.drawString(this.fontRenderer, this.textBuffer.toString(), (this.x + 3), (this.y + 4), 16777215, false);
+            graphics.text(this.fontRenderer, this.textBuffer.toString(), (this.x + 3), (this.y + 4), 0xFFFFFFFF, false);
 
             // Trigger user-defined render logic.
             if (this.onRender != null) {
@@ -134,8 +130,8 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
             }
 
             // Draw cursor and selection box.
-            renderCursor(this.parent.getGuiLeft() + this.x, this.parent.getGuiTop() + this.y);
-            renderSelection(this.parent.getGuiLeft() + this.x, this.parent.getGuiTop() + this.y);
+            renderCursor(graphics, this.parent.getGuiLeft() + this.x, this.parent.getGuiTop() + this.y);
+            renderSelection(graphics, this.parent.getGuiLeft() + this.x, this.parent.getGuiTop() + this.y);
 
             // Reset color and restore the previously bound texture.
             RenderHelper.clearRenderColor();
@@ -146,7 +142,7 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
     /**
      * Draw the cursor.
      */
-    private void renderCursor(int x, int y) {
+    private void renderCursor(GuiGraphicsExtractor graphics, int x, int y) {
         // Increment animation timer and reset if necessary.
         this.cursorAnimationTime++;
         if (cursorAnimationTime > cursorAnimationTimeTotal) {
@@ -160,31 +156,18 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
 
         // Render position for the cursor.
         int cursorRenderPos = (x + 2);
-        if(this.textBuffer.length() >= this.cursorPos) {
+        if (this.textBuffer.length() >= this.cursorPos) {
             cursorRenderPos = (this.fontRenderer.width(this.textBuffer.substring(0, this.cursorPos)) + (x + 2));
         }
 
-        // Set up tessellator and buffer.
-        Tesselator tessellator = Tesselator.getInstance();
-        RenderHelper.setRenderColor(255.0F, 255.0F, 255.0F, 255.0F);
-
-        // Set positions.
-        BufferBuilder renderBuffer = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION);
-        renderBuffer.addVertex((float) (cursorRenderPos + 1), (float) (y + 3), 0.0F);
-        renderBuffer.addVertex((float) cursorRenderPos, (float) (y + 3), 0.0F);
-        renderBuffer.addVertex((float) cursorRenderPos, (float) (y + 13), 0.0F);
-        renderBuffer.addVertex((float) (cursorRenderPos + 1), (float) (y + 13), 0.0F);
-
-        // Draw and reset.
-        BufferUploader.drawWithShader(renderBuffer.buildOrThrow());
-//        RenderSystem.enableTexture();
-        RenderHelper.clearRenderColor();
+        graphics.fill(cursorRenderPos, y + 3, cursorRenderPos + 1, y + 13, 0xFFFFFFFF);
     }
+
 
     /**
      * Draw the highlight box on the selected text.
      */
-    private void renderSelection(int x, int y) {
+    private void renderSelection(GuiGraphicsExtractor graphics, int x, int y) {
         // Check conditions.
         if (!this.renderEnable || this.cursorPos == this.selectionPos) {
             return;
@@ -192,13 +175,13 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
 
         // Render position for the cursor.
         int cursorRenderPos = (x + 2);
-        if(this.textBuffer.length() >= this.cursorPos) {
+        if (this.textBuffer.length() >= this.cursorPos) {
             cursorRenderPos = (this.fontRenderer.width(this.textBuffer.substring(0, this.cursorPos)) + (x + 2));
         }
 
         // Render position for the selection.
         int selectionRenderPos = (x + 2);
-        if(this.textBuffer.length() >= this.selectionPos) {
+        if (this.textBuffer.length() >= this.selectionPos) {
             selectionRenderPos = (this.fontRenderer.width(this.textBuffer.substring(0, this.selectionPos)) + (x + 2));
         }
 
@@ -207,25 +190,9 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
         // Right edge of the box.
         int rightRenderPos = (this.selectionPos > this.cursorPos) ? selectionRenderPos : cursorRenderPos;
 
-        // Set up tessellator and buffer.
-        Tesselator tessellator = Tesselator.getInstance();
-        RenderHelper.setRenderColor(0.0F, 0.0F, 255.0F, 255.0F);
-        RenderSystem.enableColorLogicOp();
-        RenderSystem.logicOp(GlStateManager.LogicOp.OR_REVERSE);
-
-        // Set positions.
-        BufferBuilder renderBuffer = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION);
-        renderBuffer.addVertex((float) rightRenderPos, (float) (y + 2), 0.0F);
-        renderBuffer.addVertex((float) leftRenderPos, (float) (y + 2), 0.0F);
-        renderBuffer.addVertex((float) leftRenderPos, (float) (y + 14), 0.0F);
-        renderBuffer.addVertex((float) rightRenderPos, (float) (y + 14), 0.0F);
-
-        // Draw and reset.
-        BufferUploader.drawWithShader(renderBuffer.buildOrThrow());
-        RenderSystem.disableColorLogicOp();
-//        RenderSystem.enableTexture();
-        RenderHelper.clearRenderColor();
+        graphics.textHighlight(leftRenderPos, y + 2, rightRenderPos, y + 14, false);
     }
+
 
     /**
      * Returns whether the mouse is over the current element or not.
@@ -274,24 +241,24 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
         // Check conditions.
         if (this.actionEnable && this.focusEnable) {
             // Check for Ctrl+A (select all text).
-            if (Screen.isSelectAll(keyCode)) {
+            if (modernmods.biggerreactorsrevived.client.KeyModifiers.isSelectAll(keyCode)) {
                 this.cursorPos = textBuffer.length();
                 this.selectionPos = 0;
                 return true;
             }
             // Check for Ctrl-C (copy text in selection).
-            if (Screen.isCopy(keyCode)) {
+            if (modernmods.biggerreactorsrevived.client.KeyModifiers.isCopy(keyCode)) {
                 this.parent.getMinecraft().keyboardHandler.setClipboard(this.getSelection());
                 return true;
             }
             // Check for Ctrl-X (cut text in selection).
-            if (Screen.isCut(keyCode)) {
+            if (modernmods.biggerreactorsrevived.client.KeyModifiers.isCut(keyCode)) {
                 this.parent.getMinecraft().keyboardHandler.setClipboard(this.getSelection());
                 this.deleteSelection();
                 return true;
             }
             // Check for Ctrl-V (paste text in selection).
-            if (Screen.isPaste(keyCode)) {
+            if (modernmods.biggerreactorsrevived.client.KeyModifiers.isPaste(keyCode)) {
                 this.write(this.parent.getMinecraft().keyboardHandler.getClipboard());
                 return true;
             }
@@ -305,7 +272,7 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
                     // Delete the character.
                     this.deleteCharacter();
                     // Check for shift (delete word).
-                    if ((Screen.hasControlDown())) {
+                    if ((modernmods.biggerreactorsrevived.client.KeyModifiers.control())) {
                         // Continue to delete until the next break character.
                         this.deleteWord();
                     }
@@ -366,14 +333,14 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
         // Check if we can shift left.
         if (this.cursorPos > 0) {
             // Check which method to shift with.
-            if (Screen.hasShiftDown() && Screen.hasControlDown()) {
+            if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift() && modernmods.biggerreactorsrevived.client.KeyModifiers.control()) {
                 // Select and move by word (cursor position moves out of sync with selection position).
                 this.cursorPos = this.findBreakCharacter(this.cursorPos, true);
-            } else if (Screen.hasControlDown()) {
+            } else if (modernmods.biggerreactorsrevived.client.KeyModifiers.control()) {
                 // Move by word (cursor position moves in sync with selection position).
                 this.cursorPos = this.findBreakCharacter(this.cursorPos, true);
                 this.selectionPos = this.cursorPos;
-            } else if (Screen.hasShiftDown()) {
+            } else if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift()) {
                 // Select and move by character (cursor position moves out of sync with selection position).
                 this.cursorPos--;
             } else {
@@ -391,14 +358,14 @@ public class TextBox<T extends AbstractContainerMenu> extends InteractiveElement
         // Check if we can shift right.
         if (this.cursorPos < this.textBuffer.length()) {
             // Check which method to shift with.
-            if (Screen.hasShiftDown() && Screen.hasControlDown()) {
+            if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift() && modernmods.biggerreactorsrevived.client.KeyModifiers.control()) {
                 // Select and move by word (cursor position moves out of sync with selection position).
                 this.cursorPos = this.findBreakCharacter(this.cursorPos, false);
-            } else if (Screen.hasControlDown()) {
+            } else if (modernmods.biggerreactorsrevived.client.KeyModifiers.control()) {
                 // Move by word (cursor position moves in sync with selection position).
                 this.cursorPos = this.findBreakCharacter(this.cursorPos, false);
                 this.selectionPos = this.cursorPos;
-            } else if (Screen.hasShiftDown()) {
+            } else if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift()) {
                 // Select and move by character (cursor position moves out of sync with selection position).
                 this.cursorPos++;
             } else {

@@ -1,13 +1,11 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.biggerreactorsrevived.client.Biselector;
 import modernmods.biggerreactorsrevived.client.SelectorColors;
@@ -18,10 +16,9 @@ import modernmods.phosphophylliterevived.client.gui.elements.InteractiveElement;
 
 import javax.annotation.Nonnull;
 
-@OnlyIn(Dist.CLIENT)
 public class ReactorAccessPortScreen extends PhosphophylliteScreen<ReactorAccessPortContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/reactor_access_port.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/reactor_access_port.png");
 
     private ReactorAccessPortState reactorAccessPortState;
 
@@ -117,17 +114,17 @@ public class ReactorAccessPortScreen extends PhosphophylliteScreen<ReactorAccess
      * @param partialTicks Partial ticks.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        super.render(graphics, mouseX, mouseY, partialTicks);
+    public void extractRenderState(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
 
         // Render text for input/output direction:
         if (reactorAccessPortState.direction) {
             // Text for an inlet:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.direction_toggle.input").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 22, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.direction_toggle.input").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 22, 0xFF404040, false);
 
         } else {
             // Text for an outlet:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.direction_toggle.output").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 22, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.direction_toggle.output").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 22, 0xFF404040, false);
         }
 
         // Check if we render output type:
@@ -135,18 +132,18 @@ public class ReactorAccessPortScreen extends PhosphophylliteScreen<ReactorAccess
             // Render text for fuel/waste mode:
             if (reactorAccessPortState.fuelMode) {
                 // Text for an inlet:
-                graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.fuel_mode_toggle.fuel").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 38, 4210752, false);
+                graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.fuel_mode_toggle.fuel").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 38, 0xFF404040, false);
 
             } else {
                 // Text for an outlet:
-                graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.fuel_mode_toggle.waste").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 38, 4210752, false);
+                graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.fuel_mode_toggle.waste").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 38, 0xFF404040, false);
             }
         } else {
             // Text for no output:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.fuel_mode_toggle.nope").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 38, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.fuel_mode_toggle.nope").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 38, 0xFF404040, false);
         }
 
         // Render text for manual waste eject:
-        graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.manual_eject").getString(), this.getGuiLeft() + 26, this.getGuiTop() + 54, 4210752, false);
+        graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.reactor_access_port.manual_eject").getString(), this.getGuiLeft() + 26, this.getGuiTop() + 54, 0xFF404040, false);
     }
 }

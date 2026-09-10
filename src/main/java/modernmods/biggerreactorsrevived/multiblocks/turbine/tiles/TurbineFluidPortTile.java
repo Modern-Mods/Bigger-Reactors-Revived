@@ -2,7 +2,6 @@ package modernmods.biggerreactorsrevived.multiblocks.turbine.tiles;
 
 import net.minecraft.core.component.DataComponentPatch;
 import mekanism.api.chemical.IChemicalHandler;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -25,7 +24,7 @@ import modernmods.biggerreactorsrevived.multiblocks.turbine.blocks.TurbineFluidP
 import modernmods.biggerreactorsrevived.multiblocks.turbine.containers.TurbineFluidPortContainer;
 import modernmods.biggerreactorsrevived.multiblocks.turbine.simulation.ITurbineFluidTank;
 import modernmods.biggerreactorsrevived.multiblocks.turbine.state.TurbineFluidPortState;
-import modernmods.phosphophylliterevived.fluids.FluidHandlerWrapper;
+import modernmods.phosphophylliterevived.fluids.ResourceFluidHandlerWrapper;
 import modernmods.phosphophylliterevived.fluids.IPhosphophylliteFluidHandler;
 import modernmods.phosphophylliterevived.client.gui.api.IHasUpdatableState;
 import modernmods.phosphophylliterevived.fluids.MekanismGasWrappers;
@@ -40,7 +39,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import static modernmods.biggerreactorsrevived.multiblocks.turbine.blocks.TurbineFluidPort.PortDirection.*;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbineFluidPortTile extends TurbineBaseTile implements IPhosphophylliteFluidHandler, MenuProvider, IHasUpdatableState<TurbineFluidPortState>, IEventMultiblock.AssemblyStateTransition.OnAssembly, IEventMultiblock.AssemblyStateTransition.OnDisassembly {
     
     @RegisterTile("turbine_fluid_port")
@@ -54,11 +52,11 @@ public class TurbineFluidPortTile extends TurbineBaseTile implements IPhosphophy
     @Nullable
     @Override
     public <T> T capability(BlockCapability<T, Direction> cap, @Nullable Direction side) {
-        if (cap == Capabilities.FluidHandler.BLOCK) {
+        if (cap == Capabilities.Fluid.BLOCK) {
             //noinspection unchecked
-            return (T) this;
+            return (T) modernmods.phosphophylliterevived.transfer.FluidResourceHandler.of(this);
         }
-        if (cap == MekanismCapabilities.CHEMICAL_HANDLER) {
+        if (modernmods.phosphophylliterevived.capabilities.MekanismPresence.loaded() && cap == MekanismCapabilities.CHEMICAL_HANDLER) {
             //noinspection unchecked
             return (T) MekanismGasWrappers.wrap(this);
         }
@@ -171,11 +169,14 @@ public class TurbineFluidPortTile extends TurbineBaseTile implements IPhosphophy
             return;
         }
         connected = false;
-        final var fluidHandler = level.getCapability(Capabilities.FluidHandler.BLOCK, te.getBlockPos(), waterOutputDirection.getOpposite());
+        final var fluidHandler = level.getCapability(Capabilities.Fluid.BLOCK, te.getBlockPos(), waterOutputDirection.getOpposite());
         if (fluidHandler != null) {
             connected = true;
-            handler = FluidHandlerWrapper.wrap(fluidHandler);
+            handler = ResourceFluidHandlerWrapper.wrap(fluidHandler);
         } else {
+            if (!modernmods.phosphophylliterevived.capabilities.MekanismPresence.loaded()) {
+                return;
+            }
             final var chemicalHandler = level.getCapability(MekanismCapabilities.CHEMICAL_HANDLER, te.getBlockPos(), waterOutputDirection.getOpposite());
             if (chemicalHandler != null) {
                 connected = true;
@@ -192,7 +193,7 @@ public class TurbineFluidPortTile extends TurbineBaseTile implements IPhosphophy
     @Override
     protected void readNBT(CompoundTag compound) {
         if (compound.contains("direction")) {
-            direction = TurbineFluidPort.PortDirection.valueOf(compound.getString("direction"));
+            direction = TurbineFluidPort.PortDirection.valueOf(compound.getStringOr("direction", ""));
         }
     }
     

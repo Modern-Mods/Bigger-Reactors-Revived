@@ -1,7 +1,6 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -42,7 +41,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbineMultiblockController extends MultiblockController<TurbineBaseTile, TurbineBaseBlock, TurbineMultiblockController> implements
         IRectangularMultiblock<TurbineBaseTile, TurbineBaseBlock, TurbineMultiblockController>,
         IPersistentMultiblock<TurbineBaseTile, TurbineBaseBlock, TurbineMultiblockController>,
@@ -129,9 +127,9 @@ public class TurbineMultiblockController extends MultiblockController<TurbineBas
             int x = bearingPosition.getX();
             int y = bearingPosition.getY();
             int z = bearingPosition.getZ();
-            final int marchX = marchDirection.getNormal().getX();
-            final int marchY = marchDirection.getNormal().getY();
-            final int marchZ = marchDirection.getNormal().getZ();
+            final int marchX = marchDirection.getUnitVec3i().getX();
+            final int marchY = marchDirection.getUnitVec3i().getY();
+            final int marchZ = marchDirection.getUnitVec3i().getZ();
             marchedBlocks--;
             do {
                 x += marchX;
@@ -155,7 +153,7 @@ public class TurbineMultiblockController extends MultiblockController<TurbineBas
             int i = 0;
             for (Direction value : Direction.values()) {
                 if (value != marchDirection && value != marchDirection.getOpposite()) {
-                    bladeDirections[i++] = value.getNormal();
+                    bladeDirections[i++] = value.getUnitVec3i();
                 }
             }
         }
@@ -397,7 +395,7 @@ public class TurbineMultiblockController extends MultiblockController<TurbineBas
                 BlockPos possibleRotorPos = rotorBearing.getBlockPos().relative(value);
                 if (level.getBlockState(possibleRotorPos).getBlock() == TurbineRotorShaft.INSTANCE) {
                     
-                    rotationAxis = value.getNormal();
+                    rotationAxis = value.getUnitVec3i();
                     
                     rotorConfiguration.clear();
                     

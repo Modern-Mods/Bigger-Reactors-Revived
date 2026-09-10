@@ -1,12 +1,11 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.tiles;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -20,6 +19,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import modernmods.phosphophylliterevived.transfer.TransferUtil;
 import modernmods.biggerreactorsrevived.Config;
 import modernmods.biggerreactorsrevived.blocks.materials.MaterialBlock;
 import modernmods.biggerreactorsrevived.items.ingots.BlutoniumIngot;
@@ -41,15 +43,14 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import static modernmods.biggerreactorsrevived.multiblocks.reactor.blocks.ReactorAccessPort.PortDirection.*;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class ReactorAccessPortTile extends ReactorBaseTile implements IItemHandler, MenuProvider, IHasUpdatableState<ReactorAccessPortState>, IEventMultiblock.AssemblyStateTransition {
     
     @RegisterTile("reactor_access_port")
     public static final BlockEntityType.BlockEntitySupplier<ReactorAccessPortTile> SUPPLIER = new RegisterTile.Producer<>(ReactorAccessPortTile::new);
     
-    private static final TagKey<Item> uraniumIngotTag = TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.parse("c:ingots/uranium"));
-    private static final TagKey<Item> uraniumBlockTag = TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.parse("c:storage_blocks/uranium"));
+    private static final TagKey<Item> uraniumIngotTag = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.parse("c:ingots/uranium"));
+    private static final TagKey<Item> uraniumBlockTag = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.parse("c:storage_blocks/uranium"));
     
     private final Item fuelOutputItem;
     
@@ -61,7 +62,7 @@ public class ReactorAccessPortTile extends ReactorBaseTile implements IItemHandl
         super(tileEntityTypeIn, pos, state);
         if (Config.CONFIG.Reactor.FuelOutputItem != null) {
             @Nullable
-            var potentialOutput = BuiltInRegistries.ITEM.get(Config.CONFIG.Reactor.FuelOutputItem);
+            var potentialOutput = BuiltInRegistries.ITEM.getValue(Config.CONFIG.Reactor.FuelOutputItem);
             if (potentialOutput == null || !potentialOutput.builtInRegistryHolder().is(uraniumIngotTag)) {
                 potentialOutput = UraniumIngot.INSTANCE;
             }
@@ -86,10 +87,10 @@ public class ReactorAccessPortTile extends ReactorBaseTile implements IItemHandl
     @Override
     protected void readNBT(CompoundTag compound) {
         if (compound.contains("direction")) {
-            direction = ReactorAccessPort.PortDirection.valueOf(compound.getString("direction"));
+            direction = ReactorAccessPort.PortDirection.valueOf(compound.getStringOr("direction", ""));
         }
         if (compound.contains("fuelMode")) {
-            fuelMode = compound.getBoolean("fuelMode");
+            fuelMode = compound.getBooleanOr("fuelMode", false);
         }
     }
     
@@ -122,9 +123,9 @@ public class ReactorAccessPortTile extends ReactorBaseTile implements IItemHandl
     @Nullable
     @Override
     protected <T> T capability(BlockCapability<T, Direction> cap, @Nullable Direction side) {
-        if (cap == Capabilities.ItemHandler.BLOCK) {
+        if (cap == Capabilities.Item.BLOCK) {
             //noinspection unchecked
-            return (T) this;
+            return (T) modernmods.phosphophylliterevived.transfer.ItemResourceHandler.of(this);
         }
         return super.capability(cap, side);
     }
@@ -230,22 +231,24 @@ public class ReactorAccessPortTile extends ReactorBaseTile implements IItemHandl
     }
     
     public int pushWaste(int waste, boolean simulated) {
-        if (itemOutput != null) {
-            IItemHandler output = itemOutput;
-            waste /= Config.CONFIG.Reactor.FuelMBPerIngot;
-            int wasteHandled = 0;
-            for (int i = 0; i < output.getSlots(); i++) {
-                if (waste == 0) {
-                    break;
-                }
-                ItemStack toInsertStack = new ItemStack(CyaniteIngot.INSTANCE, waste);
-                ItemStack remainingStack = output.insertItem(i, toInsertStack, simulated);
-                wasteHandled += toInsertStack.getCount() - remainingStack.getCount();
-                waste -= toInsertStack.getCount() - remainingStack.getCount();
-            }
-            return (int) (wasteHandled * Config.CONFIG.Reactor.FuelMBPerIngot);
+        return pushItem(CyaniteIngot.INSTANCE, waste, simulated);
+    }
+    
+    private int pushItem(net.minecraft.world.item.Item item, int amount, boolean simulated) {
+        if (itemOutput == null) {
+            return 0;
         }
-        return 0;
+        final int ingots = (int) (amount / Config.CONFIG.Reactor.FuelMBPerIngot);
+        if (ingots <= 0) {
+            return 0;
+        }
+        try (final var transaction = TransferUtil.openTransaction()) {
+            final int inserted = itemOutput.insert(ItemResource.of(item), ingots, transaction);
+            if (!simulated) {
+                transaction.commit();
+            }
+            return (int) (inserted * Config.CONFIG.Reactor.FuelMBPerIngot);
+        }
     }
     
     public void ejectWaste() {
@@ -253,22 +256,7 @@ public class ReactorAccessPortTile extends ReactorBaseTile implements IItemHandl
     }
     
     public int pushFuel(int fuel, boolean simulated) {
-        if (itemOutput != null) {
-            IItemHandler output = itemOutput;
-            fuel /= Config.CONFIG.Reactor.FuelMBPerIngot;
-            int fuelHandled = 0;
-            for (int i = 0; i < output.getSlots(); i++) {
-                if (fuel == 0) {
-                    break;
-                }
-                ItemStack toInsertStack = new ItemStack(fuelOutputItem, fuel);
-                ItemStack remainingStack = output.insertItem(i, toInsertStack, simulated);
-                fuelHandled += toInsertStack.getCount() - remainingStack.getCount();
-                fuel -= toInsertStack.getCount() - remainingStack.getCount();
-            }
-            return (int) (fuelHandled * Config.CONFIG.Reactor.FuelMBPerIngot);
-        }
-        return 0;
+        return pushItem(fuelOutputItem, fuel, simulated);
     }
     
     public void ejectFuel() {
@@ -278,7 +266,7 @@ public class ReactorAccessPortTile extends ReactorBaseTile implements IItemHandl
     Direction itemOutputDirection;
     boolean connected;
     @Nullable
-    IItemHandler itemOutput;
+    ResourceHandler<ItemResource> itemOutput;
     public final ReactorAccessPortState reactorAccessPortState = new ReactorAccessPortState(this);
     
     @SuppressWarnings("DuplicatedCode")
@@ -294,7 +282,7 @@ public class ReactorAccessPortTile extends ReactorBaseTile implements IItemHandl
             connected = false;
             return;
         }
-        itemOutput = level.getCapability(Capabilities.ItemHandler.BLOCK, te.getBlockPos(), itemOutputDirection.getOpposite());
+        itemOutput = level.getCapability(Capabilities.Item.BLOCK, te.getBlockPos(), itemOutputDirection.getOpposite());
         connected = itemOutput != null;
     }
     

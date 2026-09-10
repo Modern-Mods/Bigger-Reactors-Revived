@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/heat_exchanger/casing/disassembled",
+    "east": "biggerreactors:block/heat_exchanger/casing/disassembled",
+    "north": "biggerreactors:block/heat_exchanger/casing/disassembled",
+    "particle": "biggerreactors:block/heat_exchanger/casing/disassembled",
+    "south": "biggerreactors:block/heat_exchanger/casing/disassembled",
+    "up": "biggerreactors:block/heat_exchanger/casing/disassembled",
+    "west": "biggerreactors:block/heat_exchanger/casing/disassembled"
+  }
+}

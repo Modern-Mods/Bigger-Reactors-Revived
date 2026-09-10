@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "biggerreactors:ludicrite_block"
-    }
+    "biggerreactors:ludicrite_block"
   ],
   "result": {
     "count": 9,

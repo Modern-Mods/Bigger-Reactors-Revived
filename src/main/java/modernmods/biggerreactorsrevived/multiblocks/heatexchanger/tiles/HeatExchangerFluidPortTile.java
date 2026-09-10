@@ -2,7 +2,6 @@ package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.tiles;
 
 import net.minecraft.core.component.DataComponentPatch;
 import mekanism.api.chemical.IChemicalHandler;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -25,7 +24,7 @@ import modernmods.biggerreactorsrevived.multiblocks.heatexchanger.blocks.HeatExc
 import modernmods.biggerreactorsrevived.multiblocks.heatexchanger.containers.HeatExchangerFluidPortContainer;
 import modernmods.biggerreactorsrevived.multiblocks.heatexchanger.state.HeatExchangerFluidPortState;
 import modernmods.phosphophylliterevived.client.gui.api.IHasUpdatableState;
-import modernmods.phosphophylliterevived.fluids.FluidHandlerWrapper;
+import modernmods.phosphophylliterevived.fluids.ResourceFluidHandlerWrapper;
 import modernmods.phosphophylliterevived.fluids.IPhosphophylliteFluidHandler;
 import modernmods.phosphophylliterevived.fluids.MekanismGasWrappers;
 import modernmods.phosphophylliterevived.multiblock.common.IEventMultiblock;
@@ -40,7 +39,6 @@ import static modernmods.biggerreactorsrevived.multiblocks.heatexchanger.blocks.
 import static modernmods.phosphophylliterevived.util.BlockStates.PORT_DIRECTION;
 
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class HeatExchangerFluidPortTile extends HeatExchangerBaseTile implements IPhosphophylliteFluidHandler, IEventMultiblock.AssemblyStateTransition.OnAssembly, IEventMultiblock.AssemblyStateTransition.OnDisassembly, MenuProvider, IHasUpdatableState<HeatExchangerFluidPortState> {
     
@@ -58,11 +56,11 @@ public class HeatExchangerFluidPortTile extends HeatExchangerBaseTile implements
     @Nullable
     @Override
     public <T> T capability(BlockCapability<T, Direction> cap, @Nullable Direction side) {
-        if (cap == Capabilities.FluidHandler.BLOCK) {
+        if (cap == Capabilities.Fluid.BLOCK) {
             //noinspection unchecked
-            return (T) this;
+            return (T) modernmods.phosphophylliterevived.transfer.FluidResourceHandler.of(this);
         }
-        if (cap == MekanismCapabilities.CHEMICAL_HANDLER) {
+        if (modernmods.phosphophylliterevived.capabilities.MekanismPresence.loaded() && cap == MekanismCapabilities.CHEMICAL_HANDLER) {
             //noinspection unchecked
             return (T) MekanismGasWrappers.wrap(this);
         }
@@ -205,11 +203,14 @@ public class HeatExchangerFluidPortTile extends HeatExchangerBaseTile implements
             return;
         }
         connected = false;
-        final var fluidHandler = level.getCapability(Capabilities.FluidHandler.BLOCK, te.getBlockPos(), outputDirection.getOpposite());
+        final var fluidHandler = level.getCapability(Capabilities.Fluid.BLOCK, te.getBlockPos(), outputDirection.getOpposite());
         if (fluidHandler != null) {
             connected = true;
-            handler = FluidHandlerWrapper.wrap(fluidHandler);
+            handler = ResourceFluidHandlerWrapper.wrap(fluidHandler);
         } else {
+            if (!modernmods.phosphophylliterevived.capabilities.MekanismPresence.loaded()) {
+                return;
+            }
             final var chemicalHandler = level.getCapability(MekanismCapabilities.CHEMICAL_HANDLER, te.getBlockPos(), outputDirection.getOpposite());
             if (chemicalHandler != null) {
                 connected = true;
@@ -221,7 +222,7 @@ public class HeatExchangerFluidPortTile extends HeatExchangerBaseTile implements
     @Override
     protected void readNBT(CompoundTag compound) {
         super.readNBT(compound);
-        inlet = compound.getBoolean("inlet");
+        inlet = compound.getBooleanOr("inlet", false);
     }
     
     

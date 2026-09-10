@@ -1,18 +1,20 @@
 package modernmods.biggerreactorsrevived.datagen.providers;
 
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
+import net.minecraft.resources.Identifier;
+import net.minecraft.client.data.models.model.ModelInstance;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 
+import java.util.LinkedHashMap;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 public final class BiggerReactorsBlockModelProvider {
 
     public static final String TRANSPARENT = "phosphophyllite:block/transparent";
-    private static final String CUTOUT = "cutout";
+    private static final String CUTOUT = "minecraft:cutout";
 
     private static final String[] CUBE_ALL_BLOCKS = {
             "blutonium_block",
@@ -74,22 +76,22 @@ public final class BiggerReactorsBlockModelProvider {
     private BiggerReactorsBlockModelProvider() {
     }
 
-    public static void registerModels(BlockModelProvider models) {
+    public static void registerModels(BiConsumer<Identifier, ModelInstance> models) {
         for (final var name : CUBE_ALL_BLOCKS) {
-            models.cubeAll("block/" + name, modLocation("block/" + name));
+            models.accept(modLocation("block/" + name), ModelDsl.cubeAll(modLocation("block/" + name)));
         }
         for (final var entry : CUBE_ALL_PARTS) {
-            models.cubeAll("block/" + entry[0], modLocation(entry[1]));
+            models.accept(modLocation("block/" + entry[0]), ModelDsl.cubeAll(modLocation(entry[1])));
         }
 
-        models.orientable("block/cyanite_reprocessor",
+        models.accept(modLocation("block/cyanite_reprocessor"), ModelDsl.orientable(
                 modLocation("block/reactor/casing/disassembled"),
                 modLocation("block/cyanite_reprocessor"),
-                modLocation("block/reactor/casing/disassembled"));
-        models.orientable("block/cyanite_reprocessor_active",
+                modLocation("block/reactor/casing/disassembled")));
+        models.accept(modLocation("block/cyanite_reprocessor_active"), ModelDsl.orientable(
                 modLocation("block/reactor/casing/disassembled"),
                 modLocation("block/cyanite_reprocessor_active"),
-                modLocation("block/reactor/casing/disassembled"));
+                modLocation("block/reactor/casing/disassembled")));
 
         singleFace(models, "block/reactor/control_rod", Direction.UP,
                 "block/reactor/control_rod", "block/reactor/casing/disassembled", "block/reactor/casing/disassembled", null);
@@ -112,45 +114,44 @@ public final class BiggerReactorsBlockModelProvider {
         connectedTexture(models, "block/heat_exchanger/glass", "block/heat_exchanger/glass/glass_connected_", "block/heat_exchanger/glass/glass");
     }
 
-    private static ResourceLocation modLocation(String path) {
-        return ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, path);
+    private static Identifier modLocation(String path) {
+        return Identifier.fromNamespaceAndPath(BiggerReactors.modid, path);
     }
 
-    private static void fuelRod(BlockModelProvider models, String name, String texturePath) {
-        models.withExistingParent(name, "block/cube")
-                .texture("up", modLocation(texturePath + "/end"))
-                .texture("down", modLocation(texturePath + "/end"))
-                .texture("north", modLocation(texturePath + "/side"))
-                .texture("south", modLocation(texturePath + "/side"))
-                .texture("east", modLocation(texturePath + "/side"))
-                .texture("west", modLocation(texturePath + "/side"))
-                .texture("particle", modLocation(texturePath + "/end"))
-                .renderType(CUTOUT);
+    private static void fuelRod(BiConsumer<Identifier, ModelInstance> models, String name, String texturePath) {
+        final var textures = new LinkedHashMap<String, Identifier>();
+        textures.put("particle", modLocation(texturePath + "/end"));
+        textures.put("up", modLocation(texturePath + "/end"));
+        textures.put("down", modLocation(texturePath + "/end"));
+        textures.put("north", modLocation(texturePath + "/side"));
+        textures.put("south", modLocation(texturePath + "/side"));
+        textures.put("east", modLocation(texturePath + "/side"));
+        textures.put("west", modLocation(texturePath + "/side"));
+        models.accept(modLocation(name), ModelDsl.cube(textures, CUTOUT));
     }
 
-    private static void singleFace(BlockModelProvider models, String name, Direction face, String faceTexture, String otherTexture, String particleTexture, String renderType) {
-        final var builder = models.withExistingParent(name, "block/cube");
+    private static void singleFace(BiConsumer<Identifier, ModelInstance> models, String name, Direction face, String faceTexture, String otherTexture, String particleTexture, String renderType) {
+        final var textures = new LinkedHashMap<String, Identifier>();
+        textures.put("particle", modLocation(particleTexture));
         for (final var direction : Direction.values()) {
-            builder.texture(direction.getSerializedName(), modLocation(direction == face ? faceTexture : otherTexture));
+            textures.put(direction.getSerializedName(), modLocation(direction == face ? faceTexture : otherTexture));
         }
-        builder.texture("particle", modLocation(particleTexture));
-        if (renderType != null) {
-            builder.renderType(renderType);
-        }
+        models.accept(modLocation(name), ModelDsl.cube(textures, renderType));
     }
 
-    private static void connectedTexture(BlockModelProvider models, String folder, String texturePrefix, String noneTexture) {
+    private static void connectedTexture(BiConsumer<Identifier, ModelInstance> models, String folder, String texturePrefix, String noneTexture) {
         for (int mask = 0; mask < 64; mask++) {
             final var connected = connectedSides(mask);
             final var name = folder + "/connected_" + connectionName(connected);
             if (connected.isEmpty()) {
-                models.cubeAll(name, modLocation(noneTexture)).renderType(CUTOUT);
+                models.accept(modLocation(name), ModelDsl.cubeAllCutout(modLocation(noneTexture), CUTOUT));
                 continue;
             }
-            final var builder = models.withExistingParent(name, "block/cube");
+            final var textures = new LinkedHashMap<String, Identifier>();
+            textures.put("particle", modLocation(texturePrefix + "none"));
             for (final var face : Direction.values()) {
                 if (connected.contains(face)) {
-                    builder.texture(face.getSerializedName(), ResourceLocation.parse(TRANSPARENT));
+                    textures.put(face.getSerializedName(), Identifier.parse(TRANSPARENT));
                     continue;
                 }
                 final var edges = new StringBuilder();
@@ -164,14 +165,14 @@ public final class BiggerReactorsBlockModelProvider {
                     }
                 }
                 final var edgeName = edges.isEmpty() ? "none" : edges.length() == 4 ? "all" : edges.toString();
-                builder.texture(face.getSerializedName(), modLocation(texturePrefix + edgeName));
+                textures.put(face.getSerializedName(), modLocation(texturePrefix + edgeName));
             }
-            builder.texture("particle", modLocation(texturePrefix + "none"));
-            builder.renderType(CUTOUT);
+            models.accept(modLocation(name), ModelDsl.cube(textures, CUTOUT));
         }
     }
 
-    public static EnumSet<Direction> connectedSides(int mask) {
+    public static EnumSet<Direction> connectedSides
+(int mask) {
         final var set = EnumSet.noneOf(Direction.class);
         if ((mask & 1) != 0) {
             set.add(Direction.UP);

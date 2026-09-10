@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/heat_exchanger/computer_port",
+    "east": "biggerreactors:block/heat_exchanger/computer_port",
+    "north": "biggerreactors:block/heat_exchanger/computer_port",
+    "particle": "biggerreactors:block/heat_exchanger/computer_port",
+    "south": "biggerreactors:block/heat_exchanger/computer_port",
+    "up": "biggerreactors:block/heat_exchanger/computer_port",
+    "west": "biggerreactors:block/heat_exchanger/computer_port"
+  }
+}

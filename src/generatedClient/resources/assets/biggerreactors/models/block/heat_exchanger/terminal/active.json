@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/heat_exchanger/terminal/active",
+    "east": "biggerreactors:block/heat_exchanger/terminal/active",
+    "north": "biggerreactors:block/heat_exchanger/terminal/active",
+    "particle": "biggerreactors:block/heat_exchanger/terminal/active",
+    "south": "biggerreactors:block/heat_exchanger/terminal/active",
+    "up": "biggerreactors:block/heat_exchanger/terminal/active",
+    "west": "biggerreactors:block/heat_exchanger/terminal/active"
+  }
+}

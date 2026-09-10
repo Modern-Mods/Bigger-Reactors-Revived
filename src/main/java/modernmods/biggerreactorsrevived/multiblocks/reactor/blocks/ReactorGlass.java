@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -14,7 +13,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ReactorGlass extends ReactorBaseBlock implements IAssemblyStateBlock, IConnectedTexture {
     
     @RegisterBlock(name = "reactor_glass", tileEntityClass = ReactorGlassTile.class)
@@ -32,11 +30,11 @@ public class ReactorGlass extends ReactorBaseBlock implements IAssemblyStateBloc
     
     @SuppressWarnings("deprecation")
     @Override
-    public float getShadeBrightness(BlockState p_60472_, BlockGetter p_60473_, BlockPos p_60474_) {
+    protected float getShadeBrightness(BlockState p_60472_, BlockGetter p_60473_, BlockPos p_60474_) {
         return 1.0f;
     }
     
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+    protected boolean propagatesSkylightDown(BlockState state) {
         return true;
     }
 }

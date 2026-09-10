@@ -1,12 +1,10 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.biggerreactorsrevived.client.CommonRender;
 import modernmods.biggerreactorsrevived.multiblocks.reactor.containers.ReactorTerminalContainer;
@@ -19,10 +17,9 @@ import modernmods.phosphophylliterevived.client.gui.elements.TooltipElement;
 
 import javax.annotation.Nonnull;
 
-@OnlyIn(Dist.CLIENT)
 public class PassiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTerminalContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/reactor_terminal_passive.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/reactor_terminal_passive.png");
 
     private ReactorState reactorState;
 
@@ -79,7 +76,7 @@ public class PassiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorT
     private void initGauges() {
         // (Top) Internal battery:
         RenderedElement<ReactorTerminalContainer> internalBattery = new RenderedElement<>(this, 151, 25, 18, 64, 0, 152, Component.empty());
-        internalBattery.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderEnergyGauge(graphics,
+        internalBattery.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderEnergyGauge(graphics,
                 internalBattery, reactorState.energyStored, reactorState.energyCapacity);
         this.addScreenElement(internalBattery);
     }
@@ -107,14 +104,14 @@ public class PassiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorT
      * @param partialTicks Partial ticks.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        super.render(graphics, mouseX, mouseY, partialTicks);
+    public void extractRenderState(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
 
         // Render the other text:
         CommonReactorTerminalScreen.renderStatusText(graphics, this, reactorState.reactorActivity, reactorState.doAutoEject,
                 reactorState.fuelHeatStored, reactorState.fuelUsageRate, reactorState.reactivityRate);
 
         // Render text for output rate:
-        graphics.drawString(this.getFont(), RenderHelper.formatValue(reactorState.reactorOutputRate, "RF/t"), this.getGuiLeft() + 27, this.getGuiTop() + 42, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatValue(reactorState.reactorOutputRate, "RF/t"), this.getGuiLeft() + 27, this.getGuiTop() + 42, 0xFF404040, false);
     }
 }

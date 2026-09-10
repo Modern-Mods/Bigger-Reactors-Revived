@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/uranium_ore",
+    "east": "biggerreactors:block/uranium_ore",
+    "north": "biggerreactors:block/uranium_ore",
+    "particle": "biggerreactors:block/uranium_ore",
+    "south": "biggerreactors:block/uranium_ore",
+    "up": "biggerreactors:block/uranium_ore",
+    "west": "biggerreactors:block/uranium_ore"
+  }
+}

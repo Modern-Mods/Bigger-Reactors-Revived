@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/heat_exchanger/fluid_port/evaporator_outlet",
+    "east": "biggerreactors:block/heat_exchanger/fluid_port/evaporator_outlet",
+    "north": "biggerreactors:block/heat_exchanger/fluid_port/evaporator_outlet",
+    "particle": "biggerreactors:block/heat_exchanger/fluid_port/evaporator_outlet",
+    "south": "biggerreactors:block/heat_exchanger/fluid_port/evaporator_outlet",
+    "up": "biggerreactors:block/heat_exchanger/fluid_port/evaporator_outlet",
+    "west": "biggerreactors:block/heat_exchanger/fluid_port/evaporator_outlet"
+  }
+}

@@ -5,7 +5,7 @@ import modernmods.biggerreactorsrevived.BiggerReactors;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class BiggerReactorsQuartzStateProvider implements DataProvider {
     }
 
     private void raw(CachedOutput cache, String path, String json) {
-        final var location = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, path);
+        final var location = Identifier.fromNamespaceAndPath(BiggerReactors.modid, path);
         written.add(DataProvider.saveStable(cache, JsonParser.parseString(json), states.json(location)));
     }
 

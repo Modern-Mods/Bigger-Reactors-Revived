@@ -1,7 +1,7 @@
 package modernmods.biggerreactorsrevived.registries;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.registries.datamaps.DataMapType;
@@ -33,8 +33,8 @@ public final class BiggerReactorsDataMaps {
     private BiggerReactorsDataMaps() {
     }
 
-    private static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, path);
+    private static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath(BiggerReactors.modid, path);
     }
 
     public static void register(RegisterDataMapTypesEvent event) {

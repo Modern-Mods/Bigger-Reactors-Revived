@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/BiggerSeries/BiggerReactors/issues/"
 [[mods]]
 modId="${modid}"
 version="${mod_version}"
-displayName="Bigger Reactors Revived"
+displayName="Bigger Reactors"
 displayURL="https://biggerseries.net/"
 logoFile="BiggerReactors.png"
 credits="ErogeneousBeef for the original Big Reactors mod, that this is spiritually (and semi-literally) derived from"

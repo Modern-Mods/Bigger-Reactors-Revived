@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.tiles;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,7 +13,6 @@ import modernmods.phosphophylliterevived.multiblock.touching.ITouchingMultiblock
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class HeatExchangerBaseTile extends PhosphophylliteTile implements IRectangularMultiblockTile<HeatExchangerBaseTile, HeatExchangerBaseBlock, HeatExchangerMultiblockController>,
         IPersistentMultiblockTile<HeatExchangerBaseTile, HeatExchangerBaseBlock, HeatExchangerMultiblockController>,

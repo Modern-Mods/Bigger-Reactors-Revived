@@ -1,13 +1,11 @@
 package modernmods.biggerreactorsrevived.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.phosphophylliterevived.client.gui.RenderHelper;
 import modernmods.phosphophylliterevived.client.gui.screens.PhosphophylliteScreen;
 import modernmods.phosphophylliterevived.client.gui.elements.InteractiveElement;
@@ -16,7 +14,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.function.IntSupplier;
 
-@OnlyIn(Dist.CLIENT)
 public class Triselector<T extends AbstractContainerMenu> extends InteractiveElement<T> {
     
     private final IntSupplier renderState;
@@ -76,11 +73,11 @@ public class Triselector<T extends AbstractContainerMenu> extends InteractiveEle
      * @param mouseY The y position of the mouse.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY) {
+    public void render(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
         // Check conditions.
         if (this.renderEnable) {
             // Preserve the previously selected texture and bind the common texture.
-            ResourceLocation preservedResource = RenderHelper.getCurrentResource();
+            Identifier preservedResource = RenderHelper.getCurrentResource();
             RenderHelper.bindTexture(CommonRender.COMMON_RESOURCE_TEXTURE);
             // Draw the selector frame.
             if (this.renderState.getAsInt() == 0) {

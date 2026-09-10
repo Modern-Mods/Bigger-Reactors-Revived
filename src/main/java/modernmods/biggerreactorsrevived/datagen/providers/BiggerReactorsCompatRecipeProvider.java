@@ -5,7 +5,7 @@ import modernmods.biggerreactorsrevived.BiggerReactors;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
     }
 
     private void raw(CachedOutput cache, String path, String json) {
-        final var location = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, path);
+        final var location = Identifier.fromNamespaceAndPath(BiggerReactors.modid, path);
         written.add(DataProvider.saveStable(cache, JsonParser.parseString(json), recipes.json(location)));
     }
 
@@ -36,9 +36,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
         raw(cache, "compat/appliedenergistics/inscriber_blutonium_ingot", """
                 {
                     "ingredients" : {
-                        "middle" : {
-                            "item" : "biggerreactors:blutonium_ingot"
-                        }
+                        "middle" : "biggerreactors:blutonium_ingot"
                     },
                     "mode" : "inscribe",
                     "neoforge:conditions" : [
@@ -57,9 +55,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
         raw(cache, "compat/appliedenergistics/inscriber_cyanite_ingot", """
                 {
                     "ingredients" : {
-                        "middle" : {
-                            "item" : "biggerreactors:cyanite_ingot"
-                        }
+                        "middle" : "biggerreactors:cyanite_ingot"
                     },
                     "mode" : "inscribe",
                     "neoforge:conditions" : [
@@ -78,9 +74,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
         raw(cache, "compat/appliedenergistics/inscriber_deepslate_uranium_ore", """
                 {
                     "ingredients" : {
-                        "middle" : {
-                            "item" : "biggerreactors:deepslate_uranium_ore"
-                        }
+                        "middle" : "biggerreactors:deepslate_uranium_ore"
                     },
                     "mode" : "inscribe",
                     "neoforge:conditions" : [
@@ -99,9 +93,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
         raw(cache, "compat/appliedenergistics/inscriber_graphite_ingot", """
                 {
                     "ingredients" : {
-                        "middle" : {
-                            "item" : "biggerreactors:graphite_ingot"
-                        }
+                        "middle" : "biggerreactors:graphite_ingot"
                     },
                     "mode" : "inscribe",
                     "neoforge:conditions" : [
@@ -120,9 +112,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
         raw(cache, "compat/appliedenergistics/inscriber_ludicrite_ingot", """
                 {
                     "ingredients" : {
-                        "middle" : {
-                            "item" : "biggerreactors:ludicrite_ingot"
-                        }
+                        "middle" : "biggerreactors:ludicrite_ingot"
                     },
                     "mode" : "inscribe",
                     "neoforge:conditions" : [
@@ -141,9 +131,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
         raw(cache, "compat/appliedenergistics/inscriber_uranium_chunk", """
                 {
                     "ingredients" : {
-                        "middle" : {
-                            "item" : "biggerreactors:uranium_chunk"
-                        }
+                        "middle" : "biggerreactors:uranium_chunk"
                     },
                     "mode" : "inscribe",
                     "neoforge:conditions" : [
@@ -162,9 +150,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
         raw(cache, "compat/appliedenergistics/inscriber_uranium_ingot", """
                 {
                     "ingredients" : {
-                        "middle" : {
-                            "item" : "biggerreactors:uranium_ingot"
-                        }
+                        "middle" : "biggerreactors:uranium_ingot"
                     },
                     "mode" : "inscribe",
                     "neoforge:conditions" : [
@@ -183,9 +169,7 @@ public class BiggerReactorsCompatRecipeProvider implements DataProvider {
         raw(cache, "compat/appliedenergistics/inscriber_uranium_ore", """
                 {
                     "ingredients" : {
-                        "middle" : {
-                            "item" : "biggerreactors:uranium_ore"
-                        }
+                        "middle" : "biggerreactors:uranium_ore"
                     },
                     "mode" : "inscribe",
                     "neoforge:conditions" : [

@@ -138,7 +138,7 @@ public class ReactorModeratorRegistry {
     @OnModLoad
     private static void onModLoad() {
         NeoForge.EVENT_BUS.addListener(ReactorModeratorRegistry::tagsUpdated);
-        if (FMLEnvironment.dist.isClient()) {
+        if (FMLEnvironment.getDist().isClient()) {
             NeoForge.EVENT_BUS.addListener(Client::toolTipEvent);
         }
     }
@@ -151,11 +151,11 @@ public class ReactorModeratorRegistry {
         registry.clear();
 
         for (final var entry : BuiltInRegistries.BLOCK.getDataMap(BiggerReactorsDataMaps.REACTOR_MODERATOR).entrySet()) {
-            registry.put(BuiltInRegistries.BLOCK.get(entry.getKey()), entry.getValue());
+            registry.put(BuiltInRegistries.BLOCK.getValue(entry.getKey()), entry.getValue());
         }
 
         for (final var entry : BuiltInRegistries.FLUID.getDataMap(BiggerReactorsDataMaps.REACTOR_FLUID_MODERATOR).entrySet()) {
-            final var fluid = BuiltInRegistries.FLUID.get(entry.getKey());
+            final var fluid = BuiltInRegistries.FLUID.getValue(entry.getKey());
             registry.put(fluid.defaultFluidState().createLegacyBlock().getBlock(), entry.getValue());
         }
 

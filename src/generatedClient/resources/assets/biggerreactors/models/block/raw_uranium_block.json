@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/raw_uranium_block",
+    "east": "biggerreactors:block/raw_uranium_block",
+    "north": "biggerreactors:block/raw_uranium_block",
+    "particle": "biggerreactors:block/raw_uranium_block",
+    "south": "biggerreactors:block/raw_uranium_block",
+    "up": "biggerreactors:block/raw_uranium_block",
+    "west": "biggerreactors:block/raw_uranium_block"
+  }
+}

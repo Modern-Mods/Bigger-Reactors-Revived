@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/heat_exchanger/casing/face",
+    "east": "biggerreactors:block/heat_exchanger/casing/face",
+    "north": "biggerreactors:block/heat_exchanger/casing/face",
+    "particle": "biggerreactors:block/heat_exchanger/casing/face",
+    "south": "biggerreactors:block/heat_exchanger/casing/face",
+    "up": "biggerreactors:block/heat_exchanger/casing/face",
+    "west": "biggerreactors:block/heat_exchanger/casing/face"
+  }
+}

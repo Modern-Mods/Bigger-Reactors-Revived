@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
@@ -26,7 +25,6 @@ import java.util.Locale;
 import static modernmods.biggerreactorsrevived.multiblocks.turbine.blocks.TurbineFluidPort.PortDirection.*;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbineFluidPort extends TurbineBaseBlock implements IAssemblyStateBlock, IFaceDirectionBlock {
     @RegisterBlock(name = "turbine_fluid_port", tileEntityClass = TurbineFluidPortTile.class)
     public static final TurbineFluidPort INSTANCE = new TurbineFluidPort();

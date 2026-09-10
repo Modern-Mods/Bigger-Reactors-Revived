@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "level=0": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=1": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=10": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=11": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=12": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=13": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=14": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=15": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=2": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=3": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=4": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=5": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=6": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=7": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=8": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    },
+    "level=9": {
+      "model": "biggerreactors:fluid/liquid_obsidian"
+    }
+  }
+}

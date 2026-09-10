@@ -69,7 +69,7 @@ public class TurbineCoilRegistry {
     @OnModLoad
     private static void onModLoad() {
         NeoForge.EVENT_BUS.addListener(TurbineCoilRegistry::tagsUpdated);
-        if (FMLEnvironment.dist.isClient()) {
+        if (FMLEnvironment.getDist().isClient()) {
             NeoForge.EVENT_BUS.addListener(Client::toolTipEvent);
         }
     }
@@ -82,7 +82,7 @@ public class TurbineCoilRegistry {
         registry.clear();
 
         for (final var entry : BuiltInRegistries.BLOCK.getDataMap(BiggerReactorsDataMaps.TURBINE_COIL).entrySet()) {
-            registry.put(BuiltInRegistries.BLOCK.get(entry.getKey()), entry.getValue());
+            registry.put(BuiltInRegistries.BLOCK.getValue(entry.getKey()), entry.getValue());
         }
 
         for (final var entry : LegacyRegistryMigration.coils()) {

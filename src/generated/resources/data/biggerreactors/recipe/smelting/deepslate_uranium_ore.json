@@ -3,11 +3,8 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.35,
-  "ingredient": {
-    "item": "biggerreactors:deepslate_uranium_ore"
-  },
+  "ingredient": "biggerreactors:deepslate_uranium_ore",
   "result": {
-    "count": 1,
     "id": "biggerreactors:uranium_ingot"
   }
 }

@@ -1,7 +1,6 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.tiles;
 
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -20,7 +19,6 @@ import modernmods.phosphophylliterevived.registry.RegisterTile;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class ReactorControlRodTile extends ReactorBaseTile implements MenuProvider, IHasUpdatableState<ReactorControlRodState> {
     
@@ -127,10 +125,10 @@ public class ReactorControlRodTile extends ReactorBaseTile implements MenuProvid
     protected void readNBT(CompoundTag compound) {
         super.readNBT(compound);
         if (compound.contains("insertion")) {
-            insertion = compound.getDouble("insertion");
+            insertion = compound.getDoubleOr("insertion", 0D);
         }
         if (compound.contains("name")) {
-            name = compound.getString("name");
+            name = compound.getStringOr("name", "");
         }
     }
 }

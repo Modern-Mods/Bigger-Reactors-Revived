@@ -2,14 +2,12 @@ package modernmods.biggerreactorsrevived.multiblocks.reactor.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.biggerreactorsrevived.client.CommonButton;
 import modernmods.biggerreactorsrevived.client.TextBox;
@@ -23,10 +21,9 @@ import modernmods.phosphophylliterevived.client.gui.elements.RenderedElement;
 
 import javax.annotation.Nonnull;
 
-@OnlyIn(Dist.CLIENT)
 public class ReactorControlRodScreen extends PhosphophylliteScreen<ReactorControlRodContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/reactor_control_rod.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/reactor_control_rod.png");
 
     private ReactorControlRodState reactorControlRodState;
 
@@ -109,12 +106,12 @@ public class ReactorControlRodScreen extends PhosphophylliteScreen<ReactorContro
             if (rodRetractButton.isMouseOver(mX, mY)) {
                 // Calculate amount of change:
                 double delta;
-                if (Screen.hasShiftDown() && Screen.hasControlDown()) delta = -100D;
-                else if (Screen.hasControlDown()) delta = -50D;
-                else if (Screen.hasShiftDown()) delta = -10D;
+                if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift() && modernmods.biggerreactorsrevived.client.KeyModifiers.control()) delta = -100D;
+                else if (modernmods.biggerreactorsrevived.client.KeyModifiers.control()) delta = -50D;
+                else if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift()) delta = -10D;
                 else delta = -1D;
                 // Mouse is hovering, do the thing.
-                this.getMenu().executeRequest("changeInsertionLevel", new Pair<>(delta, Screen.hasAltDown()));
+                this.getMenu().executeRequest("changeInsertionLevel", new Pair<>(delta, modernmods.biggerreactorsrevived.client.KeyModifiers.alt()));
                 // Play the selection sound.
                 rodRetractButton.playSound(SoundEvents.UI_BUTTON_CLICK);
                 return true;
@@ -142,12 +139,12 @@ public class ReactorControlRodScreen extends PhosphophylliteScreen<ReactorContro
             if (rodInsertButton.isMouseOver(mX, mY)) {
                 // Calculate amount of change:
                 double delta;
-                if (Screen.hasShiftDown() && Screen.hasControlDown()) delta = 100D;
-                else if (Screen.hasControlDown()) delta = 50D;
-                else if (Screen.hasShiftDown()) delta = 10D;
+                if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift() && modernmods.biggerreactorsrevived.client.KeyModifiers.control()) delta = 100D;
+                else if (modernmods.biggerreactorsrevived.client.KeyModifiers.control()) delta = 50D;
+                else if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift()) delta = 10D;
                 else delta = 1D;
                 // Mouse is hovering, do the thing.
-                this.getMenu().executeRequest("changeInsertionLevel", new Pair<>(delta, Screen.hasAltDown()));
+                this.getMenu().executeRequest("changeInsertionLevel", new Pair<>(delta, modernmods.biggerreactorsrevived.client.KeyModifiers.alt()));
                 // Play the selection sound.
                 rodInsertButton.playSound(SoundEvents.UI_BUTTON_CLICK);
                 return true;
@@ -175,7 +172,7 @@ public class ReactorControlRodScreen extends PhosphophylliteScreen<ReactorContro
     public void initGauges() {
         // (Center) Control rod insertion gauge:
         RenderedElement<ReactorControlRodContainer> rodInsertionGauge = new RenderedElement<>(this, 36, 50, 18, 64, 0, 126, Component.empty());
-        rodInsertionGauge.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> ReactorControlRodScreen.renderInsertionLevel(graphics, rodInsertionGauge, this.reactorControlRodState.insertionLevel);
+        rodInsertionGauge.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> ReactorControlRodScreen.renderInsertionLevel(graphics, rodInsertionGauge, this.reactorControlRodState.insertionLevel);
         this.addScreenElement(rodInsertionGauge);
     }
 
@@ -188,14 +185,14 @@ public class ReactorControlRodScreen extends PhosphophylliteScreen<ReactorContro
      * @param partialTicks Partial ticks.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        super.render(graphics, mouseX, mouseY, partialTicks);
+    public void extractRenderState(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
 
         // Render text for text box:
-        graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.reactor_control_rod.name").getString(), this.getGuiLeft() + 8, this.getGuiTop() + 17, 4210752, false);
+        graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.reactor_control_rod.name").getString(), this.getGuiLeft() + 8, this.getGuiTop() + 17, 0xFF404040, false);
 
         // Render text for insertion level:
-        graphics.drawString(this.getFont(), String.format("%.1f%%", reactorControlRodState.insertionLevel), this.getGuiLeft() + 76, this.getGuiTop() + 77, 4210752, false);
+        graphics.text(this.getFont(), String.format("%.1f%%", reactorControlRodState.insertionLevel), this.getGuiLeft() + 76, this.getGuiTop() + 77, 0xFF404040, false);
     }
 
     /**
@@ -205,7 +202,7 @@ public class ReactorControlRodScreen extends PhosphophylliteScreen<ReactorContro
      * @param symbol         The symbol to draw as.
      * @param insertionLevel How far the control rod is inserted. 0 is no insertion, 100 is full insertion.
      */
-    public static void renderInsertionLevel(@Nonnull GuiGraphics graphics, @Nonnull RenderedElement<ReactorControlRodContainer> symbol, double insertionLevel) {
+    public static void renderInsertionLevel(@Nonnull GuiGraphicsExtractor graphics, @Nonnull RenderedElement<ReactorControlRodContainer> symbol, double insertionLevel) {
         // Render fuel background. Offset by 1, otherwise it doesn't align with the frame.
         RenderHelper.drawFluidGrid(graphics, symbol.x + 1, symbol.y, 0, 16, 16, LiquidUranium.INSTANCE.getSource(), 1, 4);
 

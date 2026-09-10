@@ -1,15 +1,12 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.tiles;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.biggerreactorsrevived.multiblocks.turbine.blocks.TurbineRotorBlade;
 import modernmods.biggerreactorsrevived.multiblocks.turbine.blocks.TurbineRotorShaft;
 import modernmods.phosphophylliterevived.Phosphophyllite;
@@ -36,7 +33,6 @@ import java.util.ArrayList;
 import static modernmods.phosphophylliterevived.multiblock.IAssemblyStateBlock.ASSEMBLED;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbineRotorBearingTile extends TurbineBaseTile implements IEventMultiblock.AssemblyStateTransition {
     
     public static final boolean APRIL_FOOLS_JOKE = LocalDateTime.now().getMonth() == Month.APRIL && LocalDateTime.now().getDayOfMonth() == 1;
@@ -75,9 +71,9 @@ public class TurbineRotorBearingTile extends TurbineBaseTile implements IEventMu
     @Override
     public void handleUpdateNBT(CompoundTag nbt) {
         if (getBlockState().getValue(ASSEMBLED) && nbt.contains("speed")) {
-            speed = nbt.getDouble("speed");
+            speed = nbt.getDoubleOr("speed", 0D);
             if (nbt.contains("config")) {
-                handleUpdateTag(nbt.getCompound("config"), Objects.requireNonNull(level).registryAccess());
+                handleUpdateTag(nbt.getCompoundOrEmpty("config"));
             }
 //            if (rotationAxis != null) {
 //                teardownQuartzModel();
@@ -96,21 +92,21 @@ public class TurbineRotorBearingTile extends TurbineBaseTile implements IEventMu
             if (rotationAxis == null) {
                 rotationAxis = new Vector3i();
             }
-            rotationAxis.set(nbt.getInt("rotx"), nbt.getInt("roty"), nbt.getInt("rotz"));
+            rotationAxis.set(nbt.getIntOr("rotx", 0), nbt.getIntOr("roty", 0), nbt.getIntOr("rotz", 0));
             if (rotorConfiguration == null) {
                 rotorConfiguration = new ArrayList<>();
             }
             rotorConfiguration.clear();
-            int rotorShafts = nbt.getInt("shafts");
+            int rotorShafts = nbt.getIntOr("shafts", 0);
             for (int i = 0; i < rotorShafts; i++) {
                 Vector4i vec = new Vector4i();
-                vec.x = nbt.getInt("shaft" + i + "0");
-                vec.y = nbt.getInt("shaft" + i + "1");
-                vec.z = nbt.getInt("shaft" + i + "2");
-                vec.w = nbt.getInt("shaft" + i + "3");
+                vec.x = nbt.getIntOr("shaft" + i + "0", 0);
+                vec.y = nbt.getIntOr("shaft" + i + "1", 0);
+                vec.z = nbt.getIntOr("shaft" + i + "2", 0);
+                vec.w = nbt.getIntOr("shaft" + i + "3", 0);
                 rotorConfiguration.add(vec);
             }
-            AABB = new AABB(nbt.getInt("minx"), nbt.getInt("miny"), nbt.getInt("minz"), nbt.getInt("maxx"), nbt.getInt("maxy"), nbt.getInt("maxz"));
+            AABB = new AABB(nbt.getIntOr("minx", 0), nbt.getIntOr("miny", 0), nbt.getIntOr("minz", 0), nbt.getIntOr("maxx", 0), nbt.getIntOr("maxy", 0), nbt.getIntOr("maxz", 0));
             Queues.clientThread.enqueue(this::setupQuartzModel);
         } else {
             Queues.clientThread.enqueue(this::teardownQuartzModel);
@@ -171,7 +167,7 @@ public class TurbineRotorBearingTile extends TurbineBaseTile implements IEventMu
     private final ObjectArrayList<DrawBatch.Instance> instances = new ObjectArrayList<>();
     
     private void setupQuartzModel() {
-        if (level == null || !level.isClientSide) {
+        if (level == null || !level.isClientSide()) {
             return;
         }
         teardownQuartzModel();
@@ -281,7 +277,7 @@ public class TurbineRotorBearingTile extends TurbineBaseTile implements IEventMu
     }
     
     private void teardownQuartzModel() {
-        if (level == null || !level.isClientSide) {
+        if (level == null || !level.isClientSide()) {
             return;
         }
         //noinspection ForLoopReplaceableByForEach

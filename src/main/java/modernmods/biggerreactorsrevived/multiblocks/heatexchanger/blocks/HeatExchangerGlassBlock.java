@@ -1,7 +1,6 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.blocks;
 
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -14,7 +13,6 @@ import modernmods.phosphophylliterevived.registry.RegisterBlock;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class HeatExchangerGlassBlock extends HeatExchangerBaseBlock implements IAssemblyStateBlock, IConnectedTexture {
     
@@ -33,12 +31,12 @@ public class HeatExchangerGlassBlock extends HeatExchangerBaseBlock implements I
     
     @SuppressWarnings("deprecation")
     @Override
-    public float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
+    protected float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return 1.0F;
     }
     
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+    protected boolean propagatesSkylightDown(BlockState state) {
         return true;
     }
 }

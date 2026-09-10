@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,7 +22,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import static modernmods.biggerreactorsrevived.multiblocks.reactor.blocks.ReactorAccessPort.PortDirection.*;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ReactorCoolantPort extends ReactorBaseBlock implements IAssemblyStateBlock, IFaceDirectionBlock {
 
     @RegisterBlock(name = "reactor_coolant_port", tileEntityClass = ReactorCoolantPortTile.class)

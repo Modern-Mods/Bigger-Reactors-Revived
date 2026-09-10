@@ -1,12 +1,10 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.biggerreactorsrevived.client.Biselector;
 import modernmods.biggerreactorsrevived.client.SelectorColors;
@@ -16,10 +14,9 @@ import modernmods.phosphophylliterevived.client.gui.screens.PhosphophylliteScree
 
 import javax.annotation.Nonnull;
 
-@OnlyIn(Dist.CLIENT)
 public class TurbineFluidPortScreen extends PhosphophylliteScreen<TurbineFluidPortContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/turbine_fluid_port.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/turbine_fluid_port.png");
 
     private TurbineFluidPortState turbineFluidPortState;
 
@@ -74,17 +71,17 @@ public class TurbineFluidPortScreen extends PhosphophylliteScreen<TurbineFluidPo
      * @param partialTicks Partial ticks.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        super.render(graphics, mouseX, mouseY, partialTicks);
+    public void extractRenderState(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
 
         // Render text for input/output direction:
         if (turbineFluidPortState.direction) {
             // Text for an inlet:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_fluid_port.direction_toggle.input").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 22, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_fluid_port.direction_toggle.input").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 22, 0xFF404040, false);
 
         } else {
             // Text for an outlet:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_fluid_port.direction_toggle.output").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 22, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_fluid_port.direction_toggle.output").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 22, 0xFF404040, false);
         }
     }
 }

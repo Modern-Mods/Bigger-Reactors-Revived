@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.Level;
@@ -22,7 +21,6 @@ import java.util.Locale;
 import static modernmods.biggerreactorsrevived.multiblocks.turbine.blocks.TurbinePowerTap.ConnectionState.CONNECTION_STATE_ENUM_PROPERTY;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbinePowerTap extends TurbineBaseBlock implements IAssemblyStateBlock, IFaceDirectionBlock {
     
     @RegisterBlock(name = "turbine_power_tap", tileEntityClass = TurbinePowerTapTile.class)

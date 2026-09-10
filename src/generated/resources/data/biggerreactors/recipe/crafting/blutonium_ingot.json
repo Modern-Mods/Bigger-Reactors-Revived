@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "biggerreactors:blutonium_block"
-    }
+    "biggerreactors:blutonium_block"
   ],
   "result": {
     "count": 9,

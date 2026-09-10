@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.tiles;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -14,7 +13,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbineComputerPortTile extends TurbineBaseTile {
     
     @RegisterTile("turbine_computer_port")

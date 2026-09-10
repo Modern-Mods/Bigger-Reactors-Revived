@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/turbine/power_tap/disassembled",
+    "east": "biggerreactors:block/turbine/power_tap/disassembled",
+    "north": "biggerreactors:block/turbine/power_tap/disassembled",
+    "particle": "biggerreactors:block/turbine/power_tap/disassembled",
+    "south": "biggerreactors:block/turbine/power_tap/disassembled",
+    "up": "biggerreactors:block/turbine/power_tap/disassembled",
+    "west": "biggerreactors:block/turbine/power_tap/disassembled"
+  }
+}

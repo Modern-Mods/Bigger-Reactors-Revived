@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "B": {
-      "item": "biggerreactors:blutonium_ingot"
-    },
-    "C": {
-      "item": "biggerreactors:turbine_casing"
-    },
-    "D": {
-      "item": "minecraft:diamond"
-    }
+    "B": "biggerreactors:blutonium_ingot",
+    "C": "biggerreactors:turbine_casing",
+    "D": "minecraft:diamond"
   },
   "pattern": [
     "C C",
@@ -18,7 +12,6 @@
     "C C"
   ],
   "result": {
-    "count": 1,
     "id": "biggerreactors:turbine_terminal"
   }
 }

@@ -11,9 +11,9 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.biggerreactorsrevived.multiblocks.turbine.blocks.TurbineTerminal;
@@ -25,12 +25,12 @@ public class CoilCategory implements IRecipeCategory<CoilCategory.Recipe> {
 
     private final IDrawable background;
     private final IDrawable icon;
-    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "classic/turbine_coil");
+    public static final Identifier UID = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "classic/turbine_coil");
     public static final RecipeType<Recipe> RECIPE_TYPE = new RecipeType<>(UID, Recipe.class);
 
     public CoilCategory(IGuiHelper guiHelper) {
         icon = guiHelper.createDrawableItemStack(new ItemStack(TurbineTerminal.INSTANCE));
-        background = guiHelper.createDrawable(ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/jei/common.png"), 0, 6, 144, 34);
+        background = guiHelper.createDrawable(Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/jei/common.png"), 0, 6, 144, 34);
     }
     
     @Override
@@ -44,8 +44,13 @@ public class CoilCategory implements IRecipeCategory<CoilCategory.Recipe> {
     }
 
     @Override
-    public IDrawable getBackground() {
-        return background;
+    public int getWidth() {
+        return 144;
+    }
+
+    @Override
+    public int getHeight() {
+        return 34;
     }
 
     @Override
@@ -60,16 +65,17 @@ public class CoilCategory implements IRecipeCategory<CoilCategory.Recipe> {
     }
     
     @Override
-    public void draw(Recipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(Recipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphicsExtractor guiGraphics, double mouseX, double mouseY) {
+        background.draw(guiGraphics);
         Minecraft mc = Minecraft.getInstance();
         Component[] info = {
                 Component.translatable("jei.biggerreactors.classic.turbine_coil_bonus", recipe.getCoilData().bonus),
                 Component.translatable("jei.biggerreactors.classic.turbine_coil_efficiency", recipe.getCoilData().efficiency),
                 Component.translatable("jei.biggerreactors.classic.turbine_coil_extraction", recipe.getCoilData().extractionRate)
         };
-        guiGraphics.drawString(mc.font,  info[0], 80 - mc.font.width(info[0]) / 2, 0, Color.BLACK.getRGB(), false);
-        guiGraphics.drawString(mc.font,  info[1], 80 - mc.font.width(info[1]) / 2, 12, Color.BLACK.getRGB(), false);
-        guiGraphics.drawString(mc.font,  info[2], 80 - mc.font.width(info[2]) / 2, 24, Color.BLACK.getRGB(), false);
+        guiGraphics.text(mc.font,  info[0], 80 - mc.font.width(info[0]) / 2, 0, Color.BLACK.getRGB(), false);
+        guiGraphics.text(mc.font,  info[1], 80 - mc.font.width(info[1]) / 2, 12, Color.BLACK.getRGB(), false);
+        guiGraphics.text(mc.font,  info[2], 80 - mc.font.width(info[2]) / 2, 24, Color.BLACK.getRGB(), false);
     }
     
     public static class Recipe {

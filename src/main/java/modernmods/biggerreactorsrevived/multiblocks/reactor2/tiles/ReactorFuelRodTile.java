@@ -18,8 +18,8 @@ public class ReactorFuelRodTile extends ReactorTile {
     
     @Override
     protected void readNBT(CompoundTag compound) {
-        fuel = compound.getLong("fuel");
-        waste = compound.getLong("waste");
+        fuel = compound.getLongOr("fuel", 0L);
+        waste = compound.getLongOr("waste", 0L);
     }
     
     @Override

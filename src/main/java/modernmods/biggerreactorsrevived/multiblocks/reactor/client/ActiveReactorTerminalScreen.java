@@ -1,16 +1,14 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.minecraft.core.registries.BuiltInRegistries;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.biggerreactorsrevived.client.CommonRender;
@@ -26,10 +24,9 @@ import modernmods.phosphophylliterevived.client.gui.elements.TooltipElement;
 import javax.annotation.Nonnull;
 import java.util.Objects;
 
-@OnlyIn(Dist.CLIENT)
 public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTerminalContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/reactor_terminal_active.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/reactor_terminal_active.png");
 
     private ReactorState reactorState;
 
@@ -44,8 +41,8 @@ public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTe
 
         // Initialize reactor state.
         reactorState = (ReactorState) this.getMenu().getGuiPacket();
-        coolantFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(reactorState.coolantResourceLocation));
-        exhaustFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(reactorState.exhaustResourceLocation));
+        coolantFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(reactorState.coolantResourceLocation));
+        exhaustFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(reactorState.exhaustResourceLocation));
     }
 
     /**
@@ -89,19 +86,19 @@ public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTe
     private void initGauges() {
         // (Top) Coolant intake tank:
         RenderedElement<ReactorTerminalContainer> coolantIntakeTank = new RenderedElement<>(this, 151, 25, 18, 64, 0, 152, Component.empty());
-        coolantIntakeTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        coolantIntakeTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 coolantIntakeTank, reactorState.coolantStored, reactorState.coolantCapacity, coolantFluid);
         this.addScreenElement(coolantIntakeTank);
 
         // (Top) Hot exhaust tank:
         RenderedElement<ReactorTerminalContainer> hotExhaustTank = new RenderedElement<>(this, 173, 25, 18, 64, 0, 152, Component.empty());
-        hotExhaustTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        hotExhaustTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 hotExhaustTank, reactorState.exhaustStored, reactorState.exhaustCapacity, exhaustFluid);
         this.addScreenElement(hotExhaustTank);
 
         // (Bottom) Progress bar:
         RenderedElement<ReactorTerminalContainer> progressBar = new RenderedElement<>(this, 173, 90, 18, 26, 90, 152, null);
-        progressBar.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> {
+        progressBar.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> {
             // Custom rendering.
             if (reactorState.coolantStored > 0) {
                 ActiveReactorTerminalScreen.renderProgressBar(graphics, progressBar, reactorState.reactorActivity, screenWorkTime++, screenWorkTimeTotal, coolantFluid);
@@ -119,7 +116,7 @@ public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTe
     private void initSymbols() {
         // (Top) Coolant intake tank symbol:
         RenderedElement<ReactorTerminalContainer> coolantIntakeTankSymbol = new RenderedElement<>(this, 152, 6, 16, 16, 174, 152, Component.translatable("screen.biggerreactors.reactor_terminal.coolant_intake_tank.tooltip"));
-        coolantIntakeTankSymbol.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
+        coolantIntakeTankSymbol.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
                 coolantIntakeTankSymbol.x, coolantIntakeTankSymbol.y, 0,
                 coolantIntakeTankSymbol.width, coolantIntakeTankSymbol.height,
                 coolantIntakeTankSymbol.u, coolantIntakeTankSymbol.v, coolantFluid);
@@ -127,7 +124,7 @@ public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTe
 
         // (Top) Hot exhaust tank symbol:
         RenderedElement<ReactorTerminalContainer> hotExhaustTankSymbol = new RenderedElement<>(this, 174, 6, 16, 16, 158, 152, Component.translatable("screen.biggerreactors.reactor_terminal.exhaust_tank.tooltip"));
-        hotExhaustTankSymbol.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
+        hotExhaustTankSymbol.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
                 hotExhaustTankSymbol.x, hotExhaustTankSymbol.y, 0,
                 hotExhaustTankSymbol.width, hotExhaustTankSymbol.height,
                 hotExhaustTankSymbol.u, hotExhaustTankSymbol.v, exhaustFluid);
@@ -135,7 +132,7 @@ public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTe
 
         // (Left) Exhaust generation rate symbol:
         RenderedElement<ReactorTerminalContainer> exhaustGenerationRateSymbol = new RenderedElement<>(this, 8, 38, 16, 16, 142, 152, Component.translatable("screen.biggerreactors.reactor_terminal.exhaust_generation_rate.tooltip"));
-        exhaustGenerationRateSymbol.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
+        exhaustGenerationRateSymbol.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
                 exhaustGenerationRateSymbol.x, exhaustGenerationRateSymbol.y, 0,
                 exhaustGenerationRateSymbol.width, exhaustGenerationRateSymbol.height,
                 exhaustGenerationRateSymbol.u, exhaustGenerationRateSymbol.v, exhaustFluid);
@@ -156,11 +153,11 @@ public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTe
         }
         // Check if coolant type changed.
         if (!reactorState.coolantResourceLocation.equals(Objects.requireNonNull(BuiltInRegistries.FLUID.getKey(coolantFluid)).toString())) {
-            coolantFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(reactorState.coolantResourceLocation));
+            coolantFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(reactorState.coolantResourceLocation));
         }
         // Check if exhaust type changed.
         if (!reactorState.exhaustResourceLocation.equals(Objects.requireNonNull(BuiltInRegistries.FLUID.getKey(exhaustFluid)).toString())) {
-            exhaustFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(reactorState.exhaustResourceLocation));
+            exhaustFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(reactorState.exhaustResourceLocation));
         }
     }
 
@@ -173,15 +170,15 @@ public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTe
      * @param partialTicks Partial ticks.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        super.render(graphics, mouseX, mouseY, partialTicks);
+    public void extractRenderState(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
 
         // Render the other text:
         CommonReactorTerminalScreen.renderStatusText(graphics, this, reactorState.reactorActivity, reactorState.doAutoEject,
                 reactorState.fuelHeatStored, reactorState.fuelUsageRate, reactorState.reactivityRate);
 
         // Render text for output rate:
-        graphics.drawString(this.getFont(), RenderHelper.formatValue((reactorState.reactorOutputRate / 1000.0), "B/t"), this.getGuiLeft() + 27, this.getGuiTop() + 42, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatValue((reactorState.reactorOutputRate / 1000.0), "B/t"), this.getGuiLeft() + 27, this.getGuiTop() + 42, 0xFF404040, false);
     }
 
     /**
@@ -193,7 +190,7 @@ public class ActiveReactorTerminalScreen extends PhosphophylliteScreen<ReactorTe
      * @param workTime        The time the machine has been working.
      * @param workTimeTotal   The total time needed for completion.
      */
-    private static void renderProgressBar(@Nonnull GuiGraphics graphics, @Nonnull RenderedElement<ReactorTerminalContainer> symbol, ReactorActivity reactorActivity, int workTime, int workTimeTotal, Fluid coolant) {
+    private static void renderProgressBar(@Nonnull GuiGraphicsExtractor graphics, @Nonnull RenderedElement<ReactorTerminalContainer> symbol, ReactorActivity reactorActivity, int workTime, int workTimeTotal, Fluid coolant) {
         // Check that the reactor is active. If not, reset work time.
         if (reactorActivity != ReactorActivity.ACTIVE) {
             workTime = 0;

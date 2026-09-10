@@ -2,7 +2,6 @@ package modernmods.biggerreactorsrevived.registries;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
@@ -23,7 +22,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class FluidTransitionRegistry {
 
@@ -153,7 +151,7 @@ public class FluidTransitionRegistry {
 
         final var grouped = new LinkedHashMap<TransitionData, List<Fluid>>();
         for (final var entry : BuiltInRegistries.FLUID.getDataMap(BiggerReactorsDataMaps.FLUID_TRANSITION).entrySet()) {
-            final var liquid = BuiltInRegistries.FLUID.get(entry.getKey());
+            final var liquid = BuiltInRegistries.FLUID.getValue(entry.getKey());
             if (!liquid.isSource(liquid.defaultFluidState())) {
                 continue;
             }
@@ -208,14 +206,14 @@ public class FluidTransitionRegistry {
     private static List<Fluid> resolveGases(ExtraCodecs.TagOrElementLocation gas) {
         final var gases = new ArrayList<Fluid>();
         if (gas.tag()) {
-            BuiltInRegistries.FLUID.getTag(TagKey.create(BuiltInRegistries.FLUID.key(), gas.id())).ifPresent(holders -> holders.forEach(holder -> {
+            BuiltInRegistries.FLUID.get(TagKey.create(BuiltInRegistries.FLUID.key(), gas.id())).ifPresent(holders -> holders.forEach(holder -> {
                 final var fluid = holder.value();
                 if (fluid.isSource(fluid.defaultFluidState())) {
                     gases.add(fluid);
                 }
             }));
         } else if (BuiltInRegistries.FLUID.containsKey(gas.id())) {
-            final var fluid = BuiltInRegistries.FLUID.get(gas.id());
+            final var fluid = BuiltInRegistries.FLUID.getValue(gas.id());
             if (fluid.isSource(fluid.defaultFluidState())) {
                 gases.add(fluid);
             }

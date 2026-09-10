@@ -5,7 +5,7 @@ import net.minecraft.util.ExtraCodecs;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
@@ -26,19 +26,19 @@ public class BiggerReactorsDataMapProvider extends DataMapProvider {
     }
 
     private static TagKey<Block> blockTag(String path) {
-        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));
+        return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("c", path));
     }
 
     private static TagKey<Fluid> fluidTag(String path) {
-        return TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath("c", path));
+        return TagKey.create(Registries.FLUID, Identifier.fromNamespaceAndPath("c", path));
     }
 
     private static ResourceKey<Block> block(String id) {
-        return ResourceKey.create(Registries.BLOCK, ResourceLocation.parse(id));
+        return ResourceKey.create(Registries.BLOCK, Identifier.parse(id));
     }
 
     private static ResourceKey<Fluid> fluid(String id) {
-        return ResourceKey.create(Registries.FLUID, ResourceLocation.parse(id));
+        return ResourceKey.create(Registries.FLUID, Identifier.parse(id));
     }
 
     private static ICondition[] loaded(String... modids) {
@@ -174,11 +174,11 @@ public class BiggerReactorsDataMapProvider extends DataMapProvider {
     }
 
     private static ExtraCodecs.TagOrElementLocation gasId(String id) {
-        return new ExtraCodecs.TagOrElementLocation(ResourceLocation.parse(id), false);
+        return new ExtraCodecs.TagOrElementLocation(Identifier.parse(id), false);
     }
 
     private static ExtraCodecs.TagOrElementLocation gasTag(String path) {
-        return new ExtraCodecs.TagOrElementLocation(ResourceLocation.fromNamespaceAndPath("c", path), true);
+        return new ExtraCodecs.TagOrElementLocation(Identifier.fromNamespaceAndPath("c", path), true);
     }
 
     private void transitions() {

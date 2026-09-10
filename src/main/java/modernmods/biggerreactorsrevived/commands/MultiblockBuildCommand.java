@@ -88,7 +88,7 @@ public class MultiblockBuildCommand {
     }
 
     private static LiteralArgumentBuilder<CommandSourceStack> root(String literal) {
-        return Commands.literal(literal).requires(source -> source.hasPermission(2))
+        return Commands.literal(literal).requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
                 .then(Commands.literal("build")
                         .then(multiblock("reactor", MultiblockBuildCommand::buildReactor, 3, 3,
                                 Config.CONFIG.Reactor.MaxLength, Config.CONFIG.Reactor.MaxHeight))

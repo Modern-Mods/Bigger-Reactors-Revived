@@ -1,13 +1,11 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.biggerreactorsrevived.client.Biselector;
 import modernmods.biggerreactorsrevived.client.SelectorColors;
@@ -19,10 +17,9 @@ import modernmods.phosphophylliterevived.client.gui.screens.PhosphophylliteScree
 
 import javax.annotation.Nonnull;
 
-@OnlyIn(Dist.CLIENT)
 public class HeatExchangerFluidPortScreen extends PhosphophylliteScreen<HeatExchangerFluidPortContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/heat_exchanger_fluid_port.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/heat_exchanger_fluid_port.png");
 
     private HeatExchangerFluidPortState heatExchangerFluidPortState;
 
@@ -104,28 +101,28 @@ public class HeatExchangerFluidPortScreen extends PhosphophylliteScreen<HeatExch
      * @param partialTicks Partial ticks.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        super.render(graphics, mouseX, mouseY, partialTicks);
+    public void extractRenderState(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
 
         // Render text to show what channel this is connected to.
         if (heatExchangerFluidPortState.condenser) {
             // Text for when connected to a condenser:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.channel_type.condenser").getString(), this.getGuiLeft() + 8, this.getGuiTop() + 22, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.channel_type.condenser").getString(), this.getGuiLeft() + 8, this.getGuiTop() + 22, 0xFF404040, false);
         } else {
             // Text for when connected to an evaporator.
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.channel_type.evaporator").getString(), this.getGuiLeft() + 8, this.getGuiTop() + 22, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.channel_type.evaporator").getString(), this.getGuiLeft() + 8, this.getGuiTop() + 22, 0xFF404040, false);
         }
 
         // Render text for input/output direction:
         if (heatExchangerFluidPortState.direction) {
             // Text for an inlet:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.direction_toggle.input").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 37, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.direction_toggle.input").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 37, 0xFF404040, false);
         } else {
             // Text for an outlet:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.direction_toggle.output").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 37, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.direction_toggle.output").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 37, 0xFF404040, false);
         }
 
         // Render text for manual tank eject:
-        graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.manual_dump").getString(), this.getGuiLeft() + 26, this.getGuiTop() + 53, 4210752, false);
+        graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.heat_exchanger_fluid_port.manual_dump").getString(), this.getGuiLeft() + 26, this.getGuiTop() + 53, 0xFF404040, false);
     }
 }

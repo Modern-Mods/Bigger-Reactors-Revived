@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "I": {
-      "tag": "c:ingots/cyanite"
-    }
+    "I": "#c:ingots/cyanite"
   },
   "pattern": [
     "III",
@@ -12,7 +10,6 @@
     "III"
   ],
   "result": {
-    "count": 1,
     "id": "biggerreactors:cyanite_block"
   }
 }

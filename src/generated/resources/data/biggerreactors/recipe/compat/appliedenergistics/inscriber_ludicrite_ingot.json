@@ -7,9 +7,7 @@
   ],
   "type": "ae2:inscriber",
   "ingredients": {
-    "middle": {
-      "item": "biggerreactors:ludicrite_ingot"
-    }
+    "middle": "biggerreactors:ludicrite_ingot"
   },
   "mode": "inscribe",
   "result": {

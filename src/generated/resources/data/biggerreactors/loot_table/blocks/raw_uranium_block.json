@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "biggerreactors:raw_uranium_block"
+          "name": "biggerreactors:uranium_block"
         }
       ],
       "rolls": 1.0

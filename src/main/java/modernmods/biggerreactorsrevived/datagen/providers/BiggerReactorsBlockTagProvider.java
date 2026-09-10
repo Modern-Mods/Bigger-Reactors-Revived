@@ -4,12 +4,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 
 import java.util.concurrent.CompletableFuture;
@@ -65,15 +64,15 @@ public class BiggerReactorsBlockTagProvider extends BlockTagsProvider {
     };
 
     private static TagKey<Block> commonTag(String path) {
-        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));
+        return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("c", path));
     }
 
     private static Block block(String name) {
-        return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, name));
+        return BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(BiggerReactors.modid, name));
     }
 
-    public BiggerReactorsBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, BiggerReactors.modid, existingFileHelper);
+    public BiggerReactorsBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, BiggerReactors.modid);
     }
 
     @Override

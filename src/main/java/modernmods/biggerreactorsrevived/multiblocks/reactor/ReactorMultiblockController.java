@@ -349,18 +349,18 @@ public class ReactorMultiblockController extends MultiblockController<ReactorBas
     @Override
     public void read(CompoundTag compound) {
         if (compound.contains("reactorState")) {
-            reactorActivity = ReactorActivity.valueOf(compound.getString("reactorState").toUpperCase(Locale.US));
+            reactorActivity = ReactorActivity.valueOf(compound.getStringOr("reactorState", "").toUpperCase(Locale.US));
         }
         if (compound.contains("autoEjectWaste")) {
-            autoEjectWaste = compound.getBoolean("autoEjectWaste");
+            autoEjectWaste = compound.getBooleanOr("autoEjectWaste", false);
         }
         
         if (compound.contains("simulationData")) {
             simulation = null;
-            simulationData = new PhosphophylliteCompound(compound.getByteArray("simulationData"));
+            simulationData = new PhosphophylliteCompound(compound.getByteArray("simulationData").orElseGet(() -> new byte[0]));
         }
         if (compound.contains("coolantTankWrapper")) {
-            coolantTankNBT = compound.getCompound("coolantTankWrapper");
+            coolantTankNBT = compound.getCompoundOrEmpty("coolantTankWrapper");
         }
         
         updateBlockStates = true;
@@ -375,7 +375,7 @@ public class ReactorMultiblockController extends MultiblockController<ReactorBas
             if (simulation != null) {
                 var phosCompound = simulation.save();
                 if (phosCompound != null) {
-                    compound.putByteArray("simulationData", phosCompound.toROBN());
+                    compound.putByteArray("simulationData", phosCompound.toROBN().toByteArray());
                 }
             }
             if (coolantTank != null) {

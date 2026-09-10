@@ -1,13 +1,11 @@
 package modernmods.biggerreactorsrevived.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.material.Fluid;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.fluids.FluidStack;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.phosphophylliterevived.client.gui.RenderHelper;
@@ -16,13 +14,12 @@ import modernmods.phosphophylliterevived.client.gui.elements.RenderedElement;
 import javax.annotation.Nonnull;
 import java.util.Locale;
 
-@OnlyIn(Dist.CLIENT)
 public class CommonRender {
 
     // This is a separate atlas with textures used by several things. For example, RF and fluid level markers.
     // Gauge-specific textures should still be contained alongside the screen it's used in. If it's used in multiple
     // screens though, then it's probably a good candidate for the common texture.
-    public static final ResourceLocation COMMON_RESOURCE_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/common.png");
+    public static final Identifier COMMON_RESOURCE_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/common.png");
 
     /**
      * Render an energy gauge.
@@ -34,9 +31,9 @@ public class CommonRender {
      * @param energyStored   The amount of energy to draw.
      * @param energyCapacity The max energy capacity that can be displayed.
      */
-    public static <T extends AbstractContainerMenu> void renderEnergyGauge(@Nonnull GuiGraphics graphics, @Nonnull RenderedElement<T> symbol, long energyStored, long energyCapacity) {
+    public static <T extends AbstractContainerMenu> void renderEnergyGauge(@Nonnull GuiGraphicsExtractor graphics, @Nonnull RenderedElement<T> symbol, long energyStored, long energyCapacity) {
         // Preserve the previously selected texture and bind the common texture.
-        ResourceLocation preservedResource = RenderHelper.getCurrentResource();
+        Identifier preservedResource = RenderHelper.getCurrentResource();
         RenderHelper.bindTexture(COMMON_RESOURCE_TEXTURE);
         // If there's no energy, there's no need to draw.
         if (energyCapacity > 0) {
@@ -69,9 +66,9 @@ public class CommonRender {
      * @param fluidCapacity The max fluid capacity that can be displayed.
      * @param fluid         The fluid to use.
      */
-    public static <T extends AbstractContainerMenu> void renderFluidGauge(@Nonnull GuiGraphics graphics, @Nonnull RenderedElement<T> symbol, long fluidStored, long fluidCapacity, Fluid fluid) {
+    public static <T extends AbstractContainerMenu> void renderFluidGauge(@Nonnull GuiGraphicsExtractor graphics, @Nonnull RenderedElement<T> symbol, long fluidStored, long fluidCapacity, Fluid fluid) {
         // Preserve the previously selected texture and bind the common texture.
-        ResourceLocation preservedResource = RenderHelper.getCurrentResource();
+        Identifier preservedResource = RenderHelper.getCurrentResource();
         RenderHelper.bindTexture(COMMON_RESOURCE_TEXTURE);
         // If there's no fluid, there's no need to draw.
         if (fluidCapacity > 0) {
@@ -90,7 +87,7 @@ public class CommonRender {
         symbol.tooltip = Component.literal(String.format("%s/%s of %s",
                 RenderHelper.formatValue((fluidStored / 1000.0), "B", true),
                 RenderHelper.formatValue((fluidCapacity / 1000.0), "B", true),
-                new FluidStack(fluid, 1).getDisplayName().getString().toLowerCase(Locale.US)));
+                new FluidStack(fluid, 1).getHoverName().getString().toLowerCase(Locale.US)));
         // Reset color and restore the previously bound texture.
         RenderHelper.clearRenderColor();
         RenderHelper.bindTexture(preservedResource);

@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -39,7 +38,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import static modernmods.phosphophylliterevived.modular.block.IConnectedTexture.Module.*;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class HeatExchangerMultiblockController extends MultiblockController<HeatExchangerBaseTile, HeatExchangerBaseBlock, HeatExchangerMultiblockController> implements
         IRectangularMultiblock<HeatExchangerBaseTile, HeatExchangerBaseBlock, HeatExchangerMultiblockController>,
@@ -292,7 +290,7 @@ public class HeatExchangerMultiblockController extends MultiblockController<Heat
     private void validationPassed() {
         
         // its in kelvin, 150C and 20C
-        double ambientTemperature = level.dimensionType().ultraWarm() ? 423.15 : 293.15; // TODO config these, also the end
+        double ambientTemperature = level.dimensionType().hasCeiling() ? 423.15 : 293.15; // TODO config these, also the end
         ambientHeatBody.setTemperature(ambientTemperature);
         airHeatBody.setTemperature(ambientTemperature);
         condenserHeatBody.setTemperature(ambientTemperature);
@@ -398,12 +396,12 @@ public class HeatExchangerMultiblockController extends MultiblockController<Heat
     
     @Override
     public void read(CompoundTag nbt) {
-        condenserTank.deserializeNBT(nbt.getCompound("condenserTank"));
-        evaporatorTank.deserializeNBT(nbt.getCompound("evaporatorTank"));
-        ambientHeatBody.setTemperature(nbt.getDouble("ambientHeatBody"));
-        airHeatBody.setTemperature(nbt.getDouble("airHeatBody"));
-        condenserHeatBody.setTemperature(nbt.getDouble("condenserHeatBody"));
-        evaporatorHeatBody.setTemperature(nbt.getDouble("evaporatorHeatBody"));
+        condenserTank.deserializeNBT(nbt.getCompoundOrEmpty("condenserTank"));
+        evaporatorTank.deserializeNBT(nbt.getCompoundOrEmpty("evaporatorTank"));
+        ambientHeatBody.setTemperature(nbt.getDoubleOr("ambientHeatBody", 0D));
+        airHeatBody.setTemperature(nbt.getDoubleOr("airHeatBody", 0D));
+        condenserHeatBody.setTemperature(nbt.getDoubleOr("condenserHeatBody", 0D));
+        evaporatorHeatBody.setTemperature(nbt.getDoubleOr("evaporatorHeatBody", 0D));
     }
 
     @Nonnull

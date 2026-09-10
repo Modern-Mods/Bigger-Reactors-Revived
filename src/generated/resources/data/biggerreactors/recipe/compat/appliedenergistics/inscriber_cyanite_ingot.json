@@ -7,9 +7,7 @@
   ],
   "type": "ae2:inscriber",
   "ingredients": {
-    "middle": {
-      "item": "biggerreactors:cyanite_ingot"
-    }
+    "middle": "biggerreactors:cyanite_ingot"
   },
   "mode": "inscribe",
   "result": {

@@ -1,9 +1,9 @@
 package modernmods.biggerreactorsrevived.machine.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.material.Fluids;
 import modernmods.biggerreactorsrevived.BiggerReactors;
@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 
 public class CyaniteReprocessorScreen extends PhosphophylliteScreen<CyaniteReprocessorContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/cyanite_reprocessor.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/cyanite_reprocessor.png");
 
     private CyaniteReprocessorState cyaniteReprocessorState;
 
@@ -66,20 +66,20 @@ public class CyaniteReprocessorScreen extends PhosphophylliteScreen<CyaniteRepro
     public void initGauges() {
         // (Top) Internal battery:
         RenderedElement<CyaniteReprocessorContainer> internalBattery = new RenderedElement<>(this, 7, 25, 18, 64, 0, 152, Component.empty());
-        internalBattery.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderEnergyGauge(graphics,
+        internalBattery.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderEnergyGauge(graphics,
                 internalBattery, cyaniteReprocessorState.energyStored, cyaniteReprocessorState.energyCapacity);
         this.addScreenElement(internalBattery);
 
         // (Top) Water tank:
         RenderedElement<CyaniteReprocessorContainer> waterTank = new RenderedElement<>(this, 151, 25, 18, 64, 0, 152, Component.empty());
-        waterTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        waterTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 waterTank, cyaniteReprocessorState.waterStored, cyaniteReprocessorState.waterCapacity,
                 Fluids.WATER.getSource());
         this.addScreenElement(waterTank);
 
         // (Center) Progress bar:
         RenderedElement<CyaniteReprocessorContainer> progressBar = new RenderedElement<>(this, 75, 40, 24, 18, 0, 175, null);
-        progressBar.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CyaniteReprocessorScreen.renderProgressBar(graphics,
+        progressBar.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CyaniteReprocessorScreen.renderProgressBar(graphics,
                 progressBar, cyaniteReprocessorState.workTime, cyaniteReprocessorState.workTimeTotal);
         this.addScreenElement(progressBar);
     }
@@ -90,7 +90,7 @@ public class CyaniteReprocessorScreen extends PhosphophylliteScreen<CyaniteRepro
     public void initSymbols() {
         // (Right) Water tank symbol:
         RenderedElement<CyaniteReprocessorContainer> waterTankSymbol = new RenderedElement<>(this, 152, 6, 16, 16, 48, 175, Component.translatable("screen.biggerreactors.cyanite_reprocessor.water_tank.tooltip"));
-        waterTankSymbol.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
+        waterTankSymbol.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
                 waterTankSymbol.x, waterTankSymbol.y, 0,
                 waterTankSymbol.width, waterTankSymbol.height,
                 waterTankSymbol.u, waterTankSymbol.v, Fluids.WATER.getSource());
@@ -105,7 +105,7 @@ public class CyaniteReprocessorScreen extends PhosphophylliteScreen<CyaniteRepro
      * @param workTime      The time the machine has been working.
      * @param workTimeTotal The total time needed for completion.
      */
-    private static void renderProgressBar(@Nonnull GuiGraphics graphics, @Nonnull RenderedElement<CyaniteReprocessorContainer> symbol, int workTime, int workTimeTotal) {
+    private static void renderProgressBar(@Nonnull GuiGraphicsExtractor graphics, @Nonnull RenderedElement<CyaniteReprocessorContainer> symbol, int workTime, int workTimeTotal) {
         // If there's no progress, there's no need to draw.
         if ((workTime > 0) && (workTimeTotal > 0)) {
             // Calculate how much needs to be rendered.

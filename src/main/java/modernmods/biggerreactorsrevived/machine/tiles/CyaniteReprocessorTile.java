@@ -18,6 +18,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.capabilities.BlockCapability;
@@ -91,7 +93,7 @@ public class CyaniteReprocessorTile extends BaseContainerBlockEntity implements 
     @Nonnull
     public InteractionResult onBlockActivated(@Nonnull BlockState blockState, Level world, @Nonnull BlockPos blockPos, @Nonnull Player player, @Nonnull InteractionHand hand, @Nonnull BlockHitResult trace) {
         // Check for client-side.
-        if (world.isClientSide) {
+        if (world.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
         
@@ -322,21 +324,17 @@ public class CyaniteReprocessorTile extends BaseContainerBlockEntity implements 
      * @param parentCompound The parent compound to read from.
      */
     @Override
-    protected void loadAdditional(@Nonnull CompoundTag parentCompound, @Nonnull HolderLookup.Provider registries) {
-        super.loadAdditional(parentCompound, registries);
-        CompoundTag childCompound = parentCompound.getCompound("cyaniteReprocessorState");
-        
-        // Read work.
-        this.workHandler = new WorkHandler(childCompound.getInt("workTimeTotal"), childCompound.getInt("workTime"));
-        // Read items.
-        this.itemHandler.deserializeNBT(registries, childCompound.getCompound("inventory"));
-        // Read energy.
-        this.energyStorage = new EnergyStorage(childCompound.getInt("energyCapacity"),
+    protected void loadAdditional(@Nonnull ValueInput input) {
+        super.loadAdditional(input);
+        final var child = input.childOrEmpty("cyaniteReprocessorState");
+
+        this.workHandler = new WorkHandler(child.getIntOr("workTimeTotal", 0), child.getIntOr("workTime", 0));
+        this.itemHandler.deserialize(child.childOrEmpty("inventory"));
+        this.energyStorage = new EnergyStorage(child.getIntOr("energyCapacity", 0),
                 Config.CONFIG.CyaniteReprocessor.TransferRate,
                 Config.CONFIG.CyaniteReprocessor.TransferRate,
-                childCompound.getInt("energyStored"));
-        // Read fluids.
-        this.fluidTank = this.fluidTank.readFromNBT(registries, childCompound.getCompound("fluidStorage"));
+                child.getIntOr("energyStored", 0));
+        this.fluidTank.deserialize(child.childOrEmpty("fluidStorage"));
     }
     
     /**
@@ -346,22 +344,16 @@ public class CyaniteReprocessorTile extends BaseContainerBlockEntity implements 
      * @return The updated compound.
      */
     @Override
-    protected void saveAdditional(@Nonnull CompoundTag parentCompound, @Nonnull HolderLookup.Provider registries) {
-        super.saveAdditional(parentCompound, registries);
-        CompoundTag childCompound = new CompoundTag();
-        
-        // Write work.
-        childCompound.putInt("workTime", this.workHandler.getProgress());
-        childCompound.putInt("workTimeTotal", this.workHandler.getGoal());
-        // Write items.
-        childCompound.put("inventory", this.itemHandler.serializeNBT(registries));
-        // Write energy.
-        childCompound.putInt("energyStored", this.energyStorage.getEnergyStored());
-        childCompound.putInt("energyCapacity", this.energyStorage.getMaxEnergyStored());
-        // Write fluids.
-        childCompound.put("fluidTank", fluidTank.writeToNBT(registries, new CompoundTag()));
-        
-        parentCompound.put("cyaniteReprocessorState", childCompound);
+    protected void saveAdditional(@Nonnull ValueOutput output) {
+        super.saveAdditional(output);
+        final var child = output.child("cyaniteReprocessorState");
+
+        child.putInt("workTime", this.workHandler.getProgress());
+        child.putInt("workTimeTotal", this.workHandler.getGoal());
+        this.itemHandler.serialize(child.child("inventory"));
+        child.putInt("energyStored", this.energyStorage.getEnergyStored());
+        child.putInt("energyCapacity", this.energyStorage.getMaxEnergyStored());
+        this.fluidTank.serialize(child.child("fluidStorage"));
     }
     
     /**
@@ -450,21 +442,21 @@ public class CyaniteReprocessorTile extends BaseContainerBlockEntity implements 
         //  That oughta be fixed, so it can be checked for here.
         //  But I'm lazy, so I'll do that some other time.
         // Check for items.
-        if (capability == Capabilities.ItemHandler.BLOCK) {
+        if (capability == Capabilities.Item.BLOCK) {
             //noinspection unchecked
-            return (T) this.itemHandler.pipeHandler();
+            return (T) modernmods.phosphophylliterevived.transfer.ItemResourceHandler.of(this.itemHandler.pipeHandler());
         }
         
         // Check for energy.
-        if (capability == Capabilities.EnergyStorage.BLOCK) {
+        if (capability == Capabilities.Energy.BLOCK) {
             //noinspection unchecked
             return (T) this.energyStorage;
         }
         
         // Check for water.
-        if (capability == Capabilities.FluidHandler.BLOCK) {
+        if (capability == Capabilities.Fluid.BLOCK) {
             //noinspection unchecked
-            return (T) this.fluidTank;
+            return (T) modernmods.phosphophylliterevived.transfer.FluidResourceHandler.of(this.fluidTank);
         }
         
         return null;

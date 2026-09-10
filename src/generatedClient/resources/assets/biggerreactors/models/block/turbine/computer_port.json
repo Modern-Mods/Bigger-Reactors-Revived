@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/turbine/computer_port",
+    "east": "biggerreactors:block/turbine/computer_port",
+    "north": "biggerreactors:block/turbine/computer_port",
+    "particle": "biggerreactors:block/turbine/computer_port",
+    "south": "biggerreactors:block/turbine/computer_port",
+    "up": "biggerreactors:block/turbine/computer_port",
+    "west": "biggerreactors:block/turbine/computer_port"
+  }
+}

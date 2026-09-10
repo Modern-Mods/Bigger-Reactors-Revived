@@ -1,13 +1,12 @@
 package modernmods.biggerreactorsrevived;
 
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.loading.FMLLoader;
 import modernmods.biggerreactorsrevived.machine.client.CyaniteReprocessorScreen;
 import modernmods.biggerreactorsrevived.machine.containers.CyaniteReprocessorContainer;
@@ -45,13 +44,13 @@ public class BiggerReactors {
     
     public BiggerReactors(IEventBus modBus) {
         new Registry(modid, CreativeTabOrder.before(), CreativeTabOrder.after());
-        if (FMLLoader.getDist().isClient()) {
+        if (FMLEnvironment.getDist().isClient()) {
             modBus.addListener(ClientScreens::onRegisterMenuScreens);
         }
         modBus.addListener(BiggerReactorsDataMaps::register);
         modBus.addListener(this::onCommonSetup);
         NeoForge.EVENT_BUS.addListener(this::onReloadData);
-        version = FMLLoader.getLoadingModList().getModFileById(modid).versionString();
+        version = FMLLoader.getCurrent().getLoadingModList().getModFileById(modid).versionString();
     }
     
     public void onCommonSetup(final FMLCommonSetupEvent event) {
@@ -64,7 +63,6 @@ public class BiggerReactors {
         FluidTransitionRegistry.loadRegistry();
     }
 
-    @OnlyIn(Dist.CLIENT)
     private static final class ClientScreens {
         private static void onRegisterMenuScreens(final RegisterMenuScreensEvent e) {
             // TODO: 6/28/20 Registry.

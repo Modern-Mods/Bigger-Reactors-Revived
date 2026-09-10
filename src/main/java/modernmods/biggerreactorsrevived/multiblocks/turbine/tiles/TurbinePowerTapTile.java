@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.tiles;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -18,7 +17,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import static modernmods.biggerreactorsrevived.multiblocks.turbine.blocks.TurbinePowerTap.ConnectionState.*;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbinePowerTapTile extends TurbineBaseTile implements IEnergyTile, IPhosphophylliteEnergyHandler, IEventMultiblock.AssemblyStateTransition {
     
     @RegisterTile("turbine_power_tap")

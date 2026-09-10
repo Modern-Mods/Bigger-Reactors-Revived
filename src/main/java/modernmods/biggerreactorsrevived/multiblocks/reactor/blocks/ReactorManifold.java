@@ -1,14 +1,10 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import modernmods.biggerreactorsrevived.Config;
 import modernmods.biggerreactorsrevived.multiblocks.reactor.tiles.ReactorManifoldTile;
 import modernmods.phosphophylliterevived.modular.block.IConnectedTexture;
@@ -18,7 +14,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ReactorManifold extends ReactorBaseBlock implements IConnectedTexture {
     
     @RegisterBlock(name = "reactor_manifold", tileEntityClass = ReactorManifoldTile.class)
@@ -35,11 +30,11 @@ public class ReactorManifold extends ReactorBaseBlock implements IConnectedTextu
     }
     
     @Override
-    public float getShadeBrightness(BlockState p_60472_, BlockGetter p_60473_, BlockPos p_60474_) {
+    protected float getShadeBrightness(BlockState p_60472_, BlockGetter p_60473_, BlockPos p_60474_) {
         return 1.0f;
     }
     
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+    protected boolean propagatesSkylightDown(BlockState state) {
         return true;
     }
     

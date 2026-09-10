@@ -7,9 +7,7 @@
   ],
   "type": "ae2:inscriber",
   "ingredients": {
-    "middle": {
-      "item": "biggerreactors:blutonium_ingot"
-    }
+    "middle": "biggerreactors:blutonium_ingot"
   },
   "mode": "inscribe",
   "result": {

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/ludicrite_block",
+    "east": "biggerreactors:block/ludicrite_block",
+    "north": "biggerreactors:block/ludicrite_block",
+    "particle": "biggerreactors:block/ludicrite_block",
+    "south": "biggerreactors:block/ludicrite_block",
+    "up": "biggerreactors:block/ludicrite_block",
+    "west": "biggerreactors:block/ludicrite_block"
+  }
+}

@@ -1,10 +1,11 @@
 package modernmods.biggerreactorsrevived.deps.kubejs;
 
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.loading.FMLLoader;
 
 public final class KubeJSDeps {
 
-    public static final boolean LOADED = FMLLoader.getLoadingModList().getModFileById("kubejs") != null;
+    public static final boolean LOADED = FMLLoader.getCurrent().getLoadingModList().getModFileById("kubejs") != null;
 
     private KubeJSDeps() {
     }

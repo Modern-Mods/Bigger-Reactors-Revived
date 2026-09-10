@@ -7,9 +7,7 @@
   ],
   "type": "ae2:inscriber",
   "ingredients": {
-    "middle": {
-      "item": "biggerreactors:uranium_ingot"
-    }
+    "middle": "biggerreactors:uranium_ingot"
   },
   "mode": "inscribe",
   "result": {

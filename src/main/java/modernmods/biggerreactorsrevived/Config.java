@@ -1,6 +1,6 @@
 package modernmods.biggerreactorsrevived;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import modernmods.phosphophylliterevived.config.ConfigFormat;
 import modernmods.phosphophylliterevived.config.ConfigType;
 import modernmods.phosphophylliterevived.config.ConfigValue;
@@ -69,10 +69,10 @@ public class Config {
         
         @Nullable
         @ConfigValue
-        public final ResourceLocation FuelOutputItem;
+        public final Identifier FuelOutputItem;
         
         {
-            FuelOutputItem = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "uranium_ingot");
+            FuelOutputItem = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "uranium_ingot");
         }
         
         @ConfigValue(advanced = ConfigValue.BoolOption.True)

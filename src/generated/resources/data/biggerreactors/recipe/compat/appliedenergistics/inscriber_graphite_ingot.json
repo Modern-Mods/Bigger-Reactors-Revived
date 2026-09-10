@@ -7,9 +7,7 @@
   ],
   "type": "ae2:inscriber",
   "ingredients": {
-    "middle": {
-      "item": "biggerreactors:graphite_ingot"
-    }
+    "middle": "biggerreactors:graphite_ingot"
   },
   "mode": "inscribe",
   "result": {

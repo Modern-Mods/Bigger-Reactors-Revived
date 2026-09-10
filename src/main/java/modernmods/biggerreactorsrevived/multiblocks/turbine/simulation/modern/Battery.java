@@ -48,6 +48,6 @@ public class Battery implements ITurbineBattery {
     
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        stored = nbt.getLong("storedPower");
+        stored = nbt.getLongOr("storedPower", 0L);
     }
 }

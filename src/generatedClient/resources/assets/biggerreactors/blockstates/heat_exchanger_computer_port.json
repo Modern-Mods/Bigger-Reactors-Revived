@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "assembled=false,facing=down": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=false,facing=east": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=false,facing=north": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=false,facing=south": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=false,facing=up": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=false,facing=west": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=true,facing=down": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=true,facing=east": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=true,facing=north": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=true,facing=south": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=true,facing=up": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    },
+    "assembled=true,facing=west": {
+      "model": "biggerreactors:block/heat_exchanger/computer_port"
+    }
+  }
+}

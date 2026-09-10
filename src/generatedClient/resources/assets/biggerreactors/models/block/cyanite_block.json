@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/cyanite_block",
+    "east": "biggerreactors:block/cyanite_block",
+    "north": "biggerreactors:block/cyanite_block",
+    "particle": "biggerreactors:block/cyanite_block",
+    "south": "biggerreactors:block/cyanite_block",
+    "up": "biggerreactors:block/cyanite_block",
+    "west": "biggerreactors:block/cyanite_block"
+  }
+}

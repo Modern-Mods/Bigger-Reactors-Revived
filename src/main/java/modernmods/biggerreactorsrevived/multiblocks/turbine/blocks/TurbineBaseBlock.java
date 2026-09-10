@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -24,7 +23,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import static modernmods.phosphophylliterevived.multiblock.IAssemblyStateBlock.ASSEMBLED;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public abstract class TurbineBaseBlock extends PhosphophylliteBlock implements IMultiblockBlock, EntityBlock, IRectangularMultiblockBlock {
     public static final Block.Properties PROPERTIES_SOLID = Block.Properties.of().sound(SoundType.METAL).destroyTime(2).explosionResistance(10).isValidSpawn((a, b, c, d) -> false).requiresCorrectToolForDrops();
     public static final Block.Properties PROPERTIES_GLASS = Block.Properties.of().sound(SoundType.METAL).noOcclusion().destroyTime(2).explosionResistance(2).isValidSpawn((a, b, c, d) -> false).requiresCorrectToolForDrops();
@@ -70,7 +68,7 @@ public abstract class TurbineBaseBlock extends PhosphophylliteBlock implements I
     public InteractionResult onUse(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (hand == InteractionHand.MAIN_HAND && state.hasProperty(ASSEMBLED) && state.getValue(ASSEMBLED)) {
             if (level.getBlockEntity(pos) instanceof MenuProvider menuProvider) {
-                if (!level.isClientSide) {
+                if (!level.isClientSide()) {
                     ((ServerPlayer) player).openMenu(menuProvider, pos);
                 }
                 return InteractionResult.SUCCESS;

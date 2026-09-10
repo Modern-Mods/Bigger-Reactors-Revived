@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/reactor/redstone_port/lit",
+    "east": "biggerreactors:block/reactor/redstone_port/lit",
+    "north": "biggerreactors:block/reactor/redstone_port/lit",
+    "particle": "biggerreactors:block/reactor/redstone_port/lit",
+    "south": "biggerreactors:block/reactor/redstone_port/lit",
+    "up": "biggerreactors:block/reactor/redstone_port/lit",
+    "west": "biggerreactors:block/reactor/redstone_port/lit"
+  }
+}

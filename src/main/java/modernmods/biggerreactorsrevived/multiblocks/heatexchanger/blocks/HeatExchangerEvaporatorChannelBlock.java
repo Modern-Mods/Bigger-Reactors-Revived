@@ -1,7 +1,6 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.blocks;
 
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -15,7 +14,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class HeatExchangerEvaporatorChannelBlock extends HeatExchangerBaseBlock implements IConnectedTexture {
     
     @RegisterBlock(name = "heat_exchanger_evaporator_channel", tileEntityClass = HeatExchangerChannelTile.class)
@@ -33,12 +31,12 @@ public class HeatExchangerEvaporatorChannelBlock extends HeatExchangerBaseBlock 
     
     @SuppressWarnings("deprecation")
     @Override
-    public float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
+    protected float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return 1.0F;
     }
     
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+    protected boolean propagatesSkylightDown(BlockState state) {
         return true;
     }
     

@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.143'
+    id 'net.neoforged.moddev' version '2.0.146'
 }
 
 evaluationDependsOnChildren()
@@ -14,7 +14,7 @@ base {
     archivesName = "${mod_named}"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 def phosResources = rootProject.project(':Phosphophyllite').file('src/main/resources/').getAbsolutePath()
 def quartzResources = rootProject.project(':Quartz').file('src/main/resources/').getAbsolutePath()
@@ -38,15 +38,20 @@ neoForge {
             programArgument '--nogui'
         }
 
-        data {
-            data()
+        clientData {
+            clientData()
+            programArguments.addAll '--mod', "${modid}", '--all', '--output', file('src/generatedClient/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing', phosResources, '--existing', quartzResources
+        }
+
+        serverData {
+            serverData()
             programArguments.addAll '--mod', "${modid}", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing', phosResources, '--existing', quartzResources
         }
 
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'
             logLevel = org.slf4j.event.Level.DEBUG
-            jvmArgument '-Xmx4G'
+            jvmArgument '-Xmx2G'
         }
     }
 
@@ -65,6 +70,7 @@ neoForge {
 
 sourceSets.main.resources {
     srcDir 'src/generated/resources'
+    srcDir 'src/generatedClient/resources'
 }
 
 repositories {
@@ -132,7 +138,6 @@ dependencies {
 
      // Mekanism
     compileOnly "mekanism:Mekanism:${mekanism_version}:api"
-    runtimeOnly "mekanism:Mekanism:${mekanism_version}"
 
     //  LWJGL
     compileOnly "org.lwjgl:lwjgl-opencl:${lwjgl_version}"
@@ -144,21 +149,12 @@ dependencies {
     // Better Advancements Tooltips
     implementation "dev.latvian.mods:better-advanced-tooltips:${better_adv_tooltips_version}"
 
-    // Rhino
-    implementation "dev.latvian.mods:rhino:${rhino_version}"
-
     // Patchouli
-    compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
-    runtimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
+    compileOnly "maven.modrinth:patchouli:${patchouli_version}"
+    runtimeOnly "maven.modrinth:patchouli:${patchouli_version}"
 
-    // AllTheModium
-    runtimeOnly "maven.modrinth:allthemodium:${allthemodium_version}"
-
-    // Mekanism Generators
-    runtimeOnly "maven.modrinth:mekanism-generators:${mekanism_generators_version}"
 
     // Neo Vitae
-    runtimeOnly "maven.modrinth:neovitae:${neovitae_version}"
     runtimeOnly "maven.modrinth:modonomicon:${modonomicon_version}"
     runtimeOnly "maven.modrinth:geckolib:${geckolib_version}"
 
@@ -166,16 +162,26 @@ dependencies {
     runtimeOnly "maven.modrinth:ae2:${ae2_version}"
     runtimeOnly "maven.modrinth:guideme:${guideme_version}"
 
-    // Sodium and Iris
-    runtimeOnly "maven.modrinth:sodium:${sodium_version}"
-    runtimeOnly "maven.modrinth:iris:${iris_version}"
 
     // Ultimate Foods
-    runtimeOnly "curse.maven:ultimate-foods-1455067:${ultimatefoods_version}"
     runtimeOnly "maven.modrinth:appleskin:${appleskin_version}"
 
     // Re Avaritia
     runtimeOnly "maven.modrinth:re-avaritia:${avaritia_version}"
+
+    // Pipez
+    runtimeOnly "maven.modrinth:pipez:${pipez_version}"
+
+    // Functional Storage
+    runtimeOnly "maven.modrinth:functional-storage:${functional_storage_version}"
+    runtimeOnly "maven.modrinth:titanium:${titanium_version}"
+
+    // Ender IO
+    runtimeOnly "maven.modrinth:enderio:${enderio_version}"
+
+    // Powah
+    runtimeOnly "maven.modrinth:powah:${powah_version}"
+    runtimeOnly "maven.modrinth:cloth-config:${cloth_config_version}"
 }
 
 test {
@@ -203,7 +209,6 @@ tasks.withType(ProcessResources).configureEach {
             loader_version      : loader_version,
             modid               : modid,
             mod_name            : mod_name,
-            mod_named           : mod_named,
             mod_version         : mod_version,
             author              : author,
             description         : description,
@@ -240,6 +245,6 @@ idea {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    options.getRelease().set(21)
+    options.getRelease().set(25)
     options.compilerArgs << "-Xmaxerrs" << "2000"
 }

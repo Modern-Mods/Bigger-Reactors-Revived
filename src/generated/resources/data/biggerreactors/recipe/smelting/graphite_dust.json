@@ -3,11 +3,8 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.0,
-  "ingredient": {
-    "item": "biggerreactors:graphite_dust"
-  },
+  "ingredient": "biggerreactors:graphite_dust",
   "result": {
-    "count": 1,
     "id": "biggerreactors:graphite_ingot"
   }
 }

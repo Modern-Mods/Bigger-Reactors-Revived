@@ -1,11 +1,11 @@
 package modernmods.biggerreactorsrevived.registries;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.phosphophylliterevived.parsers.Element;
 import modernmods.phosphophylliterevived.parsers.JSON5;
@@ -53,8 +53,8 @@ public final class LegacyRegistryMigration {
         NeoForge.EVENT_BUS.addListener(LegacyRegistryMigration::addReloadListener);
     }
 
-    private static void addReloadListener(AddReloadListenerEvent event) {
-        event.addListener(new SimplePreparableReloadListener<Void>() {
+    private static void addReloadListener(AddServerReloadListenersEvent event) {
+        event.addListener(Identifier.fromNamespaceAndPath(BiggerReactors.modid, "legacy_registry_migration"), new SimplePreparableReloadListener<Void>() {
             @Override
             protected Void prepare(ResourceManager resourceManager, ProfilerFiller profiler) {
                 load(resourceManager);
@@ -91,7 +91,7 @@ public final class LegacyRegistryMigration {
     }
 
     private interface EntryReader {
-        void read(ResourceLocation id, Map<String, Element> values);
+        void read(Identifier id, Map<String, Element> values);
     }
 
     private static void forEachLegacyFile(ResourceManager resourceManager, String path, EntryReader reader) {
@@ -116,11 +116,11 @@ public final class LegacyRegistryMigration {
         }
     }
 
-    private static boolean isLegacyFile(ResourceLocation id) {
+    private static boolean isLegacyFile(Identifier id) {
         return id.getPath().endsWith(".json5") || id.getPath().endsWith(".json");
     }
 
-    private static void readModerator(ResourceLocation id, Map<String, Element> values) {
+    private static void readModerator(Identifier id, Map<String, Element> values) {
         final var type = string(values, "type", "tag");
         final var location = location(values, "location", type.endsWith("tag"));
         if (location == null) {
@@ -137,7 +137,7 @@ public final class LegacyRegistryMigration {
         }
     }
 
-    private static void readCoil(ResourceLocation id, Map<String, Element> values) {
+    private static void readCoil(Identifier id, Map<String, Element> values) {
         final var type = string(values, "type", "tag");
         final var location = location(values, "location", type.endsWith("tag"));
         if (location == null) {
@@ -148,7 +148,7 @@ public final class LegacyRegistryMigration {
         coils.add(new ScriptedEntry<>(ScriptedEntry.parseLocation(location), data));
     }
 
-    private static void readTransition(ResourceLocation id, Map<String, Element> values) {
+    private static void readTransition(Identifier id, Map<String, Element> values) {
         final var liquid = location(values, "liquid", string(values, "liquidType", "registry").endsWith("tag"));
         final var gas = location(values, "gas", string(values, "gasType", "registry").endsWith("tag"));
         if (liquid == null || gas == null) {

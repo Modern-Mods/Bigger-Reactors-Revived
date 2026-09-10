@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "biggerreactors:block/turbine/casing/corner",
+    "east": "biggerreactors:block/turbine/casing/corner",
+    "north": "biggerreactors:block/turbine/casing/corner",
+    "particle": "biggerreactors:block/turbine/casing/corner",
+    "south": "biggerreactors:block/turbine/casing/corner",
+    "up": "biggerreactors:block/turbine/casing/corner",
+    "west": "biggerreactors:block/turbine/casing/corner"
+  }
+}

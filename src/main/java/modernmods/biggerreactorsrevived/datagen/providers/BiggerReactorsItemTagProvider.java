@@ -4,12 +4,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.common.data.ItemTagsProvider;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 
 import java.util.concurrent.CompletableFuture;
@@ -42,15 +41,15 @@ public class BiggerReactorsItemTagProvider extends ItemTagsProvider {
     public static final TagKey<Item> TOOLS_WRENCH = commonTag("tools/wrench");
 
     private static TagKey<Item> commonTag(String path) {
-        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
+        return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", path));
     }
 
     private static Item item(String name) {
-        return BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, name));
+        return BuiltInRegistries.ITEM.getValue(Identifier.fromNamespaceAndPath(BiggerReactors.modid, name));
     }
 
-    public BiggerReactorsItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, blockTags, BiggerReactors.modid, existingFileHelper);
+    public BiggerReactorsItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<net.minecraft.data.tags.TagsProvider.TagLookup<Block>> blockTags) {
+        super(output, lookupProvider, BiggerReactors.modid);
     }
 
     @Override

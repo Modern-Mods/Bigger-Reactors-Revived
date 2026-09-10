@@ -1,9 +1,8 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.tiles;
 
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import modernmods.biggerreactorsrevived.multiblocks.heatexchanger.blocks.HeatExchangerCondenserChannelBlock;
@@ -21,7 +20,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import static modernmods.phosphophylliterevived.modular.block.IConnectedTexture.Module.*;
 import static modernmods.phosphophylliterevived.modular.block.IConnectedTexture.Module.WEST_CONNECTED_PROPERTY;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class HeatExchangerChannelTile extends HeatExchangerBaseTile {
     
@@ -38,8 +36,21 @@ public class HeatExchangerChannelTile extends HeatExchangerBaseTile {
     }
     
     
+    private static final Identifier CONDENSER_ERROR_MODEL = Identifier.parse("biggerreactors:block/heat_exchanger/casing/corner");
+    private static final Identifier CONDENSER_STRAIGHT_MODEL = Identifier.parse("biggerreactors:block/heat_exchanger/hot_channel/connected_tb");
+    private static final Identifier CONDENSER_CORNER_MODEL = Identifier.parse("biggerreactors:block/heat_exchanger/hot_channel/connected_bn");
+    private static final Identifier EVAPORATOR_ERROR_MODEL = Identifier.parse("biggerreactors:block/heat_exchanger/casing/corner");
+    private static final Identifier EVAPORATOR_STRAIGHT_MODEL = Identifier.parse("biggerreactors:block/heat_exchanger/cold_channel/connected_tb");
+    private static final Identifier EVAPORATOR_CORNER_MODEL = Identifier.parse("biggerreactors:block/heat_exchanger/cold_channel/connected_bn");
+    
     static {
         Quartz.EVENT_BUS.addListener(HeatExchangerChannelTile::onQuartzStartup);
+        Quartz.registerModel(CONDENSER_ERROR_MODEL);
+        Quartz.registerModel(CONDENSER_STRAIGHT_MODEL);
+        Quartz.registerModel(CONDENSER_CORNER_MODEL);
+        Quartz.registerModel(EVAPORATOR_ERROR_MODEL);
+        Quartz.registerModel(EVAPORATOR_STRAIGHT_MODEL);
+        Quartz.registerModel(EVAPORATOR_CORNER_MODEL);
     }
     
     private static Mesh condenserConnectionErrorMesh;
@@ -50,13 +61,13 @@ public class HeatExchangerChannelTile extends HeatExchangerBaseTile {
     private static Mesh evaporatorCornerMesh;
     
     private static void onQuartzStartup(QuartzEvent.Startup quartzStartup) {
-        condenserConnectionErrorMesh = Quartz.createStaticMesh(ResourceLocation.parse("biggerreactors:block/heat_exchanger/casing/corner"));
-        condenserStraightMesh = Quartz.createStaticMesh(ResourceLocation.parse("biggerreactors:block/heat_exchanger/hot_channel/connected_tb"));
-        condenserCornerMesh = Quartz.createStaticMesh(ResourceLocation.parse("biggerreactors:block/heat_exchanger/hot_channel/connected_bn"));
+        condenserConnectionErrorMesh = Quartz.createStaticMesh(CONDENSER_ERROR_MODEL);
+        condenserStraightMesh = Quartz.createStaticMesh(CONDENSER_STRAIGHT_MODEL);
+        condenserCornerMesh = Quartz.createStaticMesh(CONDENSER_CORNER_MODEL);
         
-        evaporatorConnectionErrorMesh = Quartz.createStaticMesh(ResourceLocation.parse("biggerreactors:block/heat_exchanger/casing/corner"));
-        evaporatorStraightMesh = Quartz.createStaticMesh(ResourceLocation.parse("biggerreactors:block/heat_exchanger/cold_channel/connected_tb"));
-        evaporatorCornerMesh = Quartz.createStaticMesh(ResourceLocation.parse("biggerreactors:block/heat_exchanger/cold_channel/connected_bn"));
+        evaporatorConnectionErrorMesh = Quartz.createStaticMesh(EVAPORATOR_ERROR_MODEL);
+        evaporatorStraightMesh = Quartz.createStaticMesh(EVAPORATOR_STRAIGHT_MODEL);
+        evaporatorCornerMesh = Quartz.createStaticMesh(EVAPORATOR_CORNER_MODEL);
     }
     
     private static final ReferenceArrayList<Matrix4f> rotationMatrices = new ReferenceArrayList<>();

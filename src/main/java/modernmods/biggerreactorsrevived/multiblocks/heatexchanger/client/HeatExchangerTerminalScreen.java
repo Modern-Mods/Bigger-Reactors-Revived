@@ -1,16 +1,14 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.minecraft.core.registries.BuiltInRegistries;
 import modernmods.biggerreactorsrevived.BiggerReactors;
 import modernmods.biggerreactorsrevived.Config;
@@ -25,10 +23,9 @@ import modernmods.phosphophylliterevived.client.gui.elements.TooltipElement;
 import javax.annotation.Nonnull;
 import java.util.Objects;
 
-@OnlyIn(Dist.CLIENT)
 public class HeatExchangerTerminalScreen extends PhosphophylliteScreen<HeatExchangerTerminalContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/heat_exchanger_terminal.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/heat_exchanger_terminal.png");
 
     private HeatExchangerState heatExchangerState;
 
@@ -42,10 +39,10 @@ public class HeatExchangerTerminalScreen extends PhosphophylliteScreen<HeatExcha
 
         // Initialize heat exchanger state.
         this.heatExchangerState = (HeatExchangerState) this.getMenu().getGuiPacket();
-        this.condenserIntakeFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(this.heatExchangerState.condenserIntakeFluid));
-        this.condenserExhaustFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(this.heatExchangerState.condenserExhaustFluid));
-        this.evaporatorIntakeFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(this.heatExchangerState.evaporatorIntakeFluid));
-        this.evaporatorExhaustFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(this.heatExchangerState.evaporatorExhaustFluid));
+        this.condenserIntakeFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(this.heatExchangerState.condenserIntakeFluid));
+        this.condenserExhaustFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(this.heatExchangerState.condenserExhaustFluid));
+        this.evaporatorIntakeFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(this.heatExchangerState.evaporatorIntakeFluid));
+        this.evaporatorExhaustFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(this.heatExchangerState.evaporatorExhaustFluid));
     }
 
     /**
@@ -106,35 +103,35 @@ public class HeatExchangerTerminalScreen extends PhosphophylliteScreen<HeatExcha
     private void initGauges() {
         // (Top) Condenser intake tank:
         RenderedElement<HeatExchangerTerminalContainer> condenserIntakeTank = new RenderedElement<>(this, 8, 36, 18, 64, 0, 144, Component.empty());
-        condenserIntakeTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        condenserIntakeTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 condenserIntakeTank, heatExchangerState.condenserIntakeFluidAmount, heatExchangerState.condenserTankSize, this.condenserIntakeFluid);
         this.addScreenElement(condenserIntakeTank);
 
         // (Top) Evaporator intake tank:
         RenderedElement<HeatExchangerTerminalContainer> evaporatorIntakeTank = new RenderedElement<>(this, 30, 36, 18, 64, 0, 144, Component.empty());
-        evaporatorIntakeTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        evaporatorIntakeTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 evaporatorIntakeTank, heatExchangerState.evaporatorIntakeFluidAmount, heatExchangerState.evaporatorTankSize, this.evaporatorIntakeFluid);
         this.addScreenElement(evaporatorIntakeTank);
 
         // (Top) Condenser heat gauge:
         RenderedElement<HeatExchangerTerminalContainer> condenserHeatGauge = new RenderedElement<>(this, 52, 36, 18, 64, 0, 144, Component.empty());
-        condenserHeatGauge.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> HeatExchangerTerminalScreen.renderHeatGauge(graphics, condenserHeatGauge, heatExchangerState.condenserChannelTemperature, Config.CONFIG.HeatExchanger.gui.HeatDisplayMax);
+        condenserHeatGauge.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> HeatExchangerTerminalScreen.renderHeatGauge(graphics, condenserHeatGauge, heatExchangerState.condenserChannelTemperature, Config.CONFIG.HeatExchanger.gui.HeatDisplayMax);
         this.addScreenElement(condenserHeatGauge);
 
         // (Top) Evaporator heat gauge:
         RenderedElement<HeatExchangerTerminalContainer> evaporatorHeatGauge = new RenderedElement<>(this, 74, 36, 18, 64, 0, 144, Component.empty());
-        evaporatorHeatGauge.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> HeatExchangerTerminalScreen.renderHeatGauge(graphics, evaporatorHeatGauge, heatExchangerState.evaporatorChannelTemperature, Config.CONFIG.HeatExchanger.gui.HeatDisplayMax);
+        evaporatorHeatGauge.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> HeatExchangerTerminalScreen.renderHeatGauge(graphics, evaporatorHeatGauge, heatExchangerState.evaporatorChannelTemperature, Config.CONFIG.HeatExchanger.gui.HeatDisplayMax);
         this.addScreenElement(evaporatorHeatGauge);
 
         // (Top) Condenser exhaust tank:
         RenderedElement<HeatExchangerTerminalContainer> condenserExhaustTank = new RenderedElement<>(this, 96, 36, 18, 64, 0, 144, Component.empty());
-        condenserExhaustTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        condenserExhaustTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 condenserExhaustTank, heatExchangerState.condenserExhaustFluidAmount, heatExchangerState.condenserTankSize, this.condenserExhaustFluid);
         this.addScreenElement(condenserExhaustTank);
 
         // (Top) Evaporator exhaust tank:
         RenderedElement<HeatExchangerTerminalContainer> evaporatorExhaustTank = new RenderedElement<>(this, 118, 36, 18, 64, 0, 144, Component.empty());
-        evaporatorExhaustTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        evaporatorExhaustTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 evaporatorExhaustTank, heatExchangerState.evaporatorExhaustFluidAmount, heatExchangerState.evaporatorTankSize, this.evaporatorExhaustFluid);
         this.addScreenElement(evaporatorExhaustTank);
     }
@@ -146,22 +143,22 @@ public class HeatExchangerTerminalScreen extends PhosphophylliteScreen<HeatExcha
     public void containerTick() {
         // Check if condenser intake fluid changed.
         if (!heatExchangerState.condenserIntakeFluid.equals(Objects.requireNonNull(BuiltInRegistries.FLUID.getKey(condenserIntakeFluid)).toString())) {
-            condenserIntakeFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(heatExchangerState.condenserIntakeFluid));
+            condenserIntakeFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(heatExchangerState.condenserIntakeFluid));
         }
 
         // Check if evaporator intake fluid changed.
         if (!heatExchangerState.evaporatorIntakeFluid.equals(Objects.requireNonNull(BuiltInRegistries.FLUID.getKey(evaporatorIntakeFluid)).toString())) {
-            evaporatorIntakeFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(heatExchangerState.evaporatorIntakeFluid));
+            evaporatorIntakeFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(heatExchangerState.evaporatorIntakeFluid));
         }
 
         // Check if condenser exhaust fluid changed.
         if (!heatExchangerState.condenserExhaustFluid.equals(Objects.requireNonNull(BuiltInRegistries.FLUID.getKey(condenserExhaustFluid)).toString())) {
-            condenserExhaustFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(heatExchangerState.condenserExhaustFluid));
+            condenserExhaustFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(heatExchangerState.condenserExhaustFluid));
         }
 
         // Check if evaporator exhaust fluid changed.
         if (!heatExchangerState.evaporatorExhaustFluid.equals(Objects.requireNonNull(BuiltInRegistries.FLUID.getKey(evaporatorExhaustFluid)).toString())) {
-            evaporatorExhaustFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(heatExchangerState.evaporatorExhaustFluid));
+            evaporatorExhaustFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(heatExchangerState.evaporatorExhaustFluid));
         }
     }
 
@@ -173,7 +170,7 @@ public class HeatExchangerTerminalScreen extends PhosphophylliteScreen<HeatExcha
      * @param heatStored   The heat value to draw.
      * @param heatCapacity The max heat capacity this gauge can display.
      */
-    public static void renderHeatGauge(@Nonnull GuiGraphics graphics, @Nonnull RenderedElement<HeatExchangerTerminalContainer> symbol, double heatStored, double heatCapacity) {
+    public static void renderHeatGauge(@Nonnull GuiGraphicsExtractor graphics, @Nonnull RenderedElement<HeatExchangerTerminalContainer> symbol, double heatStored, double heatCapacity) {
         // If there's no heat, there's no need to draw.
         if ((heatStored > 0) && (heatCapacity > 0)) {
             // Calculate how much needs to be rendered.
@@ -198,19 +195,19 @@ public class HeatExchangerTerminalScreen extends PhosphophylliteScreen<HeatExcha
      * @param partialTicks Partial ticks.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        super.render(graphics, mouseX, mouseY, partialTicks);
+    public void extractRenderState(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
 
         // Render text for condenser channel temperature:
-        graphics.drawString(this.getFont(), RenderHelper.formatLarge(this.heatExchangerState.condenserChannelTemperature, 0, "K"), this.getGuiLeft() + 27, this.getGuiTop() + 107, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatLarge(this.heatExchangerState.condenserChannelTemperature, 0, "K"), this.getGuiLeft() + 27, this.getGuiTop() + 107, 0xFF404040, false);
 
         // Render text for evaporator channel temperature:
-        graphics.drawString(this.getFont(), RenderHelper.formatLarge(this.heatExchangerState.evaporatorChannelTemperature, 0, "K"), this.getGuiLeft() + 27, this.getGuiTop() + 127, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatLarge(this.heatExchangerState.evaporatorChannelTemperature, 0, "K"), this.getGuiLeft() + 27, this.getGuiTop() + 127, 0xFF404040, false);
 
         // Render text for condenser channel flow rate:
-        graphics.drawString(this.getFont(), RenderHelper.formatValue((this.heatExchangerState.condenserChannelFlowRate / 1000.0), 1, "B/t", true), this.getGuiLeft() + 93, this.getGuiTop() + 107, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatValue((this.heatExchangerState.condenserChannelFlowRate / 1000.0), 1, "B/t", true), this.getGuiLeft() + 93, this.getGuiTop() + 107, 0xFF404040, false);
 
         // Render text for evaporator channel flow rate:
-        graphics.drawString(this.getFont(), RenderHelper.formatValue((this.heatExchangerState.evaporatorChannelFlowRate / 1000.0), 1, "B/t", true), this.getGuiLeft() + 93, this.getGuiTop() + 127, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatValue((this.heatExchangerState.evaporatorChannelFlowRate / 1000.0), 1, "B/t", true), this.getGuiLeft() + 93, this.getGuiTop() + 127, 0xFF404040, false);
     }
 }

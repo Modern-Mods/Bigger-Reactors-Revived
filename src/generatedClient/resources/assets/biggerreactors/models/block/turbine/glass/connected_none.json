@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "biggerreactors:block/turbine/glass/connected_none",
+    "particle": "biggerreactors:block/turbine/glass/connected_none"
+  }
+}

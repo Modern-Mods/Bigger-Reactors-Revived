@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.reactor.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -19,7 +18,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ReactorRedstonePort extends ReactorBaseBlock implements IAssemblyStateBlock, IFaceDirectionBlock {
     
     public static BooleanProperty IS_LIT_BOOLEAN_PROPERTY = BooleanProperty.create("is_lit");

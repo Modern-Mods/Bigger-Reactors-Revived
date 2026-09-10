@@ -1,6 +1,5 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -19,7 +18,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import static modernmods.biggerreactorsrevived.multiblocks.turbine.state.TurbineShaftRotationState.Y;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class TurbineRotorBlade extends TurbineBaseBlock implements IAssemblyStateBlock {
     
     public static final IntegerProperty BLADE_POSITION = IntegerProperty.create("blade_position", 0, 3);
@@ -45,11 +43,11 @@ public class TurbineRotorBlade extends TurbineBaseBlock implements IAssemblyStat
     }
     
     @SuppressWarnings("deprecation")
-    public float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
+    protected float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return 1.0F;
     }
     
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+    protected boolean propagatesSkylightDown(BlockState state) {
         return true;
     }
     

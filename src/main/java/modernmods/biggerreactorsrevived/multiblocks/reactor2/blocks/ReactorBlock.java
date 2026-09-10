@@ -55,13 +55,13 @@ public abstract class ReactorBlock extends PhosphophylliteBlock implements IRect
         }
         
         @Override
-        public boolean propagatesSkylightDown(BlockState p_49928_, BlockGetter p_49929_, BlockPos p_49930_) {
+        protected boolean propagatesSkylightDown(BlockState p_49928_) {
             return true;
         }
         
         @SuppressWarnings("deprecation")
         @Override
-        public float getShadeBrightness(BlockState p_60472_, BlockGetter p_60473_, BlockPos p_60474_) {
+        protected float getShadeBrightness(BlockState p_60472_, BlockGetter p_60473_, BlockPos p_60474_) {
             return 1.0f;
         }
     }
@@ -91,13 +91,13 @@ public abstract class ReactorBlock extends PhosphophylliteBlock implements IRect
         }
         
         @Override
-        public boolean propagatesSkylightDown(BlockState p_49928_, BlockGetter p_49929_, BlockPos p_49930_) {
+        protected boolean propagatesSkylightDown(BlockState p_49928_) {
             return true;
         }
         
         @SuppressWarnings("deprecation")
         @Override
-        public float getShadeBrightness(BlockState p_60472_, BlockGetter p_60473_, BlockPos p_60474_) {
+        protected float getShadeBrightness(BlockState p_60472_, BlockGetter p_60473_, BlockPos p_60474_) {
             return 1.0f;
         }
     }

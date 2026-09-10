@@ -2,15 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
-      "item": "biggerreactors:heat_exchanger_evaporator_channel"
-    }
+    "C": "biggerreactors:heat_exchanger_evaporator_channel"
   },
   "pattern": [
     "C"
   ],
   "result": {
-    "count": 1,
     "id": "biggerreactors:heat_exchanger_condenser_channel"
   }
 }

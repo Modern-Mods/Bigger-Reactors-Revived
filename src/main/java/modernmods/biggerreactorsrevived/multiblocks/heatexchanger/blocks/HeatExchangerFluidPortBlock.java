@@ -1,7 +1,6 @@
 package modernmods.biggerreactorsrevived.multiblocks.heatexchanger.blocks;
 
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -24,7 +23,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import static modernmods.phosphophylliterevived.util.BlockStates.PORT_DIRECTION;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class HeatExchangerFluidPortBlock extends HeatExchangerBaseBlock implements IAssemblyStateBlock, IFaceDirectionBlock {
     

@@ -10,7 +10,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -51,8 +51,8 @@ public class BiggerReactorsWorldgenProvider extends DatapackBuiltinEntriesProvid
         super(output, lookupProvider, BUILDER, Set.of(BiggerReactors.modid));
     }
 
-    private static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, path);
+    private static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath(BiggerReactors.modid, path);
     }
 
     private static void configuredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> context) {

@@ -18,7 +18,7 @@ public class ReactorControlRodTile extends ReactorTile {
     
     @Override
     protected void readNBT(CompoundTag compound) {
-        insertion = compound.getDouble("insertion");
+        insertion = compound.getDoubleOr("insertion", 0D);
     }
     
     @Override

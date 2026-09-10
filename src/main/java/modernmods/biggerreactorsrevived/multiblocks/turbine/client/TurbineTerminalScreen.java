@@ -1,12 +1,12 @@
 package modernmods.biggerreactorsrevived.multiblocks.turbine.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.material.Fluid;
@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminalContainer> {
 
-    private static final ResourceLocation DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/turbine_terminal.png");
+    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(BiggerReactors.modid, "textures/screen/turbine_terminal.png");
 
     private TurbineState turbineState;
 
@@ -45,8 +45,8 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
 
         // Initialize turbine state.
         turbineState = (TurbineState) this.getMenu().getGuiPacket();
-        intakeFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(turbineState.intakeResourceLocation));
-        exhaustFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(turbineState.exhaustResourceLocation));
+        intakeFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(turbineState.intakeResourceLocation));
+        exhaustFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(turbineState.exhaustResourceLocation));
     }
 
     /**
@@ -161,9 +161,9 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
             if (flowRateIncreaseButton.isMouseOver(mX, mY)) {
                 // Calculate amount of change:
                 long delta;
-                if (Screen.hasShiftDown() && Screen.hasControlDown()) delta = Config.CONFIG.Turbine.GUI.DeltaMBHCtrlShift;
-                else if (Screen.hasControlDown()) delta = Config.CONFIG.Turbine.GUI.DeltaMBCtrl;
-                else if (Screen.hasShiftDown()) delta = Config.CONFIG.Turbine.GUI.DeltaMBShift;
+                if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift() && modernmods.biggerreactorsrevived.client.KeyModifiers.control()) delta = Config.CONFIG.Turbine.GUI.DeltaMBHCtrlShift;
+                else if (modernmods.biggerreactorsrevived.client.KeyModifiers.control()) delta = Config.CONFIG.Turbine.GUI.DeltaMBCtrl;
+                else if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift()) delta = Config.CONFIG.Turbine.GUI.DeltaMBShift;
                 else delta = Config.CONFIG.Turbine.GUI.DeltaMB;
                 // Mouse is hovering, do the thing.
                 this.getMenu().executeRequest("changeFlowRate", delta);
@@ -194,9 +194,9 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
             if (flowRateDecreaseButton.isMouseOver(mX, mY)) {
                 // Calculate amount of change:
                 long delta;
-                if (Screen.hasShiftDown() && Screen.hasControlDown()) delta = -Config.CONFIG.Turbine.GUI.DeltaMBHCtrlShift;
-                else if (Screen.hasControlDown()) delta = -Config.CONFIG.Turbine.GUI.DeltaMBCtrl;
-                else if (Screen.hasShiftDown()) delta = -Config.CONFIG.Turbine.GUI.DeltaMBShift;
+                if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift() && modernmods.biggerreactorsrevived.client.KeyModifiers.control()) delta = -Config.CONFIG.Turbine.GUI.DeltaMBHCtrlShift;
+                else if (modernmods.biggerreactorsrevived.client.KeyModifiers.control()) delta = -Config.CONFIG.Turbine.GUI.DeltaMBCtrl;
+                else if (modernmods.biggerreactorsrevived.client.KeyModifiers.shift()) delta = -Config.CONFIG.Turbine.GUI.DeltaMBShift;
                 else delta = -Config.CONFIG.Turbine.GUI.DeltaMB;
                 // Mouse is hovering, do the thing.
                 this.getMenu().executeRequest("changeFlowRate", delta);
@@ -227,24 +227,24 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
     private void initGauges() {
         // (Top) Tachometer gauge:
         RenderedElement<TurbineTerminalContainer> tachometerGauge = new RenderedElement<>(this, 85, 25, 18, 64, 0, 152, Component.empty());
-        tachometerGauge.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> TurbineTerminalScreen.renderTachometerGauge(graphics, tachometerGauge, turbineState.currentRPM, turbineState.maxRPM);
+        tachometerGauge.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> TurbineTerminalScreen.renderTachometerGauge(graphics, tachometerGauge, turbineState.currentRPM, turbineState.maxRPM);
         this.addScreenElement(tachometerGauge);
 
         // (Top) Hot intake tank:
         RenderedElement<TurbineTerminalContainer> intakeTank = new RenderedElement<>(this, 107, 25, 18, 64, 0, 152, Component.empty());
-        intakeTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        intakeTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 intakeTank, turbineState.intakeStored, turbineState.intakeCapacity, intakeFluid);
         this.addScreenElement(intakeTank);
 
         // (Top) Cold exhaust tank:
         RenderedElement<TurbineTerminalContainer> exhaustTank = new RenderedElement<>(this, 129, 25, 18, 64, 0, 152, Component.empty());
-        exhaustTank.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
+        exhaustTank.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderFluidGauge(graphics,
                 exhaustTank, turbineState.exhaustStored, turbineState.exhaustCapacity, exhaustFluid);
         this.addScreenElement(exhaustTank);
 
         // (Top) Internal battery:
         RenderedElement<TurbineTerminalContainer> internalBattery = new RenderedElement<>(this, 151, 25, 18, 64, 0, 152, Component.empty());
-        internalBattery.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> CommonRender.renderEnergyGauge(graphics,
+        internalBattery.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> CommonRender.renderEnergyGauge(graphics,
                 internalBattery, turbineState.energyStored, turbineState.energyCapacity);
         this.addScreenElement(internalBattery);
     }
@@ -255,7 +255,7 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
     private void initSymbols() {
         // (Top) Intake tank symbol:
         RenderedElement<TurbineTerminalContainer> intakeTankSymbol = new RenderedElement<>(this, 108, 6, 16, 16, 54, 152, Component.translatable("screen.biggerreactors.turbine_terminal.intake_tank.tooltip"));
-        intakeTankSymbol.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
+        intakeTankSymbol.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
                 intakeTankSymbol.x, intakeTankSymbol.y, 0,
                 intakeTankSymbol.width, intakeTankSymbol.height,
                 intakeTankSymbol.u, intakeTankSymbol.v, intakeFluid);
@@ -263,7 +263,7 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
 
         // (Top) Exhaust tank symbol:
         RenderedElement<TurbineTerminalContainer> exhaustTankSymbol = new RenderedElement<>(this, 130, 6, 16, 16, 70, 152, Component.translatable("screen.biggerreactors.turbine_terminal.exhaust_tank.tooltip"));
-        exhaustTankSymbol.onRender = (@Nonnull GuiGraphics graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
+        exhaustTankSymbol.onRender = (@Nonnull GuiGraphicsExtractor graphics, int mX, int mY) -> RenderHelper.drawMaskedFluid(graphics,
                 exhaustTankSymbol.x, exhaustTankSymbol.y, 0,
                 exhaustTankSymbol.width, exhaustTankSymbol.height,
                 exhaustTankSymbol.u, exhaustTankSymbol.v, exhaustFluid);
@@ -281,11 +281,11 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
         super.containerTick();
         // Check if intake type changed.
         if (!turbineState.intakeResourceLocation.equals(Objects.requireNonNull(BuiltInRegistries.FLUID.getKey(intakeFluid)).toString())) {
-            intakeFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(turbineState.intakeResourceLocation));
+            intakeFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(turbineState.intakeResourceLocation));
         }
         // Check if exhaust type changed.
         if (!turbineState.exhaustResourceLocation.equals(Objects.requireNonNull(BuiltInRegistries.FLUID.getKey(exhaustFluid)).toString())) {
-            exhaustFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(turbineState.exhaustResourceLocation));
+            exhaustFluid = BuiltInRegistries.FLUID.getValue(Identifier.parse(turbineState.exhaustResourceLocation));
         }
     }
 
@@ -297,7 +297,7 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
      * @param currentRPM The rpm value to draw.
      * @param maxRPM     The max rpm capacity this gauge can display.
      */
-    public static void renderTachometerGauge(@Nonnull GuiGraphics graphics, @Nonnull RenderedElement<TurbineTerminalContainer> symbol, double currentRPM, double maxRPM) {
+    public static void renderTachometerGauge(@Nonnull GuiGraphicsExtractor graphics, @Nonnull RenderedElement<TurbineTerminalContainer> symbol, double currentRPM, double maxRPM) {
         // If there's no heat, there's no need to draw.
         if ((currentRPM > 0) && (maxRPM > 0)) {
             // Calculate how much needs to be rendered.
@@ -322,50 +322,50 @@ public class TurbineTerminalScreen extends PhosphophylliteScreen<TurbineTerminal
      * @param partialTicks Partial ticks.
      */
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        super.render(graphics, mouseX, mouseY, partialTicks);
+    public void extractRenderState(@Nonnull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
 
         // Render text for turbine tachometer:
-        graphics.drawString(this.getFont(), RenderHelper.formatValue((this.turbineState.currentRPM), 1, "RPM", false), this.getGuiLeft() + 27, this.getGuiTop() + 23, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatValue((this.turbineState.currentRPM), 1, "RPM", false), this.getGuiLeft() + 27, this.getGuiTop() + 23, 0xFF404040, false);
 
         // Render text for output rate:
-        graphics.drawString(this.getFont(), RenderHelper.formatValue(this.turbineState.turbineOutputRate, "RF/t"), this.getGuiLeft() + 27, this.getGuiTop() + 42, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatValue(this.turbineState.turbineOutputRate, "RF/t"), this.getGuiLeft() + 27, this.getGuiTop() + 42, 0xFF404040, false);
 
         // Render text for flow rate:
-        graphics.drawString(this.getFont(), RenderHelper.formatValue((this.turbineState.flowRate / 1000.0), 1, "B/t", true), this.getGuiLeft() + 27, this.getGuiTop() + 61, 4210752, false);
+        graphics.text(this.getFont(), RenderHelper.formatValue((this.turbineState.flowRate / 1000.0), 1, "B/t", true), this.getGuiLeft() + 27, this.getGuiTop() + 61, 0xFF404040, false);
 
         // Render text for reactivity rate (no fancy suffix for percentages):
-        graphics.drawString(this.getFont(), String.format("%.1f%%", (this.turbineState.efficiencyRate * 100.0)), this.getGuiLeft() + 27, this.getGuiTop() + 80, 4210752, false);
+        graphics.text(this.getFont(), String.format("%.1f%%", (this.turbineState.efficiencyRate * 100.0)), this.getGuiLeft() + 27, this.getGuiTop() + 80, 0xFF404040, false);
 
         // Render text for online/offline status:
         if (this.turbineState.turbineActivity == TurbineActivity.ACTIVE) {
             // Text for an online turbine:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.activity_toggle.online").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 102, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.activity_toggle.online").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 102, 0xFF404040, false);
 
         } else {
             // Text for an offline turbine:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.activity_toggle.offline").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 102, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.activity_toggle.offline").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 102, 0xFF404040, false);
         }
 
         // Render text for coil engage status:
         if (this.turbineState.coilStatus) {
             // Text for engaged coils:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.coil_engage_toggle.engaged").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 118, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.coil_engage_toggle.engaged").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 118, 0xFF404040, false);
         } else {
             // Text for disengaged coils:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.coil_engage_toggle.disengaged").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 118, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.coil_engage_toggle.disengaged").getString(), this.getGuiLeft() + 42, this.getGuiTop() + 118, 0xFF404040, false);
         }
 
         // Render text for vent state:
         if (this.turbineState.ventState == VentState.OVERFLOW) {
             // Text for venting overflow exhaust:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.vent_state_toggle.overflow").getString(), this.getGuiLeft() + 58, this.getGuiTop() + 134, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.vent_state_toggle.overflow").getString(), this.getGuiLeft() + 58, this.getGuiTop() + 134, 0xFF404040, false);
         } else if (this.turbineState.ventState == VentState.ALL) {
             // Text for venting all exhaust:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.vent_state_toggle.all").getString(), this.getGuiLeft() + 58, this.getGuiTop() + 134, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.vent_state_toggle.all").getString(), this.getGuiLeft() + 58, this.getGuiTop() + 134, 0xFF404040, false);
         } else {
             // Text for venting no exhaust:
-            graphics.drawString(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.vent_state_toggle.closed").getString(), this.getGuiLeft() + 58, this.getGuiTop() + 134, 4210752, false);
+            graphics.text(this.getFont(), Component.translatable("screen.biggerreactors.turbine_terminal.vent_state_toggle.closed").getString(), this.getGuiLeft() + 58, this.getGuiTop() + 134, 0xFF404040, false);
         }
     }
 }

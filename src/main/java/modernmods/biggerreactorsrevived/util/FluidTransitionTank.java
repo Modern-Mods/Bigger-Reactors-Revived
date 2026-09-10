@@ -1,9 +1,8 @@
 package modernmods.biggerreactorsrevived.util;
 
 import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,7 +15,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class FluidTransitionTank extends HeatBody implements IPhosphophylliteFluidHandler {
     
@@ -241,9 +239,9 @@ public class FluidTransitionTank extends HeatBody implements IPhosphophylliteFlu
         if (!nbt.contains("inFluid")) {
             return;
         }
-        ResourceLocation inFluidLocation = ResourceLocation.parse(nbt.getString("inFluid"));
+        Identifier inFluidLocation = Identifier.parse(nbt.getStringOr("inFluid", ""));
         if (BuiltInRegistries.FLUID.containsKey(inFluidLocation)) {
-            Fluid newInFluid = BuiltInRegistries.FLUID.get(inFluidLocation);
+            Fluid newInFluid = BuiltInRegistries.FLUID.getValue(inFluidLocation);
             if (newInFluid == null) {
                 return;
             }
@@ -258,9 +256,9 @@ public class FluidTransitionTank extends HeatBody implements IPhosphophylliteFlu
             }
             List<Fluid> outFluidList = (condenser ? newTransition.liquids : newTransition.gases);
             Fluid newOutFluid = null;
-            ResourceLocation outFluidLocation = ResourceLocation.parse(nbt.getString("outFluid"));
+            Identifier outFluidLocation = Identifier.parse(nbt.getStringOr("outFluid", ""));
             if (BuiltInRegistries.FLUID.containsKey(outFluidLocation)) {
-                Fluid oldOutFluid = BuiltInRegistries.FLUID.get(outFluidLocation);
+                Fluid oldOutFluid = BuiltInRegistries.FLUID.getValue(outFluidLocation);
                 if (outFluidList.contains(oldOutFluid)) {
                     newOutFluid = oldOutFluid;
                 }
@@ -271,8 +269,8 @@ public class FluidTransitionTank extends HeatBody implements IPhosphophylliteFlu
             activeTransition = newTransition;
             inFluid = newInFluid;
             outFluid = newOutFluid;
-            inAmount = nbt.getLong("inAmount");
-            outAmount = nbt.getLong("outAmount");
+            inAmount = nbt.getLongOr("inAmount", 0L);
+            outAmount = nbt.getLongOr("outAmount", 0L);
             transitionUpdate();
         }
     }

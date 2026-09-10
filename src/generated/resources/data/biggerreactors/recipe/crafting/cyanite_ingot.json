@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "biggerreactors:cyanite_block"
-    }
+    "biggerreactors:cyanite_block"
   ],
   "result": {
     "count": 9,
