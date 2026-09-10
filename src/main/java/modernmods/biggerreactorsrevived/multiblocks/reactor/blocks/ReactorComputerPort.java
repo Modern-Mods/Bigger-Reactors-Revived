@@ -1,0 +1,31 @@
+package modernmods.biggerreactorsrevived.multiblocks.reactor.blocks;
+
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import modernmods.biggerreactorsrevived.multiblocks.reactor.tiles.ReactorComputerPortTile;
+import modernmods.phosphophylliterevived.multiblock.IAssemblyStateBlock;
+import modernmods.phosphophylliterevived.multiblock.rectangular.IFaceDirectionBlock;
+import modernmods.phosphophylliterevived.registry.RegisterBlock;
+
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public class ReactorComputerPort extends ReactorBaseBlock implements IAssemblyStateBlock, IFaceDirectionBlock {
+    
+    @RegisterBlock(name = "reactor_computer_port", tileEntityClass = ReactorComputerPortTile.class)
+    public static final ReactorComputerPort INSTANCE = new ReactorComputerPort();
+    
+    public ReactorComputerPort() {
+        super();
+    }
+    
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return ReactorComputerPortTile.SUPPLIER.create(pos, state);
+    }
+}

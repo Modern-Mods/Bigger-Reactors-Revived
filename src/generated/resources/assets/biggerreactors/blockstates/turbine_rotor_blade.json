@@ -1,0 +1,92 @@
+{
+  "variants": {
+    "assembled=false,blade_position=0,turbineshaftrotation=x": {
+      "model": "biggerreactors:block/turbine/rotor_blade",
+      "x": 180,
+      "y": 90
+    },
+    "assembled=false,blade_position=0,turbineshaftrotation=y": {
+      "model": "biggerreactors:block/turbine/rotor_blade",
+      "x": 90
+    },
+    "assembled=false,blade_position=0,turbineshaftrotation=z": {
+      "model": "biggerreactors:block/turbine/rotor_blade",
+      "x": 180
+    },
+    "assembled=false,blade_position=1,turbineshaftrotation=x": {
+      "model": "biggerreactors:block/turbine/rotor_blade",
+      "y": 90
+    },
+    "assembled=false,blade_position=1,turbineshaftrotation=y": {
+      "model": "biggerreactors:block/turbine/rotor_blade",
+      "x": 90,
+      "y": 180
+    },
+    "assembled=false,blade_position=1,turbineshaftrotation=z": {
+      "model": "biggerreactors:block/turbine/rotor_blade"
+    },
+    "assembled=false,blade_position=2,turbineshaftrotation=x": {
+      "model": "biggerreactors:block/turbine/rotor_blade_z",
+      "x": 180,
+      "y": 270
+    },
+    "assembled=false,blade_position=2,turbineshaftrotation=y": {
+      "model": "biggerreactors:block/turbine/rotor_blade",
+      "x": 90,
+      "y": 270
+    },
+    "assembled=false,blade_position=2,turbineshaftrotation=z": {
+      "model": "biggerreactors:block/turbine/rotor_blade_z",
+      "y": 180
+    },
+    "assembled=false,blade_position=3,turbineshaftrotation=x": {
+      "model": "biggerreactors:block/turbine/rotor_blade_z",
+      "x": 180,
+      "y": 90
+    },
+    "assembled=false,blade_position=3,turbineshaftrotation=y": {
+      "model": "biggerreactors:block/turbine/rotor_blade",
+      "x": 90,
+      "y": 90
+    },
+    "assembled=false,blade_position=3,turbineshaftrotation=z": {
+      "model": "biggerreactors:block/turbine/rotor_blade_z"
+    },
+    "assembled=true,blade_position=0,turbineshaftrotation=x": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=0,turbineshaftrotation=y": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=0,turbineshaftrotation=z": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=1,turbineshaftrotation=x": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=1,turbineshaftrotation=y": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=1,turbineshaftrotation=z": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=2,turbineshaftrotation=x": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=2,turbineshaftrotation=y": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=2,turbineshaftrotation=z": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=3,turbineshaftrotation=x": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=3,turbineshaftrotation=y": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,blade_position=3,turbineshaftrotation=z": {
+      "model": "phosphophyllite:block/invisible"
+    }
+  }
+}

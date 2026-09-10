@@ -1,0 +1,49 @@
+{
+  "name": "Componentes del Intercambiador",
+  "category": "biggerreactors:heat_exchangers",
+  "icon": "biggerreactors:heat_exchanger_terminal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_terminal",
+      "title": "Terminal de Intercambiador",
+      "text": "El controlador. Muestra los dos canales, sus fluidos, sus temperaturas y la velocidad a la que se está moviendo el calor entre ellos.$(br2)También es donde se reportan los errores de ensamblado."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_casing",
+      "title": "Carcasa de Intercambiador",
+      "text": "Marco y paredes. Todas las aristas y esquinas tienen que ser carcasa."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_condenser_channel",
+      "title": "Canal Condensador",
+      "text": "El lado caliente. Lleva el fluido que entrega calor, normalmente el escape de la turbina camino a volver a ser agua.$(br2)Los canales forman un caño: cada uno se conecta a exactamente dos vecinos, y el recorrido tiene que empezar en un Puerto de Fluidos y terminar en otro."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_evaporator_channel",
+      "title": "Canal Evaporador",
+      "text": "El lado frío. Lleva el fluido que recibe el calor.$(br2)Mismas reglas que el condensador: exactamente dos conexiones por bloque, un puerto en cada punta. Los dos tipos de canal nunca se conectan entre sí, y eso es lo que mantiene separados los circuitos."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_fluid_port",
+      "title": "Puerto de Fluidos",
+      "text": "Hacen falta exactamente cuatro: dos en el recorrido del condensador y dos en el del evaporador.$(br2)Cada puerto toma su tipo de canal del canal que toca, y se alterna entre $(thing)Entrada$() y $(thing)Salida$() en su interfaz."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_computer_port",
+      "title": "Puerto de Computadora",
+      "text": "Expone los dos canales a scripts en Lua con un mod de computadoras como $(thing)CC: Tweaked$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_glass",
+      "title": "Vidrio de Intercambiador",
+      "text": "Solo paredes, nunca marco. Te deja ver cómo quedaron los canales adentro, que vale la pena mientras todavía estás acomodando las conexiones."
+    }
+  ]
+}

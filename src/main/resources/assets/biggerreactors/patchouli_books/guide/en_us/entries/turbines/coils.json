@@ -1,0 +1,34 @@
+{
+  "name": "Coils",
+  "category": "biggerreactors:turbines",
+  "icon": "biggerreactors:ludicrite_block",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Coils",
+      "text": "Coils are metal blocks placed in a ring around the rotor shaft, in the layers that are not blades. They convert rotor speed into RF and slow the rotor down doing it."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "The three properties",
+      "text": "$(li)$(thing)Efficiency$(): how much of the rotor's energy becomes RF.$(li)$(thing)Extraction Rate$(): how hard the coil drags on the rotor. Higher pulls more energy per tick but makes the rotor harder to keep at speed.$(li)$(thing)Bonus$(): a multiplier applied on top when the coil is part of a full ring."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:iron_block",
+      "title": "Starting out",
+      "text": "Iron is the cheap default. Gold is a straight upgrade, and copper sits between the two.$(br2)None of them are worth optimising around. Build the turbine with iron, then replace the coils once you have a fuel supply that can keep it fed."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:ludicrite_block",
+      "title": "Ludicrite",
+      "text": "The best coil the mod ships. High efficiency, a strong extraction rate and a bonus multiplier on top.$(br2)A full ring of ludicrite is the end of the coil progression unless your pack adds something better."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Adding your own",
+      "text": "Like moderators, the coil list is data driven and packs can change it.$(br2)Open $(thing)JEI$() and check the uses for the Turbine Terminal for the accurate list in your pack."
+    }
+  ]
+}

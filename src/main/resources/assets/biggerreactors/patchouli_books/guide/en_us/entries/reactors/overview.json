@@ -1,0 +1,35 @@
+{
+  "name": "Reactors",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_terminal",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Reactors",
+      "text": "Reactors are the primary multiblock of Bigger Reactors. Loosely inspired by the real-life RBMK design, a reactor may be used either as a power generator, in $(thing)Passive$() mode, or as a heat source, in $(thing)Active$() mode.$(br2)Reactors consume and produce various fuel and waste products, and are highly customizable."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Size",
+      "text": "The smallest possible reactor is $(thing)3 x 3 x 3$().$(br2)With the default config a reactor may be built as large as $(thing)128 x 128 x 192$(), and that limit can be raised in the config to an absolute maximum of $(thing)192 x 192 x 256$().$(br2)Bigger is not automatically better. A larger reactor holds more fuel and more moderator, but it also needs far more of both to stay useful."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Passive or Active",
+      "text": "A $(thing)Passive$() reactor outputs the energy it generates directly as RF, through $(l:reactors/passive_components)Power Taps$(). This is the simplest setup and the one to build first.$(br2)An $(thing)Active$() reactor converts that energy into heat instead, and uses it to boil fluids. The hot fluid leaves through a $(l:reactors/active_components)Coolant Port$() and is normally piped into a $(l:turbines/overview)Turbine$()."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Mixing types",
+      "text": "A reactor may not contain both Power Taps and Coolant Ports. The multiblock will refuse to assemble and the terminal will tell you so.$(br2)Everything else, including the terminal, casings, fuel rods, control rods and access ports, is shared between both types."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "See also",
+      "entries": [
+        "biggerreactors:reactors/basic_reactor"
+      ]
+    }
+  ]
+}

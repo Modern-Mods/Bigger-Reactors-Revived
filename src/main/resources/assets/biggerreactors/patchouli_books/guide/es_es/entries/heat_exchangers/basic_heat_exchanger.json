@@ -1,0 +1,48 @@
+{
+  "name": "Armar un Intercambiador",
+  "category": "biggerreactors:heat_exchangers",
+  "icon": "biggerreactors:heat_exchanger_condenser_channel",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Armar un Intercambiador",
+      "text": "El ejemplo de abajo es de $(thing)5 x 5 x 5$(), con un recorrido recto de condensador y uno de evaporador, uno al lado del otro.$(br2)Apretá el botón del ojo para proyectarlo en el mundo."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Intercambiador Básico",
+      "multiblock": {
+        "pattern": [
+          ["HHHHH", "HHHHH", "HHHHH", "HHHHH", "HHHHH"],
+          ["HHHHH", "H   H", "H   H", "H   H", "HHHHH"],
+          ["HHHHH", "H   H", "H 0 H", "H   H", "HHHHH"],
+          ["HOHOH", "MD EH", "HD EH", "HD EH", "HOHOH"],
+          ["HHHHH", "HHHHH", "HHHHH", "HHHHH", "HHHHH"]
+        ],
+        "mapping": {
+          "H": "biggerreactors:heat_exchanger_casing",
+          "M": "biggerreactors:heat_exchanger_terminal",
+          "D": "biggerreactors:heat_exchanger_condenser_channel",
+          "E": "biggerreactors:heat_exchanger_evaporator_channel",
+          "O": "biggerreactors:heat_exchanger_fluid_port"
+        }
+      },
+      "text": "Dos recorridos rectos de canal, cada uno cerrado por un Puerto de Fluidos en las dos puntas. La terminal va en la pared, al lado."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Reglas de los canales",
+      "text": "Cada bloque de canal tiene que tener exactamente $(thing)dos$() conexiones, ni más ni menos. Una línea recta cumple, y una serpiente también mientras no se bifurque.$(br2)Cada recorrido tiene que empezar en un Puerto de Fluidos y terminar en otro. Cuatro puertos en total: dos de condensador y dos de evaporador."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Sacarle más provecho",
+      "text": "El calor se mueve más rápido cuando los dos recorridos están pegados, así que entrelazalos en vez de ponerlos en esquinas opuestas.$(br2)Recorridos más largos significan más contacto y más caudal, y por eso una disposición en serpiente le gana a una recta en cualquier cosa más grande que este ejemplo."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Conectarlo",
+      "text": "Poné un puerto de cada recorrido en Entrada y el otro en Salida.$(br2)Para un circuito de condensación: el escape de la turbina a la entrada del condensador, y el agua de la salida del condensador de vuelta al reactor. Lo que quieras calentar pasa por el lado del evaporador."
+    }
+  ]
+}

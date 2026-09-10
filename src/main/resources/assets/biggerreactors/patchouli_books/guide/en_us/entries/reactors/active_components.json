@@ -1,0 +1,29 @@
+{
+  "name": "Active Reactors",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_coolant_port",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Active Reactors",
+      "text": "An active reactor converts the energy it generates into heat, and uses that heat to boil a fluid. Water becomes steam; other fluids have their own transitions.$(br2)The hot fluid is then piped into a $(l:turbines/overview)Turbine$(), which produces far more power than a passive reactor of the same size."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_coolant_port",
+      "title": "Coolant Port",
+      "text": "Used to insert cold fluids, such as water, and extract hot ones, such as steam. Each port is toggled between $(thing)Inlet$() and $(thing)Outlet$() in its interface.$(br2)You need at least one of each. A reactor with Coolant Ports may not also have Power Taps."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_manifold",
+      "title": "Coolant Manifold",
+      "text": "Used to increase the surface area for heat transfer. Manifolds are placed $(thing)inside$() the reactor, in the space a moderator would otherwise occupy, and carry coolant through the core.$(br2)Every manifold face touching a fuel rod adds transfer area, so a lattice of manifolds between the rods massively raises the heat a reactor can move. Manifolds must form a connected network reaching the reactor wall."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Fluids",
+      "text": "Which fluids a reactor can boil is data driven. Water to steam is the default pair, and mod packs may add more.$(br2)Each transition has a boiling point, a latent heat, thermal conductivities for both phases and a turbine multiplier. Check the $(l:getting_started/fluids)Fluids$() entry for the ones this mod ships."
+    }
+  ]
+}

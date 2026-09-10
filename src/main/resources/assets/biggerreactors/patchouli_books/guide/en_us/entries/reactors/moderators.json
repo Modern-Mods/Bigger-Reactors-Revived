@@ -1,0 +1,39 @@
+{
+  "name": "Moderators",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:graphite_block",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Moderators",
+      "text": "Reactor Moderators, commonly and incorrectly called Reactor Coolants, are materials placed $(thing)inside$() a reactor during construction.$(br2)When the reactor runs, a moderator changes the way it performs depending on its properties. Air is a moderator too, just a bad one, so an empty reactor still works."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "The four properties",
+      "text": "$(li)$(thing)Absorption$(): the speed at which radiation is absorbed and converted to case heat.$(li)$(thing)Efficiency$(): how efficiently absorbed radiation is converted into heat.$(li)$(thing)Moderation$(): the effectiveness at which radiation is moderated, or softened.$(li)$(thing)Conductivity$(): how well heat is transferred from the fuel rods to the reactor casing."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Reading the numbers",
+      "text": "In general higher values are always better. Absorption is the exception: it may be better or worse depending on your reactor design.$(br2)High absorption soaks radiation up close to the rods, which suits a small dense core. Low absorption lets radiation travel further and fertilize other fuel rods, which suits a large core with room between the columns."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:graphite_block",
+      "title": "Graphite",
+      "text": "The classic reactor moderator, and the cheapest one worth using. Low absorption with strong moderation, so radiation travels far and comes back softened.$(br2)If you are not sure what to fill a reactor with, fill it with graphite."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:ludicrite_block",
+      "title": "Ludicrite",
+      "text": "The end game moderator this mod ships. High absorption, high efficiency, strong moderation and excellent conductivity all at once.$(br2)It is also the best turbine coil in the mod, so expect to make a lot of it."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Adding your own",
+      "text": "Modpack authors can add or modify moderators through data maps or KubeJS, so the list is not fixed.$(br2)For an accurate list of supported blocks and fluids in your pack, open $(thing)JEI$() and check the uses for the Reactor Terminal."
+    }
+  ]
+}

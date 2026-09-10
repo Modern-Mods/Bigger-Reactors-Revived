@@ -1,0 +1,34 @@
+{
+  "name": "Bobinas",
+  "category": "biggerreactors:turbines",
+  "icon": "biggerreactors:ludicrite_block",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Bobinas",
+      "text": "Las bobinas son bloques de metal puestos en anillo alrededor del eje del rotor, en las capas que no son de aspas. Convierten la velocidad del rotor en RF y lo frenan al hacerlo."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Las tres propiedades",
+      "text": "$(li)$(thing)Eficiencia$(): cuánta de la energía del rotor se convierte en RF.$(li)$(thing)Tasa de Extracción$(): qué tan fuerte frena la bobina al rotor. Más alto saca más energía por tick pero hace más difícil mantener la velocidad.$(li)$(thing)Bonus$(): un multiplicador que se aplica encima cuando la bobina es parte de un anillo completo."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:iron_block",
+      "title": "Para empezar",
+      "text": "El hierro es la opción barata por defecto. El oro es una mejora directa, y el cobre queda entre los dos.$(br2)Ninguno vale la pena optimizar. Armá la turbina con hierro y cambiá las bobinas cuando tengas un suministro de combustible que la mantenga alimentada."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:ludicrite_block",
+      "title": "Ludicrita",
+      "text": "La mejor bobina que trae el mod. Eficiencia alta, tasa de extracción fuerte y un multiplicador de bonus encima.$(br2)Un anillo completo de ludicrita es el final de la progresión de bobinas, salvo que tu pack agregue algo mejor."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Agregar las tuyas",
+      "text": "Igual que los moderadores, la lista de bobinas se define por datos y los packs pueden cambiarla.$(br2)Abrí $(thing)JEI$() y mirá los usos de la Terminal de Turbina para ver la lista exacta de tu pack."
+    }
+  ]
+}

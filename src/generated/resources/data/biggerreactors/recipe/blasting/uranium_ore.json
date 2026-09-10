@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "biggerreactors:uranium_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "biggerreactors:uranium_ingot"
+  }
+}

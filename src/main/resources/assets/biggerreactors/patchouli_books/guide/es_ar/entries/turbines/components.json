@@ -1,0 +1,67 @@
+{
+  "name": "Componentes de Turbina",
+  "category": "biggerreactors:turbines",
+  "icon": "biggerreactors:turbine_terminal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_terminal",
+      "title": "Terminal de Turbina",
+      "text": "El controlador. Click derecho para arrancar y parar la turbina, acoplar las bobinas, fijar el caudal y leer las RPM, la producción de energía y los niveles de fluido.$(br2)Hace falta al menos una."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_casing",
+      "title": "Carcasa de Turbina",
+      "text": "Marco y paredes de la turbina. Todas las aristas y esquinas tienen que ser carcasa."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_rotor_bearing",
+      "title": "Rodamiento del Rotor",
+      "text": "Hacen falta exactamente dos, uno en cada punta del rotor, centrados en caras opuestas del multibloque.$(br2)El rodamiento del lado de las aspas renderiza el eje girando, así que ese es el que vas a mirar."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_rotor_shaft",
+      "title": "Eje del Rotor",
+      "text": "Forma una línea sin cortes de un rodamiento al otro. Nada más puede estar sobre esa línea.$(br2)El largo del eje define cuántas capas de aspas y de bobinas entran en la turbina."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_rotor_blade",
+      "title": "Aspa del Rotor",
+      "text": "Se engancha al eje y sale hacia afuera. Las aspas son contra lo que empuja el fluido, así que más aspas significan más torque y una aceleración más rápida.$(br2)Cada capa a lo largo del eje es o toda de aspas o toda de bobinas. Mezclarlas en una misma capa se rechaza, y todas las capas de aspas tienen que estar juntas en una punta."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:iron_block",
+      "title": "Bobinas",
+      "text": "Las bobinas no son un bloque que agregue este mod. Son bloques de metal comunes puestos alrededor del eje, en las capas que no usan las aspas.$(br2)Mirá la entrada de $(l:turbines/coils)Bobinas$() para saber qué hacen y cuáles conviene usar."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_fluid_port",
+      "title": "Puerto de Fluidos",
+      "text": "Por donde entra y sale el fluido. Cada puerto se alterna entre $(thing)Entrada$() y $(thing)Salida$(); necesitás al menos uno de cada uno.$(br2)Vapor adentro, agua afuera, es la combinación habitual."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_power_tap",
+      "title": "Toma de Energía",
+      "text": "Por donde sacás el RF que genera la turbina. Funciona exactamente igual que la versión del reactor."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_computer_port",
+      "title": "Puerto de Computadora",
+      "text": "Expone la turbina a scripts en Lua con un mod de computadoras como $(thing)CC: Tweaked$(). Actividad, acople de bobinas, caudal, RPM y energía se pueden leer, y casi todo se puede escribir."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_glass",
+      "title": "Vidrio de Turbina",
+      "text": "Solo paredes, nunca marco. Te deja mirar el rotor girando, que es el motivo entero por el que armás una."
+    }
+  ]
+}

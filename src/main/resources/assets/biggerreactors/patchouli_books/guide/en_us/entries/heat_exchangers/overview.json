@@ -1,0 +1,30 @@
+{
+  "name": "Heat Exchangers",
+  "category": "biggerreactors:heat_exchangers",
+  "icon": "biggerreactors:heat_exchanger_terminal",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Heat Exchangers",
+      "text": "A heat exchanger moves heat between two fluid loops that never touch each other.$(br2)One loop runs through the $(thing)Condenser$() channel and gives up heat. The other runs through the $(thing)Evaporator$() channel and takes it. Nothing is generated here; heat is only moved."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What it is for",
+      "text": "The usual job is condensing turbine exhaust back into water so it can return to the reactor without a fresh supply.$(br2)The other job is running a two stage setup: a reactor boils a high temperature fluid, the exchanger uses that to boil steam, and the steam drives the turbine."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Size",
+      "text": "The smallest heat exchanger is $(thing)4 x 3 x 3$(). With the default config the largest is $(thing)64 x 96 x 64$().$(br2)Throughput comes from how much channel you can fit inside, so a long thin exchanger works as well as a cube."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "See also",
+      "entries": [
+        "biggerreactors:heat_exchangers/basic_heat_exchanger"
+      ]
+    }
+  ]
+}

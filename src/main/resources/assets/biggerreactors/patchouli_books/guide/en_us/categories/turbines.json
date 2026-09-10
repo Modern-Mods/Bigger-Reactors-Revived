@@ -1,0 +1,6 @@
+{
+  "name": "Turbines",
+  "description": "Turns hot fluids from an active reactor into a lot of power.",
+  "icon": "biggerreactors:turbine_terminal",
+  "sortnum": 2
+}

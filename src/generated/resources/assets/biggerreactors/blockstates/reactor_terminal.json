@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "assembled=false,facing=down,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=down,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=east,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=east,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=north,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=north,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=south,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=south,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=up,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=up,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=west,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=false,facing=west,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/off"
+    },
+    "assembled=true,facing=down,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/active"
+    },
+    "assembled=true,facing=down,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/idle"
+    },
+    "assembled=true,facing=east,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/active"
+    },
+    "assembled=true,facing=east,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/idle"
+    },
+    "assembled=true,facing=north,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/active"
+    },
+    "assembled=true,facing=north,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/idle"
+    },
+    "assembled=true,facing=south,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/active"
+    },
+    "assembled=true,facing=south,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/idle"
+    },
+    "assembled=true,facing=up,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/active"
+    },
+    "assembled=true,facing=up,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/idle"
+    },
+    "assembled=true,facing=west,reactoractivity=active": {
+      "model": "biggerreactors:block/reactor/terminal/active"
+    },
+    "assembled=true,facing=west,reactoractivity=inactive": {
+      "model": "biggerreactors:block/reactor/terminal/idle"
+    }
+  }
+}

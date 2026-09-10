@@ -1,0 +1,6 @@
+{
+  "name": "Reactores",
+  "description": "El multibloque principal. Quema combustible para dar energía o calor.",
+  "icon": "biggerreactors:reactor_terminal",
+  "sortnum": 1
+}

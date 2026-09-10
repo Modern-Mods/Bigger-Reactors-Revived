@@ -1,0 +1,49 @@
+{
+  "name": "Heat Exchanger Components",
+  "category": "biggerreactors:heat_exchangers",
+  "icon": "biggerreactors:heat_exchanger_terminal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_terminal",
+      "title": "Heat Exchanger Terminal",
+      "text": "The controller. Shows both channels, their fluids, their temperatures and the rate at which heat is moving between them.$(br2)It is also where assembly errors are reported."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_casing",
+      "title": "Heat Exchanger Casing",
+      "text": "Frame and walls. Every edge and corner has to be casing."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_condenser_channel",
+      "title": "Condenser Channel",
+      "text": "The hot side. Carries the fluid that is giving up heat, normally turbine exhaust on its way back to being water.$(br2)Channels form a pipe: each one connects to exactly two neighbours, and the run has to start at one Fluid Port and end at another."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_evaporator_channel",
+      "title": "Evaporator Channel",
+      "text": "The cold side. Carries the fluid that is taking heat up.$(br2)Same rules as the condenser: exactly two connections per block, port at each end. The two channel types never connect to each other, which is what keeps the loops separate."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_fluid_port",
+      "title": "Fluid Port",
+      "text": "Exactly four are required: two on the condenser run and two on the evaporator run.$(br2)Each port picks up its channel type from whichever channel it touches, and toggles between $(thing)Inlet$() and $(thing)Outlet$() in its interface."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_computer_port",
+      "title": "Computer Port",
+      "text": "Exposes both channels to Lua scripting with a computer mod such as $(thing)CC: Tweaked$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:heat_exchanger_glass",
+      "title": "Heat Exchanger Glass",
+      "text": "Wall only, never frame. Lets you see the channel layout inside, which is worth it while you are still getting the connections right."
+    }
+  ]
+}

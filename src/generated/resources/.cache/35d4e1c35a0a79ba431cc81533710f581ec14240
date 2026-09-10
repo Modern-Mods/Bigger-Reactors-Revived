@@ -1,0 +1,21 @@
+// 1.21.1	2026-09-07T00:57:10.9834392	Tags for minecraft:item mod id biggerreactors
+9ed6c9d83e2621a411c73343e5ae0a55c75d1ebf data/c/tags/item/dusts.json
+abb68858642b6d0c2baebbab22a3741b66e163a9 data/c/tags/item/dusts/cyanite.json
+3b6e64de1ba8871992b3f3e5f954ca4778316699 data/c/tags/item/dusts/graphite.json
+a0465d04da369676e8a97ad14327aeb8aacdd43b data/c/tags/item/dusts/ludicrite.json
+f9b28984f72aa3e236fbcc21676fe8be3a42e837 data/c/tags/item/dusts/uranium.json
+1a245071e04dbe8d1ddd23d74552b52567fe0448 data/c/tags/item/ingots.json
+10f80d30fc396c093ef5e54c2547b4cbbebc181c data/c/tags/item/ingots/cyanite.json
+c5bac89f2d6f90fddcdf5eddebd2635ae7886ec1 data/c/tags/item/ingots/graphite.json
+690aedd1a2cd4b21acf649e7a080da89a1066e6a data/c/tags/item/ingots/ludicrite.json
+4b42528355fb57e25368dd62bfd3d8a2eeef0e4e data/c/tags/item/ingots/uranium.json
+6d7f3860460d57e0c0d9c77eb3e5ec2adf32c0f3 data/c/tags/item/ores.json
+6d7f3860460d57e0c0d9c77eb3e5ec2adf32c0f3 data/c/tags/item/ores/uranium.json
+3d157ebbd51adb46f8412d3b6a09d97558976c55 data/c/tags/item/raw_materials/uranium.json
+a178944ea087f4d546c14acfe17e09a3d3304f8b data/c/tags/item/storage_blocks.json
+05351f43b1cd58aa6e8b94c8a5977a23bd671180 data/c/tags/item/storage_blocks/cyanite.json
+d0d7c73e3a319f012b582d2691e7dfa4f00aea86 data/c/tags/item/storage_blocks/graphite.json
+e80538caf851a4d270e34af3b70c821dbf014dbc data/c/tags/item/storage_blocks/ludicrite.json
+6db85847ccdfd4873e4d6ed90c03e721ca88e642 data/c/tags/item/storage_blocks/raw_uranium.json
+47a004711e0327bfb6b2e8b339d563b3d8fc38cc data/c/tags/item/storage_blocks/uranium.json
+6df32cc03c3873dbc16f741d2fdfc5eef4b8e349 data/c/tags/item/tools/wrench.json

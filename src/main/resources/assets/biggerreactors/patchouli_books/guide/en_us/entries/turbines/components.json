@@ -1,0 +1,67 @@
+{
+  "name": "Turbine Components",
+  "category": "biggerreactors:turbines",
+  "icon": "biggerreactors:turbine_terminal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_terminal",
+      "title": "Turbine Terminal",
+      "text": "The controller. Right click it to start and stop the turbine, engage the coils, set the flow rate and read RPM, energy production and fluid levels.$(br2)At least one is required."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_casing",
+      "title": "Turbine Casing",
+      "text": "Frame and walls of the turbine. Every edge and corner has to be casing."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_rotor_bearing",
+      "title": "Rotor Bearing",
+      "text": "Exactly two are required, one at each end of the rotor, centred on opposite faces of the multiblock.$(br2)The bearing on the blade end renders the spinning shaft, so it is the one you will watch."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_rotor_shaft",
+      "title": "Rotor Shaft",
+      "text": "Forms an unbroken line from one bearing to the other. Nothing else may sit on that line.$(br2)Shaft length sets how many layers of blades and coils the turbine can hold."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_rotor_blade",
+      "title": "Rotor Blade",
+      "text": "Attaches to the shaft and sticks out from it. Blades are what the fluid pushes on, so more blades means more torque and a faster spin up.$(br2)Every layer along the shaft is either all blades or all coils. Mixing the two in one layer is rejected, and the blade layers must all sit together at one end."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:iron_block",
+      "title": "Coils",
+      "text": "Coils are not a block this mod adds. They are ordinary metal blocks placed around the shaft in the layers the blades do not use.$(br2)See the $(l:turbines/coils)Coils$() entry for what they do and which ones are worth using."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_fluid_port",
+      "title": "Fluid Port",
+      "text": "Where fluid enters and leaves. Each port toggles between $(thing)Inlet$() and $(thing)Outlet$(); you need at least one of each.$(br2)Steam in, water out, is the usual pairing."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_power_tap",
+      "title": "Power Tap",
+      "text": "Where you extract the RF the turbine generates. Works exactly like the reactor version."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_computer_port",
+      "title": "Computer Port",
+      "text": "Exposes the turbine to Lua scripting with a computer mod such as $(thing)CC: Tweaked$(). Activity, coil engagement, flow rate, RPM and energy are all readable, and most are writable."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:turbine_glass",
+      "title": "Turbine Glass",
+      "text": "Wall only, never frame. Lets you watch the rotor spin, which is the entire point of building one."
+    }
+  ]
+}

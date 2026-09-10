@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "assembled=false,facing=down,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=down,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=east,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=east,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=north,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=north,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=south,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=south,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=up,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=up,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=west,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=false,facing=west,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/off"
+    },
+    "assembled=true,facing=down,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/active"
+    },
+    "assembled=true,facing=down,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/idle"
+    },
+    "assembled=true,facing=east,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/active"
+    },
+    "assembled=true,facing=east,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/idle"
+    },
+    "assembled=true,facing=north,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/active"
+    },
+    "assembled=true,facing=north,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/idle"
+    },
+    "assembled=true,facing=south,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/active"
+    },
+    "assembled=true,facing=south,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/idle"
+    },
+    "assembled=true,facing=up,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/active"
+    },
+    "assembled=true,facing=up,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/idle"
+    },
+    "assembled=true,facing=west,turbinestate=active": {
+      "model": "biggerreactors:block/turbine/terminal/active"
+    },
+    "assembled=true,facing=west,turbinestate=inactive": {
+      "model": "biggerreactors:block/turbine/terminal/idle"
+    }
+  }
+}

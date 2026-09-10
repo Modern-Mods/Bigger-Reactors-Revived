@@ -1,0 +1,394 @@
+{
+  "values": {
+    "#c:storage_blocks/allthemodium": {
+      "absorption": 0.66,
+      "conductivity": 3.5,
+      "efficiency": 0.9,
+      "moderation": 3.5
+    },
+    "#c:storage_blocks/aluminum": {
+      "absorption": 0.5,
+      "conductivity": 0.6,
+      "efficiency": 0.78,
+      "moderation": 1.42
+    },
+    "#c:storage_blocks/bronze": {
+      "absorption": 0.51,
+      "conductivity": 1.0,
+      "efficiency": 0.77,
+      "moderation": 1.41
+    },
+    "#c:storage_blocks/copper": {
+      "absorption": 0.5,
+      "conductivity": 1.0,
+      "efficiency": 0.75,
+      "moderation": 1.4
+    },
+    "#c:storage_blocks/diamond": {
+      "absorption": 0.55,
+      "conductivity": 3.0,
+      "efficiency": 0.85,
+      "moderation": 1.5
+    },
+    "#c:storage_blocks/electrum": {
+      "absorption": 0.53,
+      "conductivity": 2.2,
+      "efficiency": 0.82,
+      "moderation": 1.47
+    },
+    "#c:storage_blocks/emerald": {
+      "absorption": 0.55,
+      "conductivity": 2.5,
+      "efficiency": 0.85,
+      "moderation": 1.5
+    },
+    "#c:storage_blocks/enderium": {
+      "absorption": 0.53,
+      "conductivity": 3.0,
+      "efficiency": 0.88,
+      "moderation": 1.6
+    },
+    "#c:storage_blocks/gold": {
+      "absorption": 0.52,
+      "conductivity": 2.0,
+      "efficiency": 0.8,
+      "moderation": 1.45
+    },
+    "#c:storage_blocks/graphite": {
+      "absorption": 0.1,
+      "conductivity": 2.0,
+      "efficiency": 0.5,
+      "moderation": 2.0
+    },
+    "#c:storage_blocks/invar": {
+      "absorption": 0.5,
+      "conductivity": 0.6,
+      "efficiency": 0.79,
+      "moderation": 1.43
+    },
+    "#c:storage_blocks/iron": {
+      "absorption": 0.5,
+      "conductivity": 0.6,
+      "efficiency": 0.75,
+      "moderation": 1.4
+    },
+    "#c:storage_blocks/lead": {
+      "absorption": 0.75,
+      "conductivity": 1.5,
+      "efficiency": 0.75,
+      "moderation": 1.75
+    },
+    "#c:storage_blocks/lumium": {
+      "absorption": 0.75,
+      "conductivity": 1.8,
+      "efficiency": 0.55,
+      "moderation": 1.5
+    },
+    "#c:storage_blocks/nickel": {
+      "absorption": 0.5,
+      "conductivity": 0.6,
+      "efficiency": 0.82,
+      "moderation": 1.46
+    },
+    "#c:storage_blocks/osmium": {
+      "absorption": 0.51,
+      "conductivity": 1.0,
+      "efficiency": 0.77,
+      "moderation": 1.41
+    },
+    "#c:storage_blocks/platinum": {
+      "absorption": 0.53,
+      "conductivity": 2.5,
+      "efficiency": 0.86,
+      "moderation": 1.58
+    },
+    "#c:storage_blocks/signalum": {
+      "absorption": 0.63,
+      "conductivity": 1.8,
+      "efficiency": 0.66,
+      "moderation": 1.5
+    },
+    "#c:storage_blocks/silver": {
+      "absorption": 0.51,
+      "conductivity": 1.5,
+      "efficiency": 0.79,
+      "moderation": 1.43
+    },
+    "#c:storage_blocks/steel": {
+      "absorption": 0.5,
+      "conductivity": 0.6,
+      "efficiency": 0.78,
+      "moderation": 1.42
+    },
+    "#c:storage_blocks/tin": {
+      "absorption": 0.3,
+      "conductivity": 0.75,
+      "efficiency": 0.7,
+      "moderation": 1.35
+    },
+    "#c:storage_blocks/unobtainium": {
+      "absorption": 0.95,
+      "conductivity": 5.0,
+      "efficiency": 0.82,
+      "moderation": 2.0
+    },
+    "#c:storage_blocks/vibranium": {
+      "absorption": 0.15,
+      "conductivity": 4.0,
+      "efficiency": 0.75,
+      "moderation": 8.0
+    },
+    "#c:storage_blocks/zinc": {
+      "absorption": 0.51,
+      "conductivity": 1.0,
+      "efficiency": 0.77,
+      "moderation": 1.41
+    },
+    "avaritia:crystal_matrix": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "avaritia"
+        }
+      ],
+      "absorption": 0.85,
+      "conductivity": 1132.0,
+      "efficiency": 0.92,
+      "moderation": 4.0
+    },
+    "avaritia:infinity": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "avaritia"
+        }
+      ],
+      "absorption": 0.99,
+      "conductivity": 10500.0,
+      "efficiency": 0.99,
+      "moderation": 10.0
+    },
+    "avaritia:neutron": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "avaritia"
+        }
+      ],
+      "absorption": 0.95,
+      "conductivity": 5900.0,
+      "efficiency": 0.95,
+      "moderation": 6.0
+    },
+    "biggerreactors:ludicrite_block": {
+      "absorption": 0.6,
+      "conductivity": 3.0,
+      "efficiency": 0.87,
+      "moderation": 3.0
+    },
+    "mekanism:ethene": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "absorption": 0.37,
+      "conductivity": 1.5,
+      "efficiency": 0.65,
+      "moderation": 1.9
+    },
+    "mekanism:hydrofluoric_acid": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "absorption": 0.6,
+      "conductivity": 2.5,
+      "efficiency": 0.45,
+      "moderation": 1.4
+    },
+    "mekanism:hydrogen": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "absorption": 0.2,
+      "conductivity": 0.1,
+      "efficiency": 0.3,
+      "moderation": 1.2
+    },
+    "mekanism:hydrogen_chloride": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "absorption": 0.31,
+      "conductivity": 1.0,
+      "efficiency": 0.65,
+      "moderation": 1.7
+    },
+    "mekanism:lithium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "absorption": 0.7,
+      "conductivity": 0.7,
+      "efficiency": 0.6,
+      "moderation": 1.04
+    },
+    "mekanism:oxygen": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "absorption": 0.01,
+      "conductivity": 0.1,
+      "efficiency": 0.35,
+      "moderation": 1.04
+    },
+    "mekanism:sodium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "absorption": 0.23,
+      "conductivity": 1.0,
+      "efficiency": 0.6,
+      "moderation": 1.7
+    },
+    "mekanism:steam": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "absorption": 0.33,
+      "conductivity": 0.5,
+      "efficiency": 0.5,
+      "moderation": 1.33
+    },
+    "mekanismgenerators:deuterium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanismgenerators"
+        }
+      ],
+      "absorption": 0.03,
+      "conductivity": 0.1,
+      "efficiency": 0.3,
+      "moderation": 1.07
+    },
+    "minecraft:air": {
+      "absorption": 0.1,
+      "conductivity": 0.05,
+      "efficiency": 0.25,
+      "moderation": 1.1
+    },
+    "minecraft:cave_air": {
+      "absorption": 0.1,
+      "conductivity": 0.05,
+      "efficiency": 0.25,
+      "moderation": 1.1
+    },
+    "minecraft:glass": {
+      "absorption": 0.2,
+      "conductivity": 0.3,
+      "efficiency": 0.25,
+      "moderation": 1.1
+    },
+    "minecraft:ice": {
+      "absorption": 0.33,
+      "conductivity": 0.1,
+      "efficiency": 0.33,
+      "moderation": 1.15
+    },
+    "minecraft:lava": {
+      "absorption": 0.33,
+      "conductivity": 0.7,
+      "efficiency": 0.33,
+      "moderation": 1.15
+    },
+    "minecraft:snow_block": {
+      "absorption": 0.15,
+      "conductivity": 0.05,
+      "efficiency": 0.33,
+      "moderation": 1.05
+    },
+    "minecraft:void_air": {
+      "absorption": 0.1,
+      "conductivity": 0.05,
+      "efficiency": 0.25,
+      "moderation": 1.1
+    },
+    "minecraft:water": {
+      "absorption": 0.33,
+      "conductivity": 0.1,
+      "efficiency": 0.5,
+      "moderation": 1.33
+    },
+    "neovitae:essentia_vitae_block": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "neovitae"
+        }
+      ],
+      "absorption": 0.7,
+      "conductivity": 2.5,
+      "efficiency": 0.55,
+      "moderation": 1.75
+    },
+    "ultimatefoods:joanfoite_block": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "ultimatefoods"
+        }
+      ],
+      "absorption": 90.0,
+      "conductivity": 90.0,
+      "efficiency": 90.0,
+      "moderation": 90.0
+    },
+    "ultimatefoods:mushashite_block": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "ultimatefoods"
+        }
+      ],
+      "absorption": 80.0,
+      "conductivity": 80.0,
+      "efficiency": 80.0,
+      "moderation": 80.0
+    },
+    "ultimatefoods:nadienite_block": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "ultimatefoods"
+        }
+      ],
+      "absorption": 200.0,
+      "conductivity": 200.0,
+      "efficiency": 200.0,
+      "moderation": 200.0
+    }
+  }
+}

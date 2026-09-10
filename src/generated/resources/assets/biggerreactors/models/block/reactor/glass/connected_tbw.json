@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "down": "phosphophyllite:block/transparent",
+    "east": "biggerreactors:block/reactor/glass/connected_tb",
+    "north": "biggerreactors:block/reactor/glass/connected_tbr",
+    "particle": "biggerreactors:block/reactor/glass/connected_none",
+    "south": "biggerreactors:block/reactor/glass/connected_tbl",
+    "up": "phosphophyllite:block/transparent",
+    "west": "phosphophyllite:block/transparent"
+  }
+}

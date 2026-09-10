@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "assembled=false,facing=down,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=false,facing=down,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=false,facing=east,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=false,facing=east,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=false,facing=north,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=false,facing=north,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=false,facing=south,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=false,facing=south,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=false,facing=up,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=false,facing=up,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=false,facing=west,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=false,facing=west,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=true,facing=down,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=true,facing=down,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=true,facing=east,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=true,facing=east,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=true,facing=north,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=true,facing=north,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=true,facing=south,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=true,facing=south,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=true,facing=up,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=true,facing=up,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    },
+    "assembled=true,facing=west,is_lit=false": {
+      "model": "biggerreactors:block/reactor/redstone_port/unlit"
+    },
+    "assembled=true,facing=west,is_lit=true": {
+      "model": "biggerreactors:block/reactor/redstone_port/lit"
+    }
+  }
+}

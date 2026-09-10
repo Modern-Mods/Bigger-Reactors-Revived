@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "assembled=false,facing=down,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=false,facing=down,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=false,facing=east,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=false,facing=east,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=false,facing=north,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=false,facing=north,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=false,facing=south,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=false,facing=south,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=false,facing=up,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=false,facing=up,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=false,facing=west,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=false,facing=west,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=true,facing=down,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=true,facing=down,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=true,facing=east,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=true,facing=east,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=true,facing=north,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=true,facing=north,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=true,facing=south,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=true,facing=south,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=true,facing=up,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=true,facing=up,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    },
+    "assembled=true,facing=west,portdirection=inlet": {
+      "model": "biggerreactors:block/reactor/access_port/inlet"
+    },
+    "assembled=true,facing=west,portdirection=outlet": {
+      "model": "biggerreactors:block/reactor/access_port/outlet"
+    }
+  }
+}

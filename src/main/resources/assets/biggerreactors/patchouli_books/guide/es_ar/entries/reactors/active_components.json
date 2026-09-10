@@ -1,0 +1,29 @@
+{
+  "name": "Reactores Activos",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_coolant_port",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Reactores Activos",
+      "text": "Un reactor activo convierte la energía que genera en calor, y usa ese calor para hervir un fluido. El agua se convierte en vapor; otros fluidos tienen sus propias transiciones.$(br2)Después el fluido caliente se manda a una $(l:turbines/overview)Turbina$(), que produce mucha más energía que un reactor pasivo del mismo tamaño."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_coolant_port",
+      "title": "Puerto de Refrigerante",
+      "text": "Sirve para meter fluidos fríos, como agua, y sacar los calientes, como vapor. Cada puerto se alterna entre $(thing)Entrada$() y $(thing)Salida$() en su interfaz.$(br2)Necesitás al menos uno de cada uno. Un reactor con Puertos de Refrigerante no puede tener además Tomas de Energía."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_manifold",
+      "title": "Colector de Refrigerante",
+      "text": "Sirve para aumentar la superficie de transferencia de calor. Los colectores van $(thing)adentro$() del reactor, en el espacio que ocuparía un moderador, y llevan el refrigerante por el núcleo.$(br2)Cada cara de colector que toca una barra de combustible suma superficie, así que una red de colectores entre las barras sube muchísimo el calor que puede mover el reactor. Los colectores tienen que formar una red conectada que llegue a la pared."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Fluidos",
+      "text": "Qué fluidos puede hervir un reactor se define por datos. Agua a vapor es el par por defecto, y los modpacks pueden agregar más.$(br2)Cada transición tiene un punto de ebullición, un calor latente, conductividades térmicas para las dos fases y un multiplicador de turbina. Mirá la entrada de $(l:getting_started/fluids)Fluidos$() para los que trae este mod."
+    }
+  ]
+}

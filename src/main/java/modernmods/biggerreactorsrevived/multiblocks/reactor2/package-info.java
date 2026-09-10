@@ -1,0 +1,4 @@
+@IgnoreRegistration
+package modernmods.biggerreactorsrevived.multiblocks.reactor2;
+
+import modernmods.phosphophylliterevived.registry.IgnoreRegistration;

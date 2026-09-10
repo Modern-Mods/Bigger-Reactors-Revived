@@ -1,0 +1,6 @@
+{
+  "name": "Intercambiadores de Calor",
+  "description": "Mueve calor entre dos circuitos de fluidos separados.",
+  "icon": "biggerreactors:heat_exchanger_terminal",
+  "sortnum": 3
+}

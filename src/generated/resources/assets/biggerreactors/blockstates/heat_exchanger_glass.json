@@ -1,0 +1,388 @@
+{
+  "variants": {
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_none"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_w"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_t"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tw"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_s"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_sw"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_ts"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tsw"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_n"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_nw"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tn"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnw"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_ns"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_nsw"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tns"
+    },
+    "assembled=false,bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnsw"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_e"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_ew"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_te"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tew"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_se"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_sew"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tse"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tsew"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_ne"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_new"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tne"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnew"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_nse"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_nsew"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnse"
+    },
+    "assembled=false,bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnsew"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_b"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bw"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tb"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbw"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bs"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bsw"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbs"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbsw"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bn"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnw"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbn"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbnw"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bns"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnsw"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbns"
+    },
+    "assembled=false,bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbnsw"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_be"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bew"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbe"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbew"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bse"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bsew"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbse"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbsew"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bne"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnew"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbne"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbnew"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnse"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnsew"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbnse"
+    },
+    "assembled=false,bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_all"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_none"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_w"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_t"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tw"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_s"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_sw"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_ts"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tsw"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_n"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_nw"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tn"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnw"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_ns"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_nsw"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tns"
+    },
+    "assembled=true,bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnsw"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_e"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_ew"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_te"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tew"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_se"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_sew"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tse"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tsew"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_ne"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_new"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tne"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnew"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_nse"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_nsew"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnse"
+    },
+    "assembled=true,bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tnsew"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_b"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bw"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tb"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbw"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bs"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bsw"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbs"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbsw"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bn"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnw"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbn"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbnw"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bns"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnsw"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbns"
+    },
+    "assembled=true,bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbnsw"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_be"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bew"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbe"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbew"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bse"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bsew"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbse"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbsew"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bne"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnew"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbne"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbnew"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnse"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_bnsew"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_tbnse"
+    },
+    "assembled=true,bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/heat_exchanger/glass/connected_all"
+    }
+  }
+}

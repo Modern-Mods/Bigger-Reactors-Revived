@@ -1,0 +1,35 @@
+{
+  "name": "Turbines",
+  "category": "biggerreactors:turbines",
+  "icon": "biggerreactors:turbine_terminal",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Turbines",
+      "text": "A turbine takes the hot fluid an $(l:reactors/active_components)Active Reactor$() produces and turns it back into RF.$(br2)Steam pushes a rotor, the rotor spins past a set of coils, and the coils generate power. A tuned turbine beats a passive reactor of the same size by a wide margin."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Size",
+      "text": "The smallest turbine is $(thing)5 x 4 x 5$(). With the default config the largest is $(thing)32 x 192 x 32$().$(br2)The rotor runs the long way through the multiblock, from one Rotor Bearing to the other, and both bearings must sit in the centre of opposite faces."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How it spins",
+      "text": "Fluid enters through a Fluid Port, pushes on the rotor blades and leaves as the cooled phase through a second port. Rotor speed settles where the drag from the coils matches the push from the fluid.$(br2)Two speeds matter: $(thing)900 RPM$() and $(thing)1800 RPM$(). A rotor held at either of those is far more efficient than one anywhere in between."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "The coil engage switch",
+      "text": "The terminal has a switch that engages or disengages the coils.$(br2)Disengaged, the rotor spins up freely with nothing to slow it down. Engaged, it generates power and slows. Spinning up with the coils off and then engaging them is the normal way to reach a target RPM quickly."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "See also",
+      "entries": [
+        "biggerreactors:turbines/basic_turbine"
+      ]
+    }
+  ]
+}

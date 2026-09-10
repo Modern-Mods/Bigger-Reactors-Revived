@@ -1,0 +1,42 @@
+{
+  "name": "Componentes Obligatorios",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_terminal",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Lo mínimo",
+      "text": "Estos cinco componentes son lo mínimo para armar cualquier tipo de reactor. Si te falta uno, la terminal te dice exactamente cuál."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_terminal",
+      "title": "Terminal de Reactor",
+      "text": "El corazón del reactor. Click derecho para abrir la interfaz, donde prendés y apagás el reactor, fijás la inserción de las barras de control y leés todas las estadísticas de la simulación.$(br2)También te dice por qué el multibloque no ensambla. Hace falta al menos una, y podés poner más."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_casing",
+      "title": "Carcasa de Reactor",
+      "text": "Forma el marco y las paredes del reactor. Todas las aristas y esquinas de la caja tienen que ser carcasa; ahí no se acepta otra cosa.$(br2)La carcasa también es donde termina la radiación absorbida como calor, antes de convertirse en RF o de hervir un fluido."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_fuel_rod",
+      "title": "Barra de Combustible",
+      "text": "Donde se guardan el combustible y el residuo. Las barras van adentro del reactor y tienen que formar una columna vertical sin cortes, desde el bloque de arriba del piso hasta el de abajo del techo.$(br2)Cada columna tiene que estar tapada con una Barra de Control, y cada Barra de Control tiene que tener una columna completa debajo."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_control_rod",
+      "title": "Barra de Control",
+      "text": "Sirve para mantener el control sobre la reacción. Va en la $(thing)cara superior$() del reactor, justo arriba de su columna de combustible.$(br2)La inserción va de 0% a 100%. Más inserción significa menos neutrones llegando al combustible, o sea menos calor, menos energía y quemado más lento. Es tu acelerador."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_access_port",
+      "title": "Puerto de Acceso",
+      "text": "Sirve para meter combustible y sacar residuo. Cada puerto se alterna entre $(thing)Entrada$() y $(thing)Salida$() en su interfaz.$(br2)Una entrada acepta uranio y lo mete en las barras. Una salida te devuelve cianita a medida que el combustible se quema. Las tolvas y los tubos funcionan en los dos."
+    }
+  ]
+}

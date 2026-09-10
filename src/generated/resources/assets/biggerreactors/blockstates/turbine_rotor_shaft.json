@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "assembled=false,turbineshaftrotation=x": {
+      "model": "biggerreactors:block/turbine/rotor_shaft",
+      "y": 90
+    },
+    "assembled=false,turbineshaftrotation=y": {
+      "model": "biggerreactors:block/turbine/rotor_shaft",
+      "x": 90
+    },
+    "assembled=false,turbineshaftrotation=z": {
+      "model": "biggerreactors:block/turbine/rotor_shaft"
+    },
+    "assembled=true,turbineshaftrotation=x": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,turbineshaftrotation=y": {
+      "model": "phosphophyllite:block/invisible"
+    },
+    "assembled=true,turbineshaftrotation=z": {
+      "model": "phosphophyllite:block/invisible"
+    }
+  }
+}

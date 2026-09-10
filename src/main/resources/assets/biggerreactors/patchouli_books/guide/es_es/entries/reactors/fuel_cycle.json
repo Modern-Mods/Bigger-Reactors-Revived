@@ -1,0 +1,22 @@
+{
+  "name": "Combustible y Residuo",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:uranium_ingot",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "El ciclo del combustible",
+      "text": "Los reactores funcionan con $(thing)Uranio$(). Metés lingotes por un Puerto de Acceso en modo Entrada y llenan las barras de combustible.$(br2)A medida que corre la reacción, el uranio se consume y se acumula $(thing)Cianita$() como residuo. Sacá la cianita por un Puerto de Acceso en modo Salida."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Reprocesado",
+      "text": "La cianita no es un callejón sin salida. Un $(l:machines/cyanite_reprocessor)Reprocesador de Cianita$() la convierte en $(thing)Blutonio$(), que es a la vez material de crafteo y un combustible más denso que el uranio.$(br2)Eso cierra el círculo: entra uranio, sale cianita, vuelve blutonio."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Adentro de las barras",
+      "text": "Cada bloque de barra de combustible guarda una porción del tanque total del reactor. El tanque es compartido por todo el multibloque, así que una barra de abajo es igual a una de arriba.$(br2)La terminal muestra combustible y residuo en una sola barra. Cuando el residuo desplaza al combustible la reacción se frena, así que mantené una salida funcionando."
+    }
+  ]
+}

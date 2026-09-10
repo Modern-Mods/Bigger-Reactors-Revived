@@ -1,0 +1,22 @@
+{
+  "name": "Fuel and Waste",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:uranium_ingot",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "The fuel cycle",
+      "text": "Reactors run on $(thing)Uranium$(). Feed ingots through an Access Port set to Inlet and they fill the fuel rods.$(br2)As the reaction runs, uranium is consumed and $(thing)Cyanite$() builds up as waste. Pull the cyanite back out through an Access Port set to Outlet."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Reprocessing",
+      "text": "Cyanite is not a dead end. A $(l:machines/cyanite_reprocessor)Cyanite Reprocessor$() turns it into $(thing)Blutonium$(), which is both a crafting material and a denser fuel than uranium.$(br2)That closes the loop: uranium in, cyanite out, blutonium back in."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Fuel rod internals",
+      "text": "Each fuel rod block holds a slice of the reactor's total fuel tank. The tank is shared across the whole multiblock, so a rod at the bottom is no different from one at the top.$(br2)The terminal shows fuel and waste as a single bar. When waste crowds out fuel the reaction slows down, so keep an outlet running."
+    }
+  ]
+}

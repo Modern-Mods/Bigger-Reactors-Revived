@@ -1,0 +1,19 @@
+{
+  "name": "book.biggerreactors.guide",
+  "subtitle": "book.biggerreactors.guide.subtitle",
+  "landing_text": "book.biggerreactors.guide.landing",
+  "model": "biggerreactors:guide",
+  "creative_tab": "biggerreactors:creative_tab",
+  "use_resource_pack": true,
+  "book_texture": "biggerreactors:textures/gui/book_nuclear.png",
+  "filler_texture": "patchouli:textures/gui/page_filler.png",
+  "crafting_texture": "patchouli:textures/gui/crafting.png",
+  "header_color": "3B7A22",
+  "nameplate_color": "A5D66A",
+  "link_color": "2E6B18",
+  "link_hover_color": "8CC63F",
+  "progress_bar_color": "8CC63F",
+  "progress_bar_background": "26401A",
+  "text_color": "1E2B14",
+  "version": "1"
+}

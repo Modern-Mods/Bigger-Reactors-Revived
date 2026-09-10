@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "biggerreactors:block/cyanite_reprocessor_active",
+    "side": "biggerreactors:block/reactor/casing/disassembled",
+    "top": "biggerreactors:block/reactor/casing/disassembled"
+  }
+}

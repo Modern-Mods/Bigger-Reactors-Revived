@@ -1,0 +1,30 @@
+{
+  "name": "Componentes Opcionales",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_redstone_port",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Componentes Opcionales",
+      "text": "Ninguno hace falta para tener un reactor funcionando. Están para automatizar, controlar a distancia y para que quede lindo."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_redstone_port",
+      "title": "Puerto de Redstone",
+      "text": "Permite controlar varias funciones del reactor con circuitos de redstone. Un puerto se puede configurar para leer un valor del reactor o para escribirle uno.$(br2)Los usos típicos son prender el reactor cuando la energía baja de cierto punto, manejar la inserción de las barras con un comparador, o emitir señal cuando se está por acabar el combustible."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_computer_port",
+      "title": "Puerto de Computadora",
+      "text": "Permite controlar varias funciones del reactor con scripts en Lua. Necesita un mod de computadoras como $(thing)CC: Tweaked$() instalado.$(br2)Conectás una computadora al puerto y tenés toda la API: actividad, barras de control, niveles de combustible y residuo, temperaturas, energía almacenada y producida."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_glass",
+      "title": "Vidrio de Reactor",
+      "text": "Funciona igual que la carcasa, pero solo se puede usar en las paredes, nunca en el marco. Te deja ver adentro del reactor.$(br2)Muy útil para chequear que tu red de moderador quedó como pensabas."
+    }
+  ]
+}

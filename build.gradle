@@ -1,0 +1,245 @@
+plugins {
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.143'
+}
+
+evaluationDependsOnChildren()
+
+version = "${mcversion}-${mod_version}-${tag_lanzador}"
+group = "${group}"
+base {
+    archivesName = "${mod_named}"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+def phosResources = rootProject.project(':Phosphophyllite').file('src/main/resources/').getAbsolutePath()
+def quartzResources = rootProject.project(':Quartz').file('src/main/resources/').getAbsolutePath()
+
+neoForge {
+    version = "${neoversion}"
+
+    accessTransformers.from project(':Phosphophyllite').file('src/main/resources/META-INF/accesstransformer.cfg')
+    accessTransformers.from project(':Quartz').file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    runs {
+        client {
+            client()
+            systemProperty 'forge.enabledGameTestNamespaces', "${modid}"
+            programArguments.addAll '--quickPlaySingleplayer', 'New World'
+        }
+
+        server {
+            server()
+            systemProperty 'forge.enabledGameTestNamespaces', "${modid}"
+            programArgument '--nogui'
+        }
+
+        data {
+            data()
+            programArguments.addAll '--mod', "${modid}", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing', phosResources, '--existing', quartzResources
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+            jvmArgument '-Xmx4G'
+        }
+    }
+
+    mods {
+        "${modid}" {
+            sourceSet(sourceSets.main)
+        }
+        phosphophyllite {
+            sourceSet(project(':Phosphophyllite').sourceSets.main)
+        }
+        quartz {
+            sourceSet(project(':Quartz').sourceSets.main)
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "SquidDev"
+        url = "https://maven.squiddev.cc"
+        content {
+            includeGroup "cc.tweaked"
+            includeModule("org.squiddev", "Cobalt")
+        }
+    }
+    maven {
+        url = uri("https://modmaven.dev/")
+    }
+    maven {
+        name = "Saps"
+        url = "https://maven.saps.dev/releases"
+    }
+    maven {
+		url "https://maven.latvian.dev/releases"
+		content {
+			includeGroup "dev.latvian.mods"
+			includeGroup "dev.latvian.apps"
+		}
+	}
+    maven {
+        name = "JitPack"
+        url = "https://jitpack.io"
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
+    maven {
+        name = "Curse Maven"
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
+
+dependencies {
+    // Libraries
+    compileOnly project(':Phosphophyllite')
+    compileOnly project(':Quartz')
+
+    // CC:Tweaked
+    compileOnly "cc.tweaked:cc-tweaked-${mcversion}-core-api:${cc_version}"
+    compileOnly "cc.tweaked:cc-tweaked-${mcversion}-forge-api:${cc_version}"
+    runtimeOnly "cc.tweaked:cc-tweaked-${mcversion}-forge:${cc_version}"
+
+    // Just Enough Items
+    compileOnly "mezz.jei:jei-${mcversion}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${mcversion}-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${mcversion}-neoforge:${jei_version}"
+
+     // Mekanism
+    compileOnly "mekanism:Mekanism:${mekanism_version}:api"
+    runtimeOnly "mekanism:Mekanism:${mekanism_version}"
+
+    //  LWJGL
+    compileOnly "org.lwjgl:lwjgl-opencl:${lwjgl_version}"
+
+    // KubeJS
+    compileOnly "dev.latvian.mods:kubejs-neoforge:${kubejs_version}"
+    runtimeOnly "dev.latvian.mods:kubejs-neoforge:${kubejs_version}"
+
+    // Better Advancements Tooltips
+    implementation "dev.latvian.mods:better-advanced-tooltips:${better_adv_tooltips_version}"
+
+    // Rhino
+    implementation "dev.latvian.mods:rhino:${rhino_version}"
+
+    // Patchouli
+    compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
+    runtimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
+
+    // AllTheModium
+    runtimeOnly "maven.modrinth:allthemodium:${allthemodium_version}"
+
+    // Mekanism Generators
+    runtimeOnly "maven.modrinth:mekanism-generators:${mekanism_generators_version}"
+
+    // Neo Vitae
+    runtimeOnly "maven.modrinth:neovitae:${neovitae_version}"
+    runtimeOnly "maven.modrinth:modonomicon:${modonomicon_version}"
+    runtimeOnly "maven.modrinth:geckolib:${geckolib_version}"
+
+   // Applied Energistics 2
+    runtimeOnly "maven.modrinth:ae2:${ae2_version}"
+    runtimeOnly "maven.modrinth:guideme:${guideme_version}"
+
+    // Sodium and Iris
+    runtimeOnly "maven.modrinth:sodium:${sodium_version}"
+    runtimeOnly "maven.modrinth:iris:${iris_version}"
+
+    // Ultimate Foods
+    runtimeOnly "curse.maven:ultimate-foods-1455067:${ultimatefoods_version}"
+    runtimeOnly "maven.modrinth:appleskin:${appleskin_version}"
+
+    // Re Avaritia
+    runtimeOnly "maven.modrinth:re-avaritia:${avaritia_version}"
+}
+
+test {
+    enabled = false
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : "${mod_name}",
+                "Specification-Vendor"    : "${author}",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : "${mod_name}",
+                "Implementation-Version"  : "${version}",
+                "Implementation-Vendor"   : "${author}",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            mcversion           : mcversion,
+            neoversion          : neoversion,
+            loader_version      : loader_version,
+            modid               : modid,
+            mod_name            : mod_name,
+            mod_named           : mod_named,
+            mod_version         : mod_version,
+            author              : author,
+            description         : description,
+            license             : license,
+            phos_version_range  : project.project(':Phosphophyllite').property('compatibility').toString(),
+            quartz_version_range: project.project(':Quartz').property('compatibility').toString(),
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.getRelease().set(21)
+    options.compilerArgs << "-Xmaxerrs" << "2000"
+}

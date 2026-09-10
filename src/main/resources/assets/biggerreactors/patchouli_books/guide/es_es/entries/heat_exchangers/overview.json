@@ -1,0 +1,30 @@
+{
+  "name": "Intercambiadores de Calor",
+  "category": "biggerreactors:heat_exchangers",
+  "icon": "biggerreactors:heat_exchanger_terminal",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Intercambiadores de Calor",
+      "text": "Un intercambiador de calor mueve calor entre dos circuitos de fluidos que nunca se tocan.$(br2)Un circuito pasa por el canal $(thing)Condensador$() y entrega calor. El otro pasa por el canal $(thing)Evaporador$() y lo recibe. Acá no se genera nada; el calor solo se mueve."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Para qué sirve",
+      "text": "El trabajo típico es condensar el escape de la turbina de vuelta a agua para que pueda volver al reactor sin tener que conseguir agua nueva.$(br2)El otro trabajo es armar un sistema de dos etapas: el reactor hierve un fluido de alta temperatura, el intercambiador usa eso para hervir vapor, y el vapor mueve la turbina."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Tamaño",
+      "text": "El intercambiador más chico es de $(thing)4 x 3 x 3$(). Con la configuración por defecto el más grande es de $(thing)64 x 96 x 64$().$(br2)El caudal viene de cuánto canal entra adentro, así que un intercambiador largo y finito funciona igual de bien que un cubo."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Ver tambien",
+      "entries": [
+        "biggerreactors:heat_exchangers/basic_heat_exchanger"
+      ]
+    }
+  ]
+}

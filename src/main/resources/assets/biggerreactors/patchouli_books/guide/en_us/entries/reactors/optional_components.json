@@ -1,0 +1,30 @@
+{
+  "name": "Optional Components",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_redstone_port",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Optional Components",
+      "text": "None of these are required to build a working reactor. They exist for automation, remote control and looks."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_redstone_port",
+      "title": "Redstone Port",
+      "text": "Allows control of various reactor functions via redstone circuits. A port can be configured to either read a value out of the reactor or write one into it.$(br2)Typical uses are turning the reactor on below a power threshold, driving control rod insertion from a comparator, or emitting a signal when fuel runs low."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_computer_port",
+      "title": "Computer Port",
+      "text": "Allows control of various reactor functions via Lua scripting. This requires a computer mod such as $(thing)CC: Tweaked$() to be installed.$(br2)Attach a computer to the port and you get the full API: activity, control rods, fuel and waste levels, temperatures, energy stored and produced."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_glass",
+      "title": "Reactor Glass",
+      "text": "Functions identically to casing, but may only be used on walls, never on the frame. It lets you see inside of the reactor.$(br2)Handy for checking that your moderator lattice looks the way you think it does."
+    }
+  ]
+}

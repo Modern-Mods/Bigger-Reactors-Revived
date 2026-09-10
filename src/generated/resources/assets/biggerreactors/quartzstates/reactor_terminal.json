@@ -1,0 +1,21 @@
+{
+  "AssemblyState": {
+    "ASSEMBLED": {
+      "ReactorState": {
+        "ACTIVE": {
+          "textures": {
+            "all": "biggerreactors:block/reactor_terminal_active"
+          }
+        },
+        "INACTIVE": {
+          "textures": {
+            "all": "biggerreactors:block/reactor_terminal_idle"
+          }
+        }
+      }
+    }
+  },
+  "textures": {
+    "all": "biggerreactors:block/reactor_terminal_off"
+  }
+}

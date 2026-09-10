@@ -1,0 +1,18 @@
+{
+  "name": "Llave de Reactor",
+  "category": "biggerreactors:getting_started",
+  "icon": "biggerreactors:wrench",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:wrench",
+      "title": "Llave de Reactor",
+      "text": "La herramienta para trabajar sobre un multibloque sin desarmarlo.$(br2)Click derecho sobre un bloque para cambiar su configuración cuando tiene una, por ejemplo alternar un Puerto de Acceso o de Refrigerante entre Entrada y Salida."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Diagnóstico",
+      "text": "Agachado y con click derecho sobre un bloque de multibloque, la llave vuelca su estado interno al chat: qué controlador lo tiene, los límites del multibloque, la cantidad de bloques y el último error de validación.$(br2)Normalmente es más rápido que adivinar por qué una estructura no ensambla."
+    }
+  ]
+}

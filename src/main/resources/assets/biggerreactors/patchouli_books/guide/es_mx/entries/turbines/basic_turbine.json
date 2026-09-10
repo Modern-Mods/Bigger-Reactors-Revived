@@ -1,0 +1,52 @@
+{
+  "name": "Armar una Turbina",
+  "category": "biggerreactors:turbines",
+  "icon": "biggerreactors:turbine_rotor_bearing",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Armar una Turbina",
+      "text": "La turbina más chica es de $(thing)5 x 4 x 5$(). La de la página siguiente es de $(thing)5 x 5 x 5$(), que da lugar a dos capas de aspas y una de bobinas.$(br2)Apretá el botón del ojo para proyectarla en el mundo."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Turbina Básica",
+      "multiblock": {
+        "pattern": [
+          ["KKKKK", "KKKKK", "KKBKK", "KKKKK", "KKKKK"],
+          ["KKKKK", "KIIIK", "KISIK", "KIIIK", "KKKKK"],
+          ["KKKKK", "K L K", "KL0LK", "K L K", "KKKKK"],
+          ["KKFKK", "K L K", "TLSLP", "K L K", "KKFKK"],
+          ["KKKKK", "KKKKK", "KKBKK", "KKKKK", "KKKKK"]
+        ],
+        "mapping": {
+          "K": "biggerreactors:turbine_casing",
+          "B": "biggerreactors:turbine_rotor_bearing",
+          "S": "biggerreactors:turbine_rotor_shaft",
+          "0": "biggerreactors:turbine_rotor_shaft",
+          "L": "biggerreactors:turbine_rotor_blade",
+          "I": "minecraft:iron_block",
+          "T": "biggerreactors:turbine_terminal",
+          "P": "biggerreactors:turbine_power_tap",
+          "F": "biggerreactors:turbine_fluid_port"
+        }
+      },
+      "text": "Rodamientos arriba y abajo, un eje entre los dos, aspas en las dos capas de abajo y un anillo de bobinas de hierro en la de arriba."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Aspas y bobinas",
+      "text": "Cada capa a lo largo del eje es de aspas o de bobinas, nunca de las dos, y todas las capas de aspas tienen que estar juntas en una punta.$(br2)Más capas de aspas significan más torque y una aceleración más rápida. Más capas de bobinas significan más energía sacada por vuelta. Qué reparto querés depende del caudal que le puedas dar."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Alimentarla",
+      "text": "Poné un Puerto de Fluidos en Entrada y el otro en Salida. Mandá el vapor del reactor a la entrada, y el agua condensada de la salida de vuelta al reactor.$(br2)Cerrar ese circuito significa que nunca más tenés que conseguir agua fresca."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Ajustarla",
+      "text": "Arrancá la turbina con las bobinas desacopladas y dejá que el rotor acelere. Mirá cómo suben las RPM, y acoplá las bobinas cuando se acerque a $(thing)900$() o $(thing)1800$() RPM.$(br2)Después ajustá el caudal hasta que las RPM se queden quietas en ese número. Ese es todo el proceso de ajuste."
+    }
+  ]
+}

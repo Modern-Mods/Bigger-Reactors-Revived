@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "assembled=false,facing=down": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/off"
+    },
+    "assembled=false,facing=east": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/off"
+    },
+    "assembled=false,facing=north": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/off"
+    },
+    "assembled=false,facing=south": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/off"
+    },
+    "assembled=false,facing=up": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/off"
+    },
+    "assembled=false,facing=west": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/off"
+    },
+    "assembled=true,facing=down": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/active"
+    },
+    "assembled=true,facing=east": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/active"
+    },
+    "assembled=true,facing=north": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/active"
+    },
+    "assembled=true,facing=south": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/active"
+    },
+    "assembled=true,facing=up": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/active"
+    },
+    "assembled=true,facing=west": {
+      "model": "biggerreactors:block/heat_exchanger/terminal/active"
+    }
+  }
+}

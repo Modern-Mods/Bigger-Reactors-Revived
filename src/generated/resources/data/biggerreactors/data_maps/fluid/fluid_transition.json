@@ -1,0 +1,76 @@
+{
+  "values": {
+    "allthemodium:molten_allthemodium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "boilingPoint": 1773.15,
+      "gas": "allthemodium:vapor_allthemodium",
+      "gasThermalConductivity": 5.0,
+      "latentHeat": 40.0,
+      "liquidThermalConductivity": 5.0,
+      "turbineMultiplier": 0.0
+    },
+    "allthemodium:molten_unobtainium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "boilingPoint": 3523.15,
+      "gas": "allthemodium:vapor_unobtainium",
+      "gasThermalConductivity": 12.0,
+      "latentHeat": 100.0,
+      "liquidThermalConductivity": 12.0,
+      "turbineMultiplier": 0.0
+    },
+    "allthemodium:molten_vibranium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "boilingPoint": 2523.15,
+      "gas": "allthemodium:vapor_vibranium",
+      "gasThermalConductivity": 8.0,
+      "latentHeat": 60.0,
+      "liquidThermalConductivity": 8.0,
+      "turbineMultiplier": 0.0
+    },
+    "biggerreactors:liquid_obsidian": {
+      "boilingPoint": 1273.15,
+      "gas": "minecraft:lava",
+      "gasThermalConductivity": 1.0,
+      "latentHeat": 15.0,
+      "liquidThermalConductivity": 1.9,
+      "turbineMultiplier": 0.0
+    },
+    "mekanism:sodium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "boilingPoint": 473.15,
+      "gas": "#c:superheated_sodium",
+      "gasThermalConductivity": 1.2,
+      "latentHeat": 0.4,
+      "liquidThermalConductivity": 1.2,
+      "turbineMultiplier": 0.0
+    },
+    "minecraft:water": {
+      "boilingPoint": 373.15,
+      "gas": "#c:steam",
+      "gasThermalConductivity": 0.025,
+      "latentHeat": 4.0,
+      "liquidThermalConductivity": 0.6,
+      "turbineMultiplier": 2.5
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Armar un Reactor",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_fuel_rod",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Armar un Reactor",
+      "text": "El reactor más chico que funciona es una caja hueca de $(thing)3 x 3 x 3$() de carcasa con una sola barra de combustible adentro.$(br2)Apretá el botón del ojo en la página siguiente para proyectar la estructura en el mundo, y después construila bloque por bloque."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Reactor Pasivo Básico",
+      "multiblock": {
+        "pattern": [
+          ["CCC", "CRC", "CCC"],
+          ["CPC", "T0A", "CCC"],
+          ["CCC", "CCC", "CCC"]
+        ],
+        "mapping": {
+          "C": "biggerreactors:reactor_casing",
+          "R": "biggerreactors:reactor_control_rod",
+          "T": "biggerreactors:reactor_terminal",
+          "A": "biggerreactors:reactor_access_port",
+          "P": "biggerreactors:reactor_power_tap",
+          "0": "biggerreactors:reactor_fuel_rod"
+        }
+      },
+      "text": "Terminal en una pared, Puerto de Acceso en otra, Toma de Energía en una tercera. La Barra de Control tapa la columna de combustible desde la cara de arriba."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Hacerlo más grande",
+      "text": "Para escalar, agrandá la caja y llenala. Cada columna interior es o una barra de combustible tapada con una barra de control, o un moderador.$(br2)Una buena forma para empezar es el damero: columnas de combustible con grafito entre medio, así la radiación de una columna pasa por moderador antes de llegar a la siguiente."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Prenderlo",
+      "text": "Abrí la terminal, tirá uranio en el Puerto de Acceso y dale al botón de encendido.$(br2)La inserción de las barras arranca en 0%. Si la temperatura del núcleo sube más rápido de lo que te gustaría, subí la inserción hasta que se estabilice."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Pasarlo a activo",
+      "text": "La misma caja se convierte en un reactor activo si cambiás la Toma de Energía por un Puerto de Refrigerante en modo Entrada y agregás un segundo en modo Salida.$(br2)Metés agua por la entrada, sacás vapor por la salida, y se lo mandás a una turbina."
+    }
+  ]
+}

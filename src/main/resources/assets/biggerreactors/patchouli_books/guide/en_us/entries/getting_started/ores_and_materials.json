@@ -1,0 +1,44 @@
+{
+  "name": "Ores and Materials",
+  "category": "biggerreactors:getting_started",
+  "icon": "biggerreactors:uranium_ore",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:uranium_ore",
+      "title": "Uranium Ore",
+      "text": "Generates underground in the overworld and drops a $(thing)Uranium Chunk$(). Smelt the chunk into an ingot, or run it through a crusher for two dust.$(br2)$(item)Deepslate Uranium Ore$() is the deepslate variant and behaves identically."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:uranium_ingot",
+      "title": "Uranium",
+      "text": "The starting reactor fuel. Drop ingots into an Access Port set to Inlet and they fill the fuel rods.$(br2)$(item)Uranium Dust$() smelts into an ingot, and a $(item)Uranium Block$() stores nine of them. $(item)Raw Uranium Block$() stores nine chunks."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:cyanite_ingot",
+      "title": "Cyanite",
+      "text": "Reactor waste. Pull it out through an Access Port set to Outlet.$(br2)It is not garbage: a $(l:machines/cyanite_reprocessor)Cyanite Reprocessor$() turns it into blutonium. It is also a crafting ingredient for most reactor and turbine parts."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:blutonium_ingot",
+      "title": "Blutonium",
+      "text": "Made by reprocessing cyanite. A denser and hotter fuel than uranium, and the ingredient that separates the basic parts from the advanced ones.$(br2)Also available as dust and as a storage block."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:graphite_ingot",
+      "title": "Graphite",
+      "text": "Smelt coal or charcoal to get graphite. Cheap, plentiful, and the block form is the standard reactor moderator.$(br2)Also available as dust."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:ludicrite_ingot",
+      "title": "Ludicrite",
+      "text": "The end game material. The block is simultaneously the best moderator and the best turbine coil the mod ships.$(br2)Expensive to make, and worth it once your reactors can feed the turbines that use it."
+    }
+  ]
+}

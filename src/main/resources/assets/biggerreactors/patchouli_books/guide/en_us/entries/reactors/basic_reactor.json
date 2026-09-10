@@ -1,0 +1,47 @@
+{
+  "name": "Building a Reactor",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_fuel_rod",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Building a Reactor",
+      "text": "The smallest reactor that works is a hollow $(thing)3 x 3 x 3$() box of casing with a single fuel rod inside.$(br2)Press the eye button on the next page to project the structure into the world, then build it block for block."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Basic Passive Reactor",
+      "multiblock": {
+        "pattern": [
+          ["CCC", "CRC", "CCC"],
+          ["CPC", "T0A", "CCC"],
+          ["CCC", "CCC", "CCC"]
+        ],
+        "mapping": {
+          "C": "biggerreactors:reactor_casing",
+          "R": "biggerreactors:reactor_control_rod",
+          "T": "biggerreactors:reactor_terminal",
+          "A": "biggerreactors:reactor_access_port",
+          "P": "biggerreactors:reactor_power_tap",
+          "0": "biggerreactors:reactor_fuel_rod"
+        }
+      },
+      "text": "Terminal on one wall, Access Port on another, Power Tap on a third. The Control Rod caps the fuel rod column from the top face."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Making it bigger",
+      "text": "To scale up, grow the box and fill it. Every interior column is either a fuel rod capped with a control rod, or a moderator.$(br2)A good starting shape is a checkerboard: fuel rod columns with graphite between them, so radiation from one column passes through moderator before reaching the next."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Turning it on",
+      "text": "Open the terminal, drop some uranium into the Access Port and hit the power button.$(br2)Control rod insertion starts at 0%. If the core temperature climbs faster than you would like, raise insertion until it settles."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Going active",
+      "text": "The same box becomes an active reactor if you swap the Power Tap for a Coolant Port set to Inlet and add a second one set to Outlet.$(br2)Feed water into the inlet, take steam out of the outlet, and send it to a turbine."
+    }
+  ]
+}

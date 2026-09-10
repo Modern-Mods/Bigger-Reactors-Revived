@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "type": "mekanism:crushing",
+  "input": {
+    "item": "biggerreactors:graphite_ingot"
+  },
+  "output": {
+    "count": 1,
+    "id": "biggerreactors:graphite_dust"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:writable_book"
+    },
+    {
+      "item": "biggerreactors:reactor_casing"
+    }
+  ],
+  "result": {
+    "components": {
+      "patchouli:book": "biggerreactors:guide"
+    },
+    "count": 1,
+    "id": "patchouli:guide_book"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Passive Reactors",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_power_tap",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Passive Reactors",
+      "text": "A passive reactor outputs the energy it generates directly as RF, which can be used by any machine that accepts Forge Energy.$(br2)This is the simplest reactor to build and run: fuel goes in, power comes out, no fluids involved."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_power_tap",
+      "title": "Power Tap",
+      "text": "Where you extract power from a passive reactor. Place it on any wall, floor or ceiling face and connect a cable or a machine to the outside.$(br2)Taps show whether they are connected to something in their model. More taps mean more throughput, so a big reactor usually wants several."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Buffer",
+      "text": "The reactor stores the RF it makes in an internal buffer. If the buffer fills up because nothing is drawing power, the reactor throttles itself and stops burning fuel.$(br2)That means an idle passive reactor costs you nothing. There is no need to gate it with redstone unless you want to."
+    }
+  ]
+}

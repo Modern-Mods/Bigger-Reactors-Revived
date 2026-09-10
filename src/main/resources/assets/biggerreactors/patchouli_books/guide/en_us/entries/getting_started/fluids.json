@@ -1,0 +1,34 @@
+{
+  "name": "Fluids",
+  "category": "biggerreactors:getting_started",
+  "icon": "biggerreactors:steam_bucket",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Fluids",
+      "text": "Active reactors work by boiling a fluid, and every pair of liquid and gas is a $(thing)transition$(): a boiling point, a latent heat, a thermal conductivity for each phase and a turbine multiplier."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:steam_bucket",
+      "title": "Steam",
+      "text": "What water becomes. The default working fluid for a reactor and turbine pair.$(br2)Water in through a Coolant Port, steam out, steam into the turbine, water back to the reactor."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:liquid_obsidian_bucket",
+      "title": "Liquid Obsidian",
+      "text": "Boils into lava at a much higher temperature than water boils into steam.$(br2)A reactor hot enough to use it moves far more heat per tick than one running on water, at the cost of needing to stay very hot."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Superheated Sodium",
+      "text": "The gas phase of liquid sodium. Sodium is an excellent moderator inside a reactor and a high temperature coolant outside one.$(br2)The mod ships the transition and the moderator values, but the sodium itself comes from another mod. With $(thing)Mekanism$() installed its sodium boils into superheated sodium here."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Liquid Uranium",
+      "text": "Molten uranium, present for pack integration and for anything that wants a fluid form of the mod's fuel.$(br2)It has no bucket of its own, so you will only meet it through pipes and tanks."
+    }
+  ]
+}

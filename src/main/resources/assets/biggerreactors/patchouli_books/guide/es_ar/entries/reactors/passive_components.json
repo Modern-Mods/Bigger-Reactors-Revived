@@ -1,0 +1,23 @@
+{
+  "name": "Reactores Pasivos",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_power_tap",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Reactores Pasivos",
+      "text": "Un reactor pasivo saca la energía que genera directamente como RF, que puede usar cualquier máquina que acepte Forge Energy.$(br2)Es el reactor más simple de armar y de operar: entra combustible, sale energía, sin fluidos de por medio."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_power_tap",
+      "title": "Toma de Energía",
+      "text": "Por donde sacás la energía de un reactor pasivo. Ponela en cualquier cara de pared, piso o techo y conectá un cable o una máquina por afuera.$(br2)Las tomas muestran en su modelo si están conectadas a algo. Más tomas significan más caudal, así que un reactor grande normalmente quiere varias."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Búfer interno",
+      "text": "El reactor guarda el RF que produce en un búfer interno. Si el búfer se llena porque nadie consume, el reactor se frena solo y deja de quemar combustible.$(br2)Eso significa que un reactor pasivo en reposo no te cuesta nada. No hace falta controlarlo con redstone salvo que quieras."
+    }
+  ]
+}

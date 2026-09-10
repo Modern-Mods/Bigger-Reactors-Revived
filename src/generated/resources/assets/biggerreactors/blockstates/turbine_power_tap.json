@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "assembled=false,connectionstate=connected,facing=down": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=connected,facing=east": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=connected,facing=north": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=connected,facing=south": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=connected,facing=up": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=connected,facing=west": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=disconnected,facing=down": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=disconnected,facing=east": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=disconnected,facing=north": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=disconnected,facing=south": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=disconnected,facing=up": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=false,connectionstate=disconnected,facing=west": {
+      "model": "biggerreactors:block/turbine/power_tap/disassembled"
+    },
+    "assembled=true,connectionstate=connected,facing=down": {
+      "model": "biggerreactors:block/turbine/power_tap/connected"
+    },
+    "assembled=true,connectionstate=connected,facing=east": {
+      "model": "biggerreactors:block/turbine/power_tap/connected"
+    },
+    "assembled=true,connectionstate=connected,facing=north": {
+      "model": "biggerreactors:block/turbine/power_tap/connected"
+    },
+    "assembled=true,connectionstate=connected,facing=south": {
+      "model": "biggerreactors:block/turbine/power_tap/connected"
+    },
+    "assembled=true,connectionstate=connected,facing=up": {
+      "model": "biggerreactors:block/turbine/power_tap/connected"
+    },
+    "assembled=true,connectionstate=connected,facing=west": {
+      "model": "biggerreactors:block/turbine/power_tap/connected"
+    },
+    "assembled=true,connectionstate=disconnected,facing=down": {
+      "model": "biggerreactors:block/turbine/power_tap/disconnected"
+    },
+    "assembled=true,connectionstate=disconnected,facing=east": {
+      "model": "biggerreactors:block/turbine/power_tap/disconnected"
+    },
+    "assembled=true,connectionstate=disconnected,facing=north": {
+      "model": "biggerreactors:block/turbine/power_tap/disconnected"
+    },
+    "assembled=true,connectionstate=disconnected,facing=south": {
+      "model": "biggerreactors:block/turbine/power_tap/disconnected"
+    },
+    "assembled=true,connectionstate=disconnected,facing=up": {
+      "model": "biggerreactors:block/turbine/power_tap/disconnected"
+    },
+    "assembled=true,connectionstate=disconnected,facing=west": {
+      "model": "biggerreactors:block/turbine/power_tap/disconnected"
+    }
+  }
+}

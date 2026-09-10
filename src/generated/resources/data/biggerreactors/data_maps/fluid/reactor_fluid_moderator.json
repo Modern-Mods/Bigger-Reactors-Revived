@@ -1,0 +1,100 @@
+{
+  "values": {
+    "#c:ender": {
+      "absorption": 0.9,
+      "conductivity": 2.0,
+      "efficiency": 0.75,
+      "moderation": 2.0
+    },
+    "#c:redstone": {
+      "absorption": 0.75,
+      "conductivity": 2.5,
+      "efficiency": 0.55,
+      "moderation": 1.6
+    },
+    "#c:superheated_sodium": {
+      "absorption": 0.23,
+      "conductivity": 1.0,
+      "efficiency": 0.6,
+      "moderation": 1.7
+    },
+    "allthemodium:molten_allthemodium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "absorption": 0.66,
+      "conductivity": 3.5,
+      "efficiency": 0.9,
+      "moderation": 3.5
+    },
+    "allthemodium:molten_unobtainium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "absorption": 0.95,
+      "conductivity": 5.0,
+      "efficiency": 0.82,
+      "moderation": 2.0
+    },
+    "allthemodium:molten_vibranium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "absorption": 0.15,
+      "conductivity": 4.0,
+      "efficiency": 0.75,
+      "moderation": 8.0
+    },
+    "allthemodium:vapor_allthemodium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "absorption": 0.66,
+      "conductivity": 3.5,
+      "efficiency": 0.9,
+      "moderation": 3.5
+    },
+    "allthemodium:vapor_unobtainium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "absorption": 0.95,
+      "conductivity": 5.0,
+      "efficiency": 0.82,
+      "moderation": 2.0
+    },
+    "allthemodium:vapor_vibranium": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "allthemodium"
+        }
+      ],
+      "absorption": 0.15,
+      "conductivity": 4.0,
+      "efficiency": 0.75,
+      "moderation": 8.0
+    },
+    "biggerreactors:liquid_obsidian": {
+      "absorption": 0.3,
+      "conductivity": 0.75,
+      "efficiency": 0.7,
+      "moderation": 1.35
+    }
+  }
+}

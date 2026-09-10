@@ -1,0 +1,48 @@
+{
+  "name": "Building a Heat Exchanger",
+  "category": "biggerreactors:heat_exchangers",
+  "icon": "biggerreactors:heat_exchanger_condenser_channel",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Building a Heat Exchanger",
+      "text": "The example below is $(thing)5 x 5 x 5$(), with one straight condenser run and one straight evaporator run side by side.$(br2)Press the eye button to project it into the world."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Basic Heat Exchanger",
+      "multiblock": {
+        "pattern": [
+          ["HHHHH", "HHHHH", "HHHHH", "HHHHH", "HHHHH"],
+          ["HHHHH", "H   H", "H   H", "H   H", "HHHHH"],
+          ["HHHHH", "H   H", "H 0 H", "H   H", "HHHHH"],
+          ["HOHOH", "MD EH", "HD EH", "HD EH", "HOHOH"],
+          ["HHHHH", "HHHHH", "HHHHH", "HHHHH", "HHHHH"]
+        ],
+        "mapping": {
+          "H": "biggerreactors:heat_exchanger_casing",
+          "M": "biggerreactors:heat_exchanger_terminal",
+          "D": "biggerreactors:heat_exchanger_condenser_channel",
+          "E": "biggerreactors:heat_exchanger_evaporator_channel",
+          "O": "biggerreactors:heat_exchanger_fluid_port"
+        }
+      },
+      "text": "Two straight channel runs, each capped by a Fluid Port at both ends. The terminal sits on the wall beside them."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Channel rules",
+      "text": "Every channel block must have exactly $(thing)two$() connections, no more and no less. A straight line satisfies that, and so does a snake as long as it never branches.$(br2)Each run has to begin at a Fluid Port and end at another one. Four ports total: two condenser, two evaporator."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Getting more out of it",
+      "text": "Heat moves faster when the two runs sit next to each other, so weave them rather than putting them in opposite corners.$(br2)Longer runs mean more contact and more throughput, which is why a snaking layout beats a straight one in anything larger than this example."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Hooking it up",
+      "text": "Set one port on each run to Inlet and the other to Outlet.$(br2)For a condenser loop: turbine exhaust into the condenser inlet, water out of the condenser outlet and back to the reactor. Whatever you want to heat goes through the evaporator side."
+    }
+  ]
+}

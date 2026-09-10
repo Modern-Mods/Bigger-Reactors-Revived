@@ -1,0 +1,18 @@
+{
+  "name": "Reactor Wrench",
+  "category": "biggerreactors:getting_started",
+  "icon": "biggerreactors:wrench",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:wrench",
+      "title": "Reactor Wrench",
+      "text": "The tool for working on a multiblock without taking it apart.$(br2)Right click a block to cycle its setting where it has one, such as flipping an Access Port or Coolant Port between Inlet and Outlet."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Debugging",
+      "text": "Sneak and right click a multiblock block with the wrench to dump its internal state into chat: which controller owns it, the bounds of the multiblock, the block count and the last validation error.$(br2)That is usually faster than guessing why a structure refuses to assemble."
+    }
+  ]
+}

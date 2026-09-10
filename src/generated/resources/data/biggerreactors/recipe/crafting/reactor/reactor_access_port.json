@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "biggerreactors:reactor_casing"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "V": {
+      "tag": "c:chests/wooden"
+    }
+  },
+  "pattern": [
+    "C C",
+    " V ",
+    "CPC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "biggerreactors:reactor_access_port"
+  }
+}

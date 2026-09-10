@@ -1,0 +1,145 @@
+{
+  "values": {
+    "#c:storage_blocks/allthemodium": {
+      "bonus": 1.02,
+      "efficiency": 1.2,
+      "extractionRate": 0.4
+    },
+    "#c:storage_blocks/aluminum": {
+      "bonus": 1.0,
+      "efficiency": 0.495,
+      "extractionRate": 0.13
+    },
+    "#c:storage_blocks/copper": {
+      "bonus": 1.0,
+      "efficiency": 0.396,
+      "extractionRate": 0.12
+    },
+    "#c:storage_blocks/electrum": {
+      "bonus": 1.0,
+      "efficiency": 0.825,
+      "extractionRate": 0.2
+    },
+    "#c:storage_blocks/enderium": {
+      "bonus": 1.02,
+      "efficiency": 0.99,
+      "extractionRate": 0.3
+    },
+    "#c:storage_blocks/gold": {
+      "bonus": 1.0,
+      "efficiency": 0.66,
+      "extractionRate": 0.175
+    },
+    "#c:storage_blocks/invar": {
+      "bonus": 1.0,
+      "efficiency": 0.495,
+      "extractionRate": 0.14
+    },
+    "#c:storage_blocks/iron": {
+      "bonus": 1.0,
+      "efficiency": 0.33,
+      "extractionRate": 0.1
+    },
+    "#c:storage_blocks/osmium": {
+      "bonus": 1.0,
+      "efficiency": 0.462,
+      "extractionRate": 0.12
+    },
+    "#c:storage_blocks/platinum": {
+      "bonus": 1.0,
+      "efficiency": 0.99,
+      "extractionRate": 0.25
+    },
+    "#c:storage_blocks/silver": {
+      "bonus": 1.0,
+      "efficiency": 0.561,
+      "extractionRate": 0.15
+    },
+    "#c:storage_blocks/steel": {
+      "bonus": 1.0,
+      "efficiency": 0.495,
+      "extractionRate": 0.13
+    },
+    "#c:storage_blocks/unobtainium": {
+      "bonus": 1.06,
+      "efficiency": 1.5,
+      "extractionRate": 0.7
+    },
+    "#c:storage_blocks/vibranium": {
+      "bonus": 1.04,
+      "efficiency": 1.35,
+      "extractionRate": 0.5
+    },
+    "avaritia:crystal_matrix": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "avaritia"
+        }
+      ],
+      "bonus": 1.06,
+      "efficiency": 1132.0,
+      "extractionRate": 1132.0
+    },
+    "avaritia:infinity": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "avaritia"
+        }
+      ],
+      "bonus": 1.15,
+      "efficiency": 10500.0,
+      "extractionRate": 10500.0
+    },
+    "avaritia:neutron": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "avaritia"
+        }
+      ],
+      "bonus": 1.1,
+      "efficiency": 5900.0,
+      "extractionRate": 5900.0
+    },
+    "biggerreactors:ludicrite_block": {
+      "bonus": 1.02,
+      "efficiency": 1.15,
+      "extractionRate": 0.35
+    },
+    "ultimatefoods:joanfoite_block": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "ultimatefoods"
+        }
+      ],
+      "bonus": 90.0,
+      "efficiency": 90.0,
+      "extractionRate": 90.0
+    },
+    "ultimatefoods:mushashite_block": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "ultimatefoods"
+        }
+      ],
+      "bonus": 80.0,
+      "efficiency": 80.0,
+      "extractionRate": 80.0
+    },
+    "ultimatefoods:nadienite_block": {
+      "neoforge:conditions": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "ultimatefoods"
+        }
+      ],
+      "bonus": 200.0,
+      "efficiency": 200.0,
+      "extractionRate": 200.0
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Building a Turbine",
+  "category": "biggerreactors:turbines",
+  "icon": "biggerreactors:turbine_rotor_bearing",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Building a Turbine",
+      "text": "The smallest turbine is $(thing)5 x 4 x 5$(). The one on the next page is $(thing)5 x 5 x 5$(), which gives room for two blade layers and one coil layer.$(br2)Press the eye button to project it into the world."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Basic Turbine",
+      "multiblock": {
+        "pattern": [
+          ["KKKKK", "KKKKK", "KKBKK", "KKKKK", "KKKKK"],
+          ["KKKKK", "KIIIK", "KISIK", "KIIIK", "KKKKK"],
+          ["KKKKK", "K L K", "KL0LK", "K L K", "KKKKK"],
+          ["KKFKK", "K L K", "TLSLP", "K L K", "KKFKK"],
+          ["KKKKK", "KKKKK", "KKBKK", "KKKKK", "KKKKK"]
+        ],
+        "mapping": {
+          "K": "biggerreactors:turbine_casing",
+          "B": "biggerreactors:turbine_rotor_bearing",
+          "S": "biggerreactors:turbine_rotor_shaft",
+          "0": "biggerreactors:turbine_rotor_shaft",
+          "L": "biggerreactors:turbine_rotor_blade",
+          "I": "minecraft:iron_block",
+          "T": "biggerreactors:turbine_terminal",
+          "P": "biggerreactors:turbine_power_tap",
+          "F": "biggerreactors:turbine_fluid_port"
+        }
+      },
+      "text": "Bearings top and bottom, a shaft between them, blades on the two lower layers and a ring of iron coils on the upper one."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Blades and coils",
+      "text": "Every layer along the shaft is either blades or coils, never both, and all the blade layers have to sit together at one end.$(br2)More blade layers means more torque and a faster spin up. More coil layers means more power drawn per rotation. Which split you want depends on the flow rate you can feed it."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Feeding it",
+      "text": "Set one Fluid Port to Inlet and the other to Outlet. Pipe steam from your reactor into the inlet, and the condensed water back to the reactor from the outlet.$(br2)Closing that loop means you never have to supply fresh water again."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Tuning",
+      "text": "Start the turbine with the coils disengaged and let the rotor spin up. Watch the RPM climb, and engage the coils as it approaches $(thing)900$() or $(thing)1800$() RPM.$(br2)Then trim the flow rate until the RPM sits still at that number. That is the whole tuning process."
+    }
+  ]
+}

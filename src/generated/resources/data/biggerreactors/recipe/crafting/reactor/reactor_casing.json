@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "c:ingots/graphite"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "Y": {
+      "tag": "c:ingots/uranium"
+    }
+  },
+  "pattern": [
+    "IGI",
+    "GYG",
+    "IGI"
+  ],
+  "result": {
+    "count": 4,
+    "id": "biggerreactors:reactor_casing"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Cyanite Reprocessor",
+  "category": "biggerreactors:machines",
+  "icon": "biggerreactors:cyanite_reprocessor",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:cyanite_reprocessor",
+      "title": "Cyanite Reprocessor",
+      "text": "A single block machine that turns reactor waste back into something useful. Feed it $(thing)Cyanite$(), water and RF, and it gives you $(thing)Blutonium$().$(br2)It has an item slot, a fluid tank and an energy buffer, all visible in its interface."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Running it",
+      "text": "Place it, give it power from any Forge Energy source, and pipe or bucket water into it.$(br2)Cyanite goes in the input slot, blutonium comes out the other side. Hoppers work on both, and the machine faces whichever way you were looking when you placed it."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Why bother",
+      "text": "Blutonium is a denser fuel than uranium and burns hotter, and it is also the crafting ingredient for the more advanced reactor parts.$(br2)Reprocessing means a reactor eventually feeds itself: the waste it makes becomes the fuel it burns."
+    }
+  ]
+}

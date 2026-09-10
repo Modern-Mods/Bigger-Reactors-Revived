@@ -1,0 +1,11 @@
+// 1.21.1	2026-09-07T00:57:10.9854406	Tags for minecraft:block mod id biggerreactors
+6d7f3860460d57e0c0d9c77eb3e5ec2adf32c0f3 data/c/tags/block/ores.json
+6d7f3860460d57e0c0d9c77eb3e5ec2adf32c0f3 data/c/tags/block/ores/uranium.json
+a178944ea087f4d546c14acfe17e09a3d3304f8b data/c/tags/block/storage_blocks.json
+05351f43b1cd58aa6e8b94c8a5977a23bd671180 data/c/tags/block/storage_blocks/cyanite.json
+d0d7c73e3a319f012b582d2691e7dfa4f00aea86 data/c/tags/block/storage_blocks/graphite.json
+e80538caf851a4d270e34af3b70c821dbf014dbc data/c/tags/block/storage_blocks/ludicrite.json
+6db85847ccdfd4873e4d6ed90c03e721ca88e642 data/c/tags/block/storage_blocks/raw_uranium.json
+47a004711e0327bfb6b2e8b339d563b3d8fc38cc data/c/tags/block/storage_blocks/uranium.json
+2c1c8240f5e07ce882eb83f2a0d280d777e6984d data/minecraft/tags/block/mineable/pickaxe.json
+2c1c8240f5e07ce882eb83f2a0d280d777e6984d data/minecraft/tags/block/needs_iron_tool.json

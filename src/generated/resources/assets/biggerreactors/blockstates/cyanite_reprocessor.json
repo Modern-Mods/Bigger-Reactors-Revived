@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "enabled=false,facing=east": {
+      "model": "biggerreactors:block/cyanite_reprocessor",
+      "y": 90
+    },
+    "enabled=false,facing=north": {
+      "model": "biggerreactors:block/cyanite_reprocessor"
+    },
+    "enabled=false,facing=south": {
+      "model": "biggerreactors:block/cyanite_reprocessor",
+      "y": 180
+    },
+    "enabled=false,facing=west": {
+      "model": "biggerreactors:block/cyanite_reprocessor",
+      "y": 270
+    },
+    "enabled=true,facing=east": {
+      "model": "biggerreactors:block/cyanite_reprocessor_active",
+      "y": 90
+    },
+    "enabled=true,facing=north": {
+      "model": "biggerreactors:block/cyanite_reprocessor_active"
+    },
+    "enabled=true,facing=south": {
+      "model": "biggerreactors:block/cyanite_reprocessor_active",
+      "y": 180
+    },
+    "enabled=true,facing=west": {
+      "model": "biggerreactors:block/cyanite_reprocessor_active",
+      "y": 270
+    }
+  }
+}

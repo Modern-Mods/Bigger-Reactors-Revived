@@ -1,0 +1,35 @@
+{
+  "name": "Turbinas",
+  "category": "biggerreactors:turbines",
+  "icon": "biggerreactors:turbine_terminal",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Turbinas",
+      "text": "Una turbina agarra el fluido caliente que produce un $(l:reactors/active_components)Reactor Activo$() y lo vuelve a convertir en RF.$(br2)El vapor empuja un rotor, el rotor gira al lado de un juego de bobinas, y las bobinas generan energía. Una turbina bien ajustada le gana por lejos a un reactor pasivo del mismo tamaño."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Tamaño",
+      "text": "La turbina más chica es de $(thing)5 x 4 x 5$(). Con la configuración por defecto la más grande es de $(thing)32 x 192 x 32$().$(br2)El rotor recorre el multibloque a lo largo, de un Rodamiento al otro, y los dos rodamientos tienen que estar en el centro de caras opuestas."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Cómo gira",
+      "text": "El fluido entra por un Puerto de Fluidos, empuja las aspas del rotor y sale ya enfriado por un segundo puerto. La velocidad se estabiliza donde el freno de las bobinas iguala al empuje del fluido.$(br2)Hay dos velocidades que importan: $(thing)900 RPM$() y $(thing)1800 RPM$(). Un rotor mantenido en cualquiera de esas dos es mucho más eficiente que uno en cualquier punto intermedio."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "El acople de bobinas",
+      "text": "La terminal tiene un interruptor que acopla o desacopla las bobinas.$(br2)Desacopladas, el rotor acelera libremente sin nada que lo frene. Acopladas, genera energía y se frena. Acelerar con las bobinas desacopladas y después acoplarlas es la forma normal de llegar rápido a la velocidad que querés."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Ver tambien",
+      "entries": [
+        "biggerreactors:turbines/basic_turbine"
+      ]
+    }
+  ]
+}

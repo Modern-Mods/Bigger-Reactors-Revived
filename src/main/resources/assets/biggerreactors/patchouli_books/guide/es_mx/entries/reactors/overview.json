@@ -1,0 +1,35 @@
+{
+  "name": "Reactores",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_terminal",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Reactores",
+      "text": "Los reactores son el multibloque principal de Bigger Reactors. Inspirados libremente en el diseño real RBMK, un reactor se puede usar como generador de energía, en modo $(thing)Pasivo$(), o como fuente de calor, en modo $(thing)Activo$().$(br2)Los reactores consumen y producen distintos combustibles y residuos, y son muy configurables."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Tamaño",
+      "text": "El reactor más chico posible es de $(thing)3 x 3 x 3$().$(br2)Con la configuración por defecto un reactor puede llegar a $(thing)128 x 128 x 192$(), y ese límite se puede subir hasta un máximo absoluto de $(thing)192 x 192 x 256$().$(br2)Más grande no es automáticamente mejor. Un reactor grande guarda más combustible y más moderador, pero también necesita mucho más de los dos para seguir siendo útil."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Pasivo o Activo",
+      "text": "Un reactor $(thing)Pasivo$() saca la energía que genera directamente como RF, a través de las $(l:reactors/passive_components)Tomas de Energía$(). Es el más simple y el primero que conviene construir.$(br2)Un reactor $(thing)Activo$() convierte esa energía en calor y la usa para hervir fluidos. El fluido caliente sale por un $(l:reactors/active_components)Puerto de Refrigerante$() y normalmente se manda a una $(l:turbines/overview)Turbina$()."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Mezclar tipos",
+      "text": "Un reactor no puede tener Tomas de Energía y Puertos de Refrigerante al mismo tiempo. El multibloque se niega a ensamblar y la terminal te lo dice.$(br2)Todo lo demás, incluida la terminal, las carcasas, las barras de combustible, las barras de control y los puertos de acceso, es igual en los dos tipos."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Ver tambien",
+      "entries": [
+        "biggerreactors:reactors/basic_reactor"
+      ]
+    }
+  ]
+}

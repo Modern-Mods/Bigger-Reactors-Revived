@@ -1,0 +1,24 @@
+{
+  "name": "Reprocesador de Cianita",
+  "category": "biggerreactors:machines",
+  "icon": "biggerreactors:cyanite_reprocessor",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:cyanite_reprocessor",
+      "title": "Reprocesador de Cianita",
+      "text": "Una máquina de un solo bloque que convierte el residuo del reactor en algo útil. Le das $(thing)Cianita$(), agua y RF, y te devuelve $(thing)Blutonio$().$(br2)Tiene una ranura de ítems, un tanque de fluidos y un búfer de energía, todo visible en su interfaz."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Ponerla a andar",
+      "text": "Colocala, dale energía desde cualquier fuente de Forge Energy, y metele agua con tubos o con un cubo.$(br2)La cianita va en la ranura de entrada y el blutonio sale por el otro lado. Las tolvas funcionan en los dos, y la máquina mira hacia donde estabas mirando cuando la pusiste."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Para qué molestarse",
+      "text": "El blutonio es un combustible más denso que el uranio y quema más caliente, y además es el ingrediente de crafteo de las piezas más avanzadas de reactor.$(br2)Reprocesar significa que a la larga el reactor se alimenta solo: el residuo que produce se convierte en el combustible que quema."
+    }
+  ]
+}

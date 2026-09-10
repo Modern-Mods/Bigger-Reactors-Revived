@@ -1,0 +1,1 @@
+modernmods.biggerreactorsrevived.deps.kubejs.BiggerReactorsKubePlugin

@@ -1,0 +1,34 @@
+{
+  "name": "Fluidos",
+  "category": "biggerreactors:getting_started",
+  "icon": "biggerreactors:steam_bucket",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Fluidos",
+      "text": "Los reactores activos funcionan hirviendo un fluido, y cada par de líquido y gas es una $(thing)transición$(): un punto de ebullición, un calor latente, una conductividad térmica para cada fase y un multiplicador de turbina."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:steam_bucket",
+      "title": "Vapor",
+      "text": "En lo que se convierte el agua. El fluido de trabajo por defecto para un par de reactor y turbina.$(br2)Agua adentro por un Puerto de Refrigerante, vapor afuera, vapor a la turbina, agua de vuelta al reactor."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:liquid_obsidian_bucket",
+      "title": "Obsidiana Líquida",
+      "text": "Hierve en lava a una temperatura mucho más alta que la que necesita el agua para hacer vapor.$(br2)Un reactor lo bastante caliente como para usarla mueve muchísimo más calor por tick que uno con agua, a cambio de tener que mantenerse muy caliente."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Sodio Sobrecalentado",
+      "text": "La fase gaseosa del sodio líquido. El sodio es un moderador excelente adentro de un reactor y un refrigerante de alta temperatura afuera.$(br2)El mod trae la transición y los valores de moderador, pero el sodio en sí viene de otro mod. Con $(thing)Mekanism$() instalado, su sodio hierve acá en sodio sobrecalentado."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Uranio Líquido",
+      "text": "Uranio fundido, está para integración con packs y para cualquier cosa que quiera una forma líquida del combustible del mod.$(br2)No tiene cubo propio, así que solo lo vas a ver a través de tubos y tanques."
+    }
+  ]
+}

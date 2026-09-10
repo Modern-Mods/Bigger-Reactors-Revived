@@ -1,0 +1,6 @@
+{
+  "name": "Reactors",
+  "description": "The primary multiblock. Burns fuel to make power or heat.",
+  "icon": "biggerreactors:reactor_terminal",
+  "sortnum": 1
+}

@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_none"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_w"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_t"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tw"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_s"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_sw"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_ts"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tsw"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_n"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_nw"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tn"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tnw"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_ns"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_nsw"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tns"
+    },
+    "bottom_connected=false,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tnsw"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_e"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_ew"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_te"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tew"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_se"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_sew"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tse"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tsew"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_ne"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_new"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tne"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tnew"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_nse"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_nsew"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tnse"
+    },
+    "bottom_connected=false,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tnsew"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_b"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bw"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tb"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbw"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bs"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bsw"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbs"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbsw"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bn"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bnw"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbn"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbnw"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bns"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bnsw"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbns"
+    },
+    "bottom_connected=true,east_connected=false,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbnsw"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_be"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bew"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbe"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=false,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbew"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bse"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bsew"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbse"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=false,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbsew"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bne"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bnew"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbne"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=true,south_connected=false,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbnew"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bnse"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=false,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_bnsew"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=false": {
+      "model": "biggerreactors:block/reactor/manifold/connected_tbnse"
+    },
+    "bottom_connected=true,east_connected=true,north_connected=true,south_connected=true,top_connected=true,west_connected=true": {
+      "model": "biggerreactors:block/reactor/manifold/connected_all"
+    }
+  }
+}

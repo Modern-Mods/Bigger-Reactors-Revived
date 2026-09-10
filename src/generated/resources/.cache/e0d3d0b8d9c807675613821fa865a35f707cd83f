@@ -1,0 +1,5 @@
+// 1.21.1	2026-09-09T22:00:32.7958305	Data Maps
+f41c6bea25791f189150f84eeb044f70845c2774 data/biggerreactors/data_maps/block/reactor_moderator.json
+fde990fd07929c4a8bafb7674fc436072100da52 data/biggerreactors/data_maps/block/turbine_coil.json
+f668b51a9a58aa2a8942fb4ff960256bf0f79dce data/biggerreactors/data_maps/fluid/fluid_transition.json
+e5b7d239826108b480f946a5bab9b9e6478ffcd4 data/biggerreactors/data_maps/fluid/reactor_fluid_moderator.json

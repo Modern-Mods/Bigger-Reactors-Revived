@@ -1,0 +1,44 @@
+{
+  "name": "Minerales y Materiales",
+  "category": "biggerreactors:getting_started",
+  "icon": "biggerreactors:uranium_ore",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:uranium_ore",
+      "title": "Mena de Uranio",
+      "text": "Genera bajo tierra en el overworld y suelta un $(thing)Trozo de Uranio$(). Fundí el trozo para tener un lingote, o pasalo por una trituradora para dos polvos.$(br2)La $(item)Mena de Uranio de Pizarra Profunda$() es la variante de deepslate y se comporta igual."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:uranium_ingot",
+      "title": "Uranio",
+      "text": "El combustible inicial del reactor. Tirá lingotes en un Puerto de Acceso en modo Entrada y llenan las barras.$(br2)El $(item)Polvo de Uranio$() se funde en lingote, y un $(item)Bloque de Uranio$() guarda nueve. El $(item)Bloque de Uranio en Bruto$() guarda nueve trozos."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:cyanite_ingot",
+      "title": "Cianita",
+      "text": "Residuo del reactor. Sacala por un Puerto de Acceso en modo Salida.$(br2)No es basura: un $(l:machines/cyanite_reprocessor)Reprocesador de Cianita$() la convierte en blutonio. También es ingrediente de crafteo de casi todas las piezas de reactor y turbina."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:blutonium_ingot",
+      "title": "Blutonio",
+      "text": "Se hace reprocesando cianita. Un combustible más denso y más caliente que el uranio, y el ingrediente que separa las piezas básicas de las avanzadas.$(br2)También viene como polvo y como bloque de almacenamiento."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:graphite_ingot",
+      "title": "Grafito",
+      "text": "Fundí carbón o carbón vegetal para obtener grafito. Barato, abundante, y el bloque es el moderador estándar de reactor.$(br2)También viene como polvo."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:ludicrite_ingot",
+      "title": "Ludicrita",
+      "text": "El material de fin de juego. El bloque es a la vez el mejor moderador y la mejor bobina de turbina que trae el mod.$(br2)Caro de fabricar, y vale la pena cuando tus reactores pueden alimentar a las turbinas que lo usan."
+    }
+  ]
+}

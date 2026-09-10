@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "down": "biggerreactors:block/heat_exchanger/glass/glass_connected_r",
+    "east": "phosphophyllite:block/transparent",
+    "north": "biggerreactors:block/heat_exchanger/glass/glass_connected_l",
+    "particle": "biggerreactors:block/heat_exchanger/glass/glass_connected_none",
+    "south": "biggerreactors:block/heat_exchanger/glass/glass_connected_r",
+    "up": "biggerreactors:block/heat_exchanger/glass/glass_connected_r",
+    "west": "biggerreactors:block/heat_exchanger/glass/glass_connected_none"
+  }
+}

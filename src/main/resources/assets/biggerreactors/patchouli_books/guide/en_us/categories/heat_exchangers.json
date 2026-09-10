@@ -1,0 +1,6 @@
+{
+  "name": "Heat Exchangers",
+  "description": "Moves heat between two separate fluid loops.",
+  "icon": "biggerreactors:heat_exchanger_terminal",
+  "sortnum": 3
+}

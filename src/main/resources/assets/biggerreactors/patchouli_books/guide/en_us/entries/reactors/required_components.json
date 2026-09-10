@@ -1,0 +1,42 @@
+{
+  "name": "Required Components",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:reactor_terminal",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "The bare minimum",
+      "text": "These five components are the minimum needed to build any type of reactor. Leave one out and the terminal will tell you exactly what is missing."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_terminal",
+      "title": "Reactor Terminal",
+      "text": "The heart of your reactor. Right click it to open the interface, where you turn the reactor on and off, set control rod insertion and read every statistic the simulation tracks.$(br2)It also reports why the multiblock refuses to assemble. At least one is required; more than one is allowed."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_casing",
+      "title": "Reactor Casing",
+      "text": "Makes up the frame and walls of your reactor. Every edge and corner of the box has to be casing; nothing else is accepted there.$(br2)The casing is also where absorbed radiation ends up as heat before it becomes RF or boils a fluid."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_fuel_rod",
+      "title": "Fuel Rod",
+      "text": "Where fuel and waste are contained. Fuel rods sit inside the reactor and must form an unbroken vertical column from the block above the floor to the block below the ceiling.$(br2)Every column has to be capped with a Control Rod, and every Control Rod has to sit on top of a full column."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_control_rod",
+      "title": "Control Rod",
+      "text": "Used to maintain control over the reaction. A control rod is placed on the $(thing)top face$() of the reactor, directly above its fuel rod column.$(br2)Insertion runs from 0% to 100%. Higher insertion means fewer neutrons reaching the fuel, so less heat, less power and slower fuel burn. It is your throttle."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:reactor_access_port",
+      "title": "Access Port",
+      "text": "Used to insert fuel and extract waste. Each port can be toggled between $(thing)Inlet$() and $(thing)Outlet$() in its interface.$(br2)An inlet accepts uranium and pushes it into the fuel rods. An outlet hands back cyanite as the fuel burns down. Hoppers and pipes work on both."
+    }
+  ]
+}

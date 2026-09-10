@@ -1,0 +1,39 @@
+{
+  "name": "Moderadores",
+  "category": "biggerreactors:reactors",
+  "icon": "biggerreactors:graphite_block",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Moderadores",
+      "text": "Los Moderadores de Reactor, muchas veces llamados por error Refrigerantes, son materiales que se ponen $(thing)adentro$() del reactor durante la construcción.$(br2)Cuando el reactor funciona, un moderador cambia su rendimiento según sus propiedades. El aire también es un moderador, solo que malo, así que un reactor vacío igual funciona."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Las cuatro propiedades",
+      "text": "$(li)$(thing)Absorción$(): la velocidad a la que se absorbe la radiación y se convierte en calor de la carcasa.$(li)$(thing)Eficiencia$(): con qué eficiencia la radiación absorbida se convierte en calor.$(li)$(thing)Moderación$(): qué tan efectivo es para moderar, o ablandar, la radiación.$(li)$(thing)Conductividad$(): qué tan bien se transfiere el calor de las barras de combustible a la carcasa."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Cómo leer los números",
+      "text": "En general, más alto siempre es mejor. La excepción es la absorción: puede ser mejor o peor según el diseño de tu reactor.$(br2)Absorción alta chupa la radiación cerca de las barras, lo que sirve para un núcleo chico y denso. Absorción baja deja que la radiación viaje más lejos y fertilice otras barras, lo que sirve para un núcleo grande con espacio entre columnas."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:graphite_block",
+      "title": "Grafito",
+      "text": "El moderador clásico, y el más barato que vale la pena usar. Absorción baja con moderación fuerte, así que la radiación viaja lejos y vuelve ablandada.$(br2)Si no sabés con qué llenar un reactor, llenalo de grafito."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "biggerreactors:ludicrite_block",
+      "title": "Ludicrita",
+      "text": "El moderador de fin de juego que trae el mod. Absorción alta, eficiencia alta, moderación fuerte y una conductividad excelente, todo junto.$(br2)Además es la mejor bobina de turbina del mod, así que vas a fabricar bastante."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Agregar los tuyos",
+      "text": "Los autores de modpacks pueden agregar o modificar moderadores con data maps o KubeJS, así que la lista no es fija.$(br2)Para ver la lista exacta de bloques y fluidos soportados en tu pack, abrí $(thing)JEI$() y mirá los usos de la Terminal de Reactor."
+    }
+  ]
+}

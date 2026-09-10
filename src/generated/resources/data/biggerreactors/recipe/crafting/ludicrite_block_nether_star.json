@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "biggerreactors:blutonium_ingot"
+    },
+    "E": {
+      "item": "minecraft:emerald_block"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "P": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "BPB",
+    "ENE",
+    "BPB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "biggerreactors:ludicrite_block"
+  }
+}
