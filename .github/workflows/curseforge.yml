@@ -1,11 +1,23 @@
 name: Build & Publish to CurseForge
 
+# Lives in Bigger-Reactors-Revived. Builds Phosphophyllite Revived, Quartz Revived and
+# Bigger Reactors Revived together, sets their versions, and publishes them to CurseForge.
+# Leave a version empty to skip releasing that mod.
+
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: "Mod version (e.g. 1.0.1)"
-        required: true
+      phos_version:
+        description: "Phosphophyllite Revived version (empty = don't release)"
+        required: false
+        type: string
+      quartz_version:
+        description: "Quartz Revived version (empty = don't release)"
+        required: false
+        type: string
+      br_version:
+        description: "Bigger Reactors Revived version (empty = don't release)"
+        required: false
         type: string
       release_type:
         description: "CurseForge release type"
@@ -16,53 +28,78 @@ on:
           - release
           - beta
           - alpha
-      changelog:
-        description: "Changelog (leave empty to use this version's section from changelog.md)"
-        required: false
-        type: string
       commit_version:
-        description: "Commit the new mod_version to gradle.properties"
+        description: "Commit the new mod_version to each repo's gradle.properties"
         required: false
         default: true
         type: boolean
       publish:
-        description: "Upload to CurseForge (uncheck to only build the jar)"
+        description: "Upload to CurseForge (uncheck to only build the jars)"
         required: false
         default: true
         type: boolean
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release-mods
   cancel-in-progress: false
 
 env:
   JAVA_VERSION: "21"
-  # Phosphophyllite is included from ../Phosphophyllite in settings.gradle
   PHOS_REPO: Modern-Mods/Phosphophyllite-Revived
   PHOS_REF: "1.21.1"
-  # Comma-separated CurseForge slugs of required dependencies, e.g. "phosphophyllite-revived"
-  # Leave empty if none. A wrong slug makes the upload fail.
-  CF_REQUIRED_DEPENDENCIES: ""
+  QUARTZ_REPO: Modern-Mods/Quartz-Revived
+  QUARTZ_REF: "1.21.1"
+  # Required dependencies on CurseForge, as comma-separated project slugs.
+  # A wrong slug makes that upload fail, so only add slugs that exist.
+  PHOS_CF_DEPS: ""
+  QUARTZ_CF_DEPS: ""          # e.g. "phosphophyllite-revived"
+  BR_CF_DEPS: "patchouli"     # e.g. "patchouli,phosphophyllite-revived,quartz-revived"
 
 jobs:
   build:
-    name: Build jar
+    name: Build jars
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-    defaults:
-      run:
-        working-directory: Quartz
+      contents: read
     outputs:
-      jar_name: ${{ steps.props.outputs.jar_name }}
-      mc_version: ${{ steps.props.outputs.mc_version }}
-      loader: ${{ steps.props.outputs.loader }}
+      mods: ${{ steps.versions.outputs.mods }}
     steps:
-      - name: Checkout Quartz
+      - name: Check inputs
+        env:
+          PHOS_VERSION: ${{ inputs.phos_version }}
+          QUARTZ_VERSION: ${{ inputs.quartz_version }}
+          BR_VERSION: ${{ inputs.br_version }}
+          COMMIT_VERSION: ${{ inputs.commit_version }}
+          HAS_PAT: ${{ secrets.MODS_PAT != '' }}
+        run: |
+          set -euo pipefail
+          if [ -z "${PHOS_VERSION}${QUARTZ_VERSION}${BR_VERSION}" ]; then
+            echo "::error::Enter a version for at least one mod"
+            exit 1
+          fi
+          for v in "$PHOS_VERSION" "$QUARTZ_VERSION" "$BR_VERSION"; do
+            if [ -n "$v" ] && [[ ! "$v" =~ ^[0-9]+(\.[0-9]+)*([-+][0-9A-Za-z.-]+)?$ ]]; then
+              echo "::error::Invalid version '$v' (expected something like 1.0.1 or 1.0.1-beta.1)"
+              exit 1
+            fi
+          done
+          if [ "$COMMIT_VERSION" = "true" ]; then
+            if [ "$HAS_PAT" != "true" ]; then
+              echo "::error::Secret MODS_PAT is not set (needed to push version changes to the three repos)"
+              exit 1
+            fi
+            if [ "$GITHUB_REF_TYPE" != "branch" ]; then
+              echo "::error::Run this workflow from a branch (not a tag) so the version can be committed"
+              exit 1
+            fi
+          fi
+
+      - name: Checkout Bigger Reactors
         uses: actions/checkout@v4
         with:
-          path: Quartz
+          path: BiggerReactors
           fetch-depth: 0
+          token: ${{ secrets.MODS_PAT || github.token }}
 
       - name: Checkout Phosphophyllite
         uses: actions/checkout@v4
@@ -70,51 +107,61 @@ jobs:
           repository: ${{ env.PHOS_REPO }}
           ref: ${{ env.PHOS_REF }}
           path: Phosphophyllite
+          fetch-depth: 0
+          token: ${{ secrets.MODS_PAT || github.token }}
 
-      - name: Validate inputs
-        env:
-          VERSION: ${{ inputs.version }}
-        run: |
-          if [ "$GITHUB_REF_TYPE" != "branch" ]; then
-            echo "::error::Run this workflow from a branch (not a tag) so the version can be committed"
-            exit 1
-          fi
-          if [[ ! "$VERSION" =~ ^[0-9]+(\.[0-9]+)*([-+][0-9A-Za-z.-]+)?$ ]]; then
-            echo "::error::Invalid version '$VERSION' (expected something like 1.0.1 or 1.0.1-beta.1)"
-            exit 1
-          fi
+      - name: Checkout Quartz
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.QUARTZ_REPO }}
+          ref: ${{ env.QUARTZ_REF }}
+          path: Quartz
+          fetch-depth: 0
+          token: ${{ secrets.MODS_PAT || github.token }}
 
       - name: Set mod_version in gradle.properties
-        id: props
+        id: versions
         env:
-          VERSION: ${{ inputs.version }}
+          PHOS_VERSION: ${{ inputs.phos_version }}
+          QUARTZ_VERSION: ${{ inputs.quartz_version }}
+          BR_VERSION: ${{ inputs.br_version }}
         run: |
           set -euo pipefail
+          MODS='[]'
 
-          # Replace the value, keeping the original line ending (LF or CRLF)
-          perl -pi -e 's/^mod_version=.*?(\r?)$/mod_version=$ENV{VERSION}$1/' gradle.properties
+          # Order matters: dependencies first, so they're published first
+          for entry in "Phosphophyllite|${PHOS_VERSION}" "Quartz|${QUARTZ_VERSION}" "BiggerReactors|${BR_VERSION}"; do
+            DIR="${entry%%|*}"
+            VERSION="${entry#*|}"
+            if [ -z "$VERSION" ]; then
+              echo "Skipping $DIR (no version given)"
+              continue
+            fi
 
-          if ! tr -d '\r' < gradle.properties | grep -qx "mod_version=${VERSION}"; then
-            echo "::error::Could not set mod_version in gradle.properties (is the mod_version= line missing?)"
-            exit 1
-          fi
+            PROPS="$DIR/gradle.properties"
+            # Replace the value, keeping the original line ending (LF or CRLF)
+            VERSION="$VERSION" perl -pi -e 's/^mod_version=.*?(\r?)$/mod_version=$ENV{VERSION}$1/' "$PROPS"
+            if ! tr -d '\r' < "$PROPS" | grep -qx "mod_version=${VERSION}"; then
+              echo "::error::Could not set mod_version in $PROPS"
+              exit 1
+            fi
 
-          prop() { grep -E "^$1=" gradle.properties | head -n1 | cut -d= -f2- | tr -d '\r'; }
-          MOD_NAMED=$(prop mod_named)
-          MC_VERSION=$(prop mcversion)
-          LOADER=$(prop tag_lanzador)
+            prop() { grep -E "^$1=" "$PROPS" | head -n1 | cut -d= -f2- | tr -d '\r'; }
+            NAMED=$(prop mod_named)
+            MC=$(prop mcversion)
+            LOADER=$(prop tag_lanzador)
+            # Matches build.gradle: archivesName = mod_named, version = mcversion-mod_version-tag_lanzador
+            JAR="${NAMED}-${MC}-${VERSION}-${LOADER}.jar"
 
-          # Matches build.gradle: archivesName = mod_named, version = mcversion-mod_version-tag_lanzador
-          JAR_NAME="${MOD_NAMED}-${MC_VERSION}-${VERSION}-${LOADER}.jar"
+            MODS=$(jq -c \
+              --arg dir "$DIR" --arg name "$NAMED" --arg version "$VERSION" \
+              --arg jar "$JAR" --arg mc "$MC" --arg loader "$LOADER" \
+              '. + [{dir: $dir, name: $name, version: $version, jar: $jar, mc: $mc, loader: $loader}]' <<<"$MODS")
 
-          {
-            echo "jar_name=${JAR_NAME}"
-            echo "mc_version=${MC_VERSION}"
-            echo "loader=${LOADER}"
-          } >> "$GITHUB_OUTPUT"
+            echo "$DIR -> $JAR"
+          done
 
-          echo "Expected jar: ${JAR_NAME}"
-          git diff -- gradle.properties || true
+          echo "mods=$MODS" >> "$GITHUB_OUTPUT"
 
       - name: Set up Java ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v4
@@ -125,48 +172,75 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      # Phosphophyllite and Quartz are subprojects of the Bigger Reactors build,
+      # so this one build produces all three jars.
       - name: Build
+        working-directory: BiggerReactors
         run: |
           chmod +x ./gradlew
           ./gradlew build --no-daemon
 
-      - name: Check jar
+      - name: Collect jars
         env:
-          JAR_NAME: ${{ steps.props.outputs.jar_name }}
+          MODS: ${{ steps.versions.outputs.mods }}
         run: |
-          if [ ! -f "build/libs/${JAR_NAME}" ]; then
-            echo "::error::Expected build/libs/${JAR_NAME} but it wasn't there"
-            ls -la build/libs
-            exit 1
-          fi
-          echo "Built: ${JAR_NAME}"
+          set -euo pipefail
+          mkdir -p dist
+          mapfile -t ENTRIES < <(jq -c '.[]' <<<"$MODS")
+          for m in "${ENTRIES[@]}"; do
+            DIR=$(jq -r '.dir' <<<"$m")
+            JAR=$(jq -r '.jar' <<<"$m")
+            SRC="$DIR/build/libs/$JAR"
+            if [ ! -f "$SRC" ]; then
+              echo "::error::Expected $SRC but it wasn't there"
+              ls -la "$DIR/build/libs" || true
+              exit 1
+            fi
+            cp "$SRC" dist/
+            echo "Built: $JAR"
+          done
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.props.outputs.jar_name }}
-          path: Quartz/build/libs/${{ steps.props.outputs.jar_name }}
+          name: mod-jars
+          path: dist/*.jar
           if-no-files-found: error
           retention-days: 30
 
-      - name: Commit version bump
+      - name: Commit version bumps
         if: ${{ inputs.commit_version }}
         env:
-          VERSION: ${{ inputs.version }}
+          MODS: ${{ steps.versions.outputs.mods }}
         run: |
           set -euo pipefail
-          if git diff --quiet -- gradle.properties; then
-            echo "mod_version is already ${VERSION}, nothing to commit"
-            exit 0
-          fi
+          declare -A BRANCH=(
+            [Phosphophyllite]="$PHOS_REF"
+            [Quartz]="$QUARTZ_REF"
+            [BiggerReactors]="$GITHUB_REF_NAME"
+          )
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898083+github-actions[bot]@users.noreply.github.com"
+          mapfile -t ENTRIES < <(jq -c '.[]' <<<"$MODS")
+          for m in "${ENTRIES[@]}"; do
+            DIR=$(jq -r '.dir' <<<"$m")
+            VERSION=$(jq -r '.version' <<<"$m")
+            BR_NAME="${BRANCH[$DIR]}"
 
-          git add gradle.properties
-          git commit -m "Set mod_version to ${VERSION}"
-          git pull --rebase --autostash origin "$GITHUB_REF_NAME"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+            cd "$GITHUB_WORKSPACE/$DIR"
+            if git diff --quiet -- gradle.properties; then
+              echo "$DIR: mod_version is already $VERSION, nothing to commit"
+              continue
+            fi
+
+            git config user.name "github-actions[bot]"
+            git config user.email "41898083+github-actions[bot]@users.noreply.github.com"
+            git add gradle.properties
+            # [skip ci] stops this push from triggering the build workflows in each repo
+            git commit -m "Set mod_version to ${VERSION} [skip ci]"
+            git pull --rebase --autostash origin "$BR_NAME"
+            git push origin "HEAD:${BR_NAME}"
+            echo "$DIR: pushed mod_version=$VERSION to $BR_NAME"
+          done
 
   publish:
     name: Publish to CurseForge
@@ -176,59 +250,84 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name: Checkout (for changelog.md)
+      - name: Checkout Bigger Reactors changelog
         uses: actions/checkout@v4
+        with:
+          path: BiggerReactors
+          sparse-checkout: |
+            /changelog.md
+            /CHANGELOG.md
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout Phosphophyllite changelog
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.PHOS_REPO }}
+          ref: ${{ env.PHOS_REF }}
+          path: Phosphophyllite
+          sparse-checkout: |
+            /changelog.md
+            /CHANGELOG.md
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout Quartz changelog
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.QUARTZ_REPO }}
+          ref: ${{ env.QUARTZ_REF }}
+          path: Quartz
+          sparse-checkout: |
+            /changelog.md
+            /CHANGELOG.md
+          sparse-checkout-cone-mode: false
 
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ needs.build.outputs.jar_name }}
+          name: mod-jars
           path: dist
 
       - name: Upload to CurseForge
         env:
           CF_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
-          CF_PROJECT_ID: ${{ vars.CURSEFORGE_PROJECT_ID }}
-          JAR_NAME: ${{ needs.build.outputs.jar_name }}
-          MC_VERSION: ${{ needs.build.outputs.mc_version }}
-          LOADER: ${{ needs.build.outputs.loader }}
-          VERSION: ${{ inputs.version }}
+          # Works whether you saved the IDs as repository variables or as secrets
+          CF_PROJECT_ID_PHOSPHOPHYLLITE: ${{ vars.CF_PROJECT_ID_PHOSPHOPHYLLITE || secrets.CF_PROJECT_ID_PHOSPHOPHYLLITE }}
+          CF_PROJECT_ID_QUARTZ: ${{ vars.CF_PROJECT_ID_QUARTZ || secrets.CF_PROJECT_ID_QUARTZ }}
+          CF_PROJECT_ID_BIGGERREACTORS: ${{ vars.CF_PROJECT_ID_BIGGERREACTORS || secrets.CF_PROJECT_ID_BIGGERREACTORS }}
+          MODS: ${{ needs.build.outputs.mods }}
           RELEASE_TYPE: ${{ inputs.release_type }}
-          CHANGELOG_INPUT: ${{ inputs.changelog }}
         run: |
           set -euo pipefail
           API="https://minecraft.curseforge.com/api"
-          JAR="dist/${JAR_NAME}"
-          DISPLAY_NAME="${JAR_NAME%.jar}"
 
-          [ -n "$CF_TOKEN" ]      || { echo "::error::Secret CURSEFORGE_TOKEN is not set"; exit 1; }
-          [ -n "$CF_PROJECT_ID" ] || { echo "::error::Variable CURSEFORGE_PROJECT_ID is not set"; exit 1; }
-          [ -f "$JAR" ]           || { echo "::error::Jar not found: $JAR"; ls -la dist; exit 1; }
+          declare -A PROJECT_ID=(
+            [Phosphophyllite]="$CF_PROJECT_ID_PHOSPHOPHYLLITE"
+            [Quartz]="$CF_PROJECT_ID_QUARTZ"
+            [BiggerReactors]="$CF_PROJECT_ID_BIGGERREACTORS"
+          )
+          declare -A PROJECT_VAR=(
+            [Phosphophyllite]="CF_PROJECT_ID_PHOSPHOPHYLLITE"
+            [Quartz]="CF_PROJECT_ID_QUARTZ"
+            [BiggerReactors]="CF_PROJECT_ID_BIGGERREACTORS"
+          )
+          declare -A DEPS=(
+            [Phosphophyllite]="$PHOS_CF_DEPS"
+            [Quartz]="$QUARTZ_CF_DEPS"
+            [BiggerReactors]="$BR_CF_DEPS"
+          )
 
-          # ---- Changelog: input > matching section of changelog.md > default ----
-          CHANGELOG=""
-          if [ -n "$CHANGELOG_INPUT" ]; then
-            CHANGELOG="$CHANGELOG_INPUT"
-          else
-            for f in changelog.md CHANGELOG.md; do
-              if [ -f "$f" ]; then
-                # Grabs the lines under "# 1.21.1-1.0.1" or "# 1.0.1" until the next heading
-                CHANGELOG=$(awk -v a="${MC_VERSION}-${VERSION}" -v b="${VERSION}" '
-                  { sub(/\r$/, "") }
-                  /^#+[[:space:]]/ { if (found) exit; if ($2 == a || $2 == b) { found = 1; next } }
-                  found { print }
-                ' "$f")
-                break
-              fi
-            done
-          fi
-          if [ -z "$(printf '%s' "$CHANGELOG" | tr -d '[:space:]')" ]; then
-            CHANGELOG="${DISPLAY_NAME}"
-          fi
-          echo "Changelog:"
-          echo "$CHANGELOG"
+          mapfile -t ENTRIES < <(jq -c '.[]' <<<"$MODS")
 
-          # ---- Resolve CurseForge game version IDs ----
+          # ---- Pre-flight: check everything before uploading anything ----
+          [ -n "$CF_TOKEN" ] || { echo "::error::Secret CURSEFORGE_TOKEN is not set"; exit 1; }
+          for m in "${ENTRIES[@]}"; do
+            DIR=$(jq -r '.dir' <<<"$m")
+            JAR=$(jq -r '.jar' <<<"$m")
+            [ -n "${PROJECT_ID[$DIR]}" ] || { echo "::error::${PROJECT_VAR[$DIR]} is not set"; exit 1; }
+            [ -f "dist/$JAR" ] || { echo "::error::Jar not found: dist/$JAR"; ls -la dist; exit 1; }
+          done
+
+          # ---- CurseForge game version lookup ----
           TYPES=$(curl -fsS -H "X-Api-Token: $CF_TOKEN" "$API/game/version-types")
           VERSIONS=$(curl -fsS -H "X-Api-Token: $CF_TOKEN" "$API/game/versions")
 
@@ -242,59 +341,86 @@ jobs:
               <<<"$VERSIONS"
           }
 
-          MC_ID=$(find_id "$MC_VERSION" "$MC_TYPES")
-          LOADER_ID=$(find_id "$LOADER" "$LOADER_TYPES")
-          JAVA_ID=$(find_id "Java ${JAVA_VERSION}" "$JAVA_TYPES")
+          # Everything under "# 1.21.1-1.0.1" or "# 1.0.1" (incl. ## subheadings) until the next "# " heading
+          get_changelog() {
+            local f
+            for f in "$1/changelog.md" "$1/CHANGELOG.md"; do
+              if [ -f "$f" ]; then
+                awk -v a="$2-$3" -v b="$3" '
+                  { sub(/\r$/, "") }
+                  /^#[[:space:]]/ { if (found) exit; if ($2 == a || $2 == b) { found = 1; next } }
+                  found { print }
+                ' "$f"
+                return
+              fi
+            done
+          }
 
-          [ -n "$MC_ID" ]     || { echo "::error::Minecraft version '$MC_VERSION' not found on CurseForge"; exit 1; }
-          [ -n "$LOADER_ID" ] || { echo "::error::Loader '$LOADER' not found on CurseForge"; exit 1; }
-          [ -n "$JAVA_ID" ]   || { echo "::error::'Java ${JAVA_VERSION}' not found on CurseForge"; exit 1; }
-
-          echo "Game version IDs -> Minecraft: $MC_ID, Loader: $LOADER_ID, Java: $JAVA_ID"
-
-          # ---- Metadata ----
-          METADATA=$(jq -n \
-            --arg changelog "$CHANGELOG" \
-            --arg displayName "$DISPLAY_NAME" \
-            --arg releaseType "$RELEASE_TYPE" \
-            --arg deps "$CF_REQUIRED_DEPENDENCIES" \
-            --argjson gameVersions "[$MC_ID, $LOADER_ID, $JAVA_ID]" \
-            '
-            ($deps | split(",") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))
-                   | map({slug: ., type: "requiredDependency"})) as $projects
-            | {
-                changelog: $changelog,
-                changelogType: "markdown",
-                displayName: $displayName,
-                releaseType: $releaseType,
-                gameVersions: $gameVersions
-              }
-            + (if ($projects | length) > 0 then {relations: {projects: $projects}} else {} end)
-            ')
-
-          echo "Metadata:"
-          echo "$METADATA"
-
-          # ---- Upload ----
-          HTTP_CODE=$(curl -sS -o response.json -w '%{http_code}' \
-            -H "X-Api-Token: $CF_TOKEN" \
-            --form-string "metadata=$METADATA" \
-            -F "file=@\"$JAR\";type=application/java-archive" \
-            "$API/projects/$CF_PROJECT_ID/upload-file")
-
-          echo "Response ($HTTP_CODE):"
-          cat response.json; echo
-
-          if [ "$HTTP_CODE" != "200" ]; then
-            echo "::error::CurseForge upload failed with HTTP $HTTP_CODE"
-            exit 1
-          fi
-
-          FILE_ID=$(jq -r '.id' response.json)
           {
             echo "### Published to CurseForge :rocket:"
             echo ""
-            echo "- **File:** ${JAR_NAME}"
-            echo "- **Version:** ${VERSION} (${RELEASE_TYPE})"
-            echo "- **CurseForge file ID:** ${FILE_ID}"
+            echo "| Mod | Version | Type | CurseForge file ID |"
+            echo "|---|---|---|---|"
           } >> "$GITHUB_STEP_SUMMARY"
+
+          # ---- Upload each mod (dependencies first) ----
+          for m in "${ENTRIES[@]}"; do
+            DIR=$(jq -r '.dir' <<<"$m")
+            NAME=$(jq -r '.name' <<<"$m")
+            VERSION=$(jq -r '.version' <<<"$m")
+            JAR=$(jq -r '.jar' <<<"$m")
+            MC=$(jq -r '.mc' <<<"$m")
+            LOADER=$(jq -r '.loader' <<<"$m")
+
+            echo "::group::${NAME} ${VERSION}"
+
+            MC_ID=$(find_id "$MC" "$MC_TYPES")
+            LOADER_ID=$(find_id "$LOADER" "$LOADER_TYPES")
+            JAVA_ID=$(find_id "Java ${JAVA_VERSION}" "$JAVA_TYPES")
+            [ -n "$MC_ID" ]     || { echo "::error::Minecraft version '$MC' not found on CurseForge"; exit 1; }
+            [ -n "$LOADER_ID" ] || { echo "::error::Loader '$LOADER' not found on CurseForge"; exit 1; }
+            [ -n "$JAVA_ID" ]   || { echo "::error::'Java ${JAVA_VERSION}' not found on CurseForge"; exit 1; }
+
+            CHANGELOG=$(get_changelog "$DIR" "$MC" "$VERSION")
+            if [ -z "$(printf '%s' "$CHANGELOG" | tr -d '[:space:]')" ]; then
+              CHANGELOG="${JAR%.jar}"
+            fi
+
+            METADATA=$(jq -n \
+              --arg changelog "$CHANGELOG" \
+              --arg displayName "${JAR%.jar}" \
+              --arg releaseType "$RELEASE_TYPE" \
+              --arg deps "${DEPS[$DIR]}" \
+              --argjson gameVersions "[$MC_ID, $LOADER_ID, $JAVA_ID]" \
+              '
+              ($deps | split(",") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))
+                     | map({slug: ., type: "requiredDependency"})) as $projects
+              | {
+                  changelog: $changelog,
+                  changelogType: "markdown",
+                  displayName: $displayName,
+                  releaseType: $releaseType,
+                  gameVersions: $gameVersions
+                }
+              + (if ($projects | length) > 0 then {relations: {projects: $projects}} else {} end)
+              ')
+            echo "$METADATA"
+
+            HTTP_CODE=$(curl -sS -o response.json -w '%{http_code}' \
+              -H "X-Api-Token: $CF_TOKEN" \
+              --form-string "metadata=$METADATA" \
+              -F "file=@\"dist/$JAR\";type=application/java-archive" \
+              "$API/projects/${PROJECT_ID[$DIR]}/upload-file")
+
+            echo "Response ($HTTP_CODE):"
+            cat response.json; echo
+
+            if [ "$HTTP_CODE" != "200" ]; then
+              echo "::error::Upload of $JAR failed with HTTP $HTTP_CODE"
+              exit 1
+            fi
+
+            FILE_ID=$(jq -r '.id' response.json)
+            echo "| ${NAME} | ${VERSION} | ${RELEASE_TYPE} | ${FILE_ID} |" >> "$GITHUB_STEP_SUMMARY"
+            echo "::endgroup::"
+          done
